@@ -1,0 +1,14 @@
+{
+    "master": {
+        "awscloudformation": {
+            "AuthRoleName": "betteruni-20200310201950-authRole",
+            "UnauthRoleArn": "arn:aws:iam::045312015851:role/betteruni-20200310201950-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::045312015851:role/betteruni-20200310201950-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "betteruni-20200310201950-deployment",
+            "UnauthRoleName": "betteruni-20200310201950-unauthRole",
+            "StackName": "betteruni-20200310201950",
+            "StackId": "arn:aws:cloudformation:us-east-1:045312015851:stack/betteruni-20200310201950/05fbb990-632e-11ea-ad0c-0aa958b6917a"
+        }
+    }
+}
