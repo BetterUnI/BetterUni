@@ -25,7 +25,8 @@
         },
         "categories": {
             "auth": {
-                "betteruni6666fc7a": {}
+                "betteruni6666fc7a": {},
+                "userPoolGroups": {}
             }
         }
     }

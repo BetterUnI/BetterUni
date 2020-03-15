@@ -2,7 +2,10 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
-import { Auth } from "aws-amplify";
+import { withAuthenticator } from "aws-amplify-react"; // or 'aws-amplify-react-native';
+import Amplify from "aws-amplify";
+import config from "./aws-exports";
+Amplify.configure(config);
 
 function App() {
   return (
@@ -25,4 +28,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthenticator(App, true);
