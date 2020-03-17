@@ -5,25 +5,6 @@ export class CreateAccount extends SignUp {
   constructor(props) {
     super(props);
     this._validAuthStates = ["signUp"];
-    console.log(props);
-    // this.defaultSignUpFields = [
-    //   {
-    //     label: "Email",
-    //     key: "username",
-    //     required: true,
-    //     displayOrder: 1,
-    //     type: "email",
-    //     custom: false
-    //   },
-    //   {
-    //     label: "Password",
-    //     key: "password",
-    //     required: true,
-    //     displayOrder: 2,
-    //     type: "password",
-    //     custom: false
-    //   }
-    // ];
   }
 
   showComponent(theme) {
@@ -57,9 +38,8 @@ export class CreateAccount extends SignUp {
             <button
               type="button"
               onClick={() => {
-                console.log("signing up :)");
-                console.log(this.props);
-                console.log(super.checkCustomSignUpFields());
+                super.sortFields();
+                super.validate();
                 super.signUp();
               }}
             >

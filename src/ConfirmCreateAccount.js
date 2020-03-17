@@ -11,7 +11,6 @@ export class ConfirmCreateAccount extends ConfirmSignUp {
     return (
       <div>
         <h1>Confirm your new account</h1>
-        <h2>{console.log(this.props)}</h2>
         <form>
           <div>
             <label htmlFor="username">Email * </label>
@@ -22,7 +21,11 @@ export class ConfirmCreateAccount extends ConfirmSignUp {
               onChange={this.handleInputChange}
               type="text"
               placeholder="Email"
-              value={this.props.authData.username}
+              value={
+                this.props.authData.username
+                  ? this.props.authData.username
+                  : this.props.authData
+              }
               disabled={true}
             />
           </div>

@@ -16,7 +16,6 @@ class LoginPage extends React.Component {
 
   render() {
     const signUpConfig = {
-      // hideAllDefaults: true,
       hiddenDefaults: ["email", "phone_number"],
       signUpFields: [
         {
@@ -34,13 +33,6 @@ class LoginPage extends React.Component {
           type: "password",
           displayOrder: 2
         }
-        // {
-        //   label: "Phone Number",
-        //   key: "phone_number",
-        //   required: false,
-        //   displayOrder: 3,
-        //   type: "tel"
-        // }
       ]
     };
 
@@ -48,39 +40,33 @@ class LoginPage extends React.Component {
       <div>
         <h1>Login Page Wrapper</h1>
         <Authenticator
-          hide={[SignIn]}
+          hide={[SignIn, SignUp, ConfirmSignUp]}
           signUpConfig={signUpConfig}
           amplifyConfig={config}
         >
           <Login />
           <CreateAccount
             signUpConfig={{
-              hiddenDefaults: ["email", "phone_number"],
-              signUpFields: [
-                {
-                  label: "Email",
-                  key: "username",
-                  required: true,
-                  placeholder: "Email",
-                  displayOrder: 1
-                },
-                {
-                  label: "Password",
-                  key: "password",
-                  required: true,
-                  placeholder: "Password",
-                  type: "password",
-                  displayOrder: 2
-                }
-                // {
-                //   label: "Phone Number",
-                //   key: "phone_number",
-                //   required: false,
-                //   displayOrder: 3,
-                //   type: "tel"
-                // }
-              ]
+              hiddenDefaults: ["email", "phone_number"]
             }}
+            signUpFields={[
+              {
+                label: "Email",
+                key: "username",
+                required: true,
+                placeholder: "Email",
+                displayOrder: 1
+              },
+              {
+                label: "Password",
+                key: "password",
+                required: true,
+                placeholder: "Password",
+                type: "password",
+                displayOrder: 2
+              }
+            ]}
+            hiddenDefaults={["email", "phone_number"]}
           />
           <ConfirmCreateAccount />
           <App />
