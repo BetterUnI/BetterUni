@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
-import LoginPage from "./LoginPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
 
 ReactDOM.render(<LoginPage />, document.getElementById("root"));
 

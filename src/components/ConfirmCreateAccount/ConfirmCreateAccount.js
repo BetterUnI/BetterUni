@@ -7,7 +7,7 @@ export class ConfirmCreateAccount extends ConfirmSignUp {
     this._validAuthStates = ["confirmSignUp"];
   }
 
-  showComponent(theme) {
+  showComponent() {
     return (
       <div>
         <h1>Confirm your new account</h1>
@@ -45,7 +45,8 @@ export class ConfirmCreateAccount extends ConfirmSignUp {
               Confirm
             </button>
             <p>
-              Lost your code? <a onClick={() => super.resend()}>Resend Code</a>
+              Lost your code?{" "}
+              <span onClick={() => super.resend()}>Resend Code</span>
             </p>
           </div>
         </form>
