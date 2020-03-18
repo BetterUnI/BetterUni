@@ -9,6 +9,12 @@
             "UnauthRoleName": "betteruni-20200310201950-unauthRole",
             "StackName": "betteruni-20200310201950",
             "StackId": "arn:aws:cloudformation:us-east-1:045312015851:stack/betteruni-20200310201950/05fbb990-632e-11ea-ad0c-0aa958b6917a"
+        },
+        "categories": {
+            "auth": {
+                "betteruni6666fc7a": {},
+                "userPoolGroups": {}
+            }
         }
     },
     "authflow": {
