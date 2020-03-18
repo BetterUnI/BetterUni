@@ -22,6 +22,7 @@ export class ResetPassword extends ForgotPassword {
               onChange={this.handleInputChange}
               type="email"
               placeholder="Email"
+              autoComplete="off"
             />
           </div>
           <div>
