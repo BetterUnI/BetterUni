@@ -9,6 +9,12 @@
             "UnauthRoleName": "betteruni-20200310201950-unauthRole",
             "StackName": "betteruni-20200310201950",
             "StackId": "arn:aws:cloudformation:us-east-1:045312015851:stack/betteruni-20200310201950/05fbb990-632e-11ea-ad0c-0aa958b6917a"
+        },
+        "categories": {
+            "auth": {
+                "betteruni6666fc7a": {},
+                "userPoolGroups": {}
+            }
         }
     },
     "authflow": {
@@ -21,6 +27,25 @@
             "UnauthRoleName": "amplify-betteruni-authflow-150646-unauthRole",
             "StackName": "amplify-betteruni-authflow-150646",
             "StackId": "arn:aws:cloudformation:us-east-1:045312015851:stack/amplify-betteruni-authflow-150646/200cdec0-66f0-11ea-85cd-1277ff2044b7",
+            "AmplifyAppId": "d10zhgeiihhv0k"
+        },
+        "categories": {
+            "auth": {
+                "betteruni6666fc7a": {},
+                "userPoolGroups": {}
+            }
+        }
+    },
+    "ariela": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-betteruni-ariela-222117-authRole",
+            "UnauthRoleArn": "arn:aws:iam::045312015851:role/amplify-betteruni-ariela-222117-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::045312015851:role/amplify-betteruni-ariela-222117-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-betteruni-ariela-222117-deployment",
+            "UnauthRoleName": "amplify-betteruni-ariela-222117-unauthRole",
+            "StackName": "amplify-betteruni-ariela-222117",
+            "StackId": "arn:aws:cloudformation:us-east-1:045312015851:stack/amplify-betteruni-ariela-222117/fce69600-67f5-11ea-8e4a-0ad9172a6ca8",
             "AmplifyAppId": "d10zhgeiihhv0k"
         },
         "categories": {
