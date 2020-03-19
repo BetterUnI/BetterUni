@@ -24,7 +24,7 @@
 		}
 	},
 	"function": {
-		"webscrape": {
+		"webScrape": {
 			"service": "Lambda",
 			"providerPlugin": "awscloudformation",
 			"build": true
