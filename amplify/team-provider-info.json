@@ -74,6 +74,25 @@
       }
     }
   },
+  "richard": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-betteruni-richard-164413-authRole",
+      "UnauthRoleArn": "arn:aws:iam::045312015851:role/amplify-betteruni-richard-164413-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::045312015851:role/amplify-betteruni-richard-164413-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-betteruni-richard-164413-deployment",
+      "UnauthRoleName": "amplify-betteruni-richard-164413-unauthRole",
+      "StackName": "amplify-betteruni-richard-164413",
+      "StackId": "arn:aws:cloudformation:us-east-1:045312015851:stack/amplify-betteruni-richard-164413/10985720-6890-11ea-9cde-0a3d3edde975",
+      "AmplifyAppId": "d10zhgeiihhv0k"
+    },
+    "categories": {
+      "auth": {
+        "betteruni6666fc7a": {},
+        "userPoolGroups": {}
+      }
+    }
+  },
   "noah": {
     "awscloudformation": {
       "AuthRoleName": "amplify-betteruni-noah-234146-authRole",
