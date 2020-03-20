@@ -1,6 +1,6 @@
 {
     "identityPoolName": "betteruni6666fc7a_identitypool_6666fc7a",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "better6666fc7a",
     "userPoolName": "betteruni6666fc7a_userpool_6666fc7a",
     "autoVerifiedAttributes": [
