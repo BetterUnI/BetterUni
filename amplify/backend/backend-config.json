@@ -1,26 +1,49 @@
 {
-    "auth": {
-        "betteruni6666fc7a": {
-            "service": "Cognito",
-            "providerPlugin": "awscloudformation",
-            "dependsOn": [],
-            "customAuth": false
-        },
-        "userPoolGroups": {
-            "service": "Cognito-UserPool-Groups",
-            "providerPlugin": "awscloudformation",
-            "dependsOn": [
-                {
-                    "category": "auth",
-                    "resourceName": "betteruni6666fc7a",
-                    "attributes": [
-                        "UserPoolId",
-                        "AppClientIDWeb",
-                        "AppClientID",
-                        "IdentityPoolId"
-                    ]
-                }
-            ]
-        }
-    }
+	"auth": {
+		"betteruni6666fc7a": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		},
+		"userPoolGroups": {
+			"service": "Cognito-UserPool-Groups",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "auth",
+					"resourceName": "betteruni6666fc7a",
+					"attributes": [
+						"UserPoolId",
+						"AppClientIDWeb",
+						"AppClientID",
+						"IdentityPoolId"
+					]
+				}
+			]
+		}
+	},
+	"storage": {
+		"CareerEvents": {
+			"service": "DynamoDB",
+			"providerPlugin": "awscloudformation"
+		},
+		"Categories": {
+			"service": "DynamoDB",
+			"providerPlugin": "awscloudformation"
+		},
+		"Advisors": {
+			"service": "DynamoDB",
+			"providerPlugin": "awscloudformation"
+		},
+		"Meetings": {
+			"service": "DynamoDB",
+			"providerPlugin": "awscloudformation"
+		},
+		"Users": {
+			"service": "DynamoDB",
+			"providerPlugin": "awscloudformation"
+		}
+	},
+	"function": {}
 }
