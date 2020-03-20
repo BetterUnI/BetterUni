@@ -1,77 +1,96 @@
 {
-    "master": {
-        "awscloudformation": {
-            "AuthRoleName": "betteruni-20200310201950-authRole",
-            "UnauthRoleArn": "arn:aws:iam::045312015851:role/betteruni-20200310201950-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::045312015851:role/betteruni-20200310201950-authRole",
-            "Region": "us-east-1",
-            "DeploymentBucketName": "betteruni-20200310201950-deployment",
-            "UnauthRoleName": "betteruni-20200310201950-unauthRole",
-            "StackName": "betteruni-20200310201950",
-            "StackId": "arn:aws:cloudformation:us-east-1:045312015851:stack/betteruni-20200310201950/05fbb990-632e-11ea-ad0c-0aa958b6917a"
-        },
-        "categories": {
-            "auth": {
-                "betteruni6666fc7a": {},
-                "userPoolGroups": {}
-            }
-        }
+  "master": {
+    "awscloudformation": {
+      "AuthRoleName": "betteruni-20200310201950-authRole",
+      "UnauthRoleArn": "arn:aws:iam::045312015851:role/betteruni-20200310201950-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::045312015851:role/betteruni-20200310201950-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "betteruni-20200310201950-deployment",
+      "UnauthRoleName": "betteruni-20200310201950-unauthRole",
+      "StackName": "betteruni-20200310201950",
+      "StackId": "arn:aws:cloudformation:us-east-1:045312015851:stack/betteruni-20200310201950/05fbb990-632e-11ea-ad0c-0aa958b6917a"
     },
-    "authflow": {
-        "awscloudformation": {
-            "AuthRoleName": "amplify-betteruni-authflow-150646-authRole",
-            "UnauthRoleArn": "arn:aws:iam::045312015851:role/amplify-betteruni-authflow-150646-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::045312015851:role/amplify-betteruni-authflow-150646-authRole",
-            "Region": "us-east-1",
-            "DeploymentBucketName": "amplify-betteruni-authflow-150646-deployment",
-            "UnauthRoleName": "amplify-betteruni-authflow-150646-unauthRole",
-            "StackName": "amplify-betteruni-authflow-150646",
-            "StackId": "arn:aws:cloudformation:us-east-1:045312015851:stack/amplify-betteruni-authflow-150646/200cdec0-66f0-11ea-85cd-1277ff2044b7",
-            "AmplifyAppId": "d10zhgeiihhv0k"
-        },
-        "categories": {
-            "auth": {
-                "betteruni6666fc7a": {},
-                "userPoolGroups": {}
-            }
-        }
-    },
-    "ariela": {
-        "awscloudformation": {
-            "AuthRoleName": "amplify-betteruni-ariela-222117-authRole",
-            "UnauthRoleArn": "arn:aws:iam::045312015851:role/amplify-betteruni-ariela-222117-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::045312015851:role/amplify-betteruni-ariela-222117-authRole",
-            "Region": "us-east-1",
-            "DeploymentBucketName": "amplify-betteruni-ariela-222117-deployment",
-            "UnauthRoleName": "amplify-betteruni-ariela-222117-unauthRole",
-            "StackName": "amplify-betteruni-ariela-222117",
-            "StackId": "arn:aws:cloudformation:us-east-1:045312015851:stack/amplify-betteruni-ariela-222117/fce69600-67f5-11ea-8e4a-0ad9172a6ca8",
-            "AmplifyAppId": "d10zhgeiihhv0k"
-        },
-        "categories": {
-            "auth": {
-                "betteruni6666fc7a": {},
-                "userPoolGroups": {}
-            }
-        }
-    },
-    "davisdev": {
-        "awscloudformation": {
-            "AuthRoleName": "amplify-betteruni-davisdev-141044-authRole",
-            "UnauthRoleArn": "arn:aws:iam::045312015851:role/amplify-betteruni-davisdev-141044-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::045312015851:role/amplify-betteruni-davisdev-141044-authRole",
-            "Region": "us-east-1",
-            "DeploymentBucketName": "amplify-betteruni-davisdev-141044-deployment",
-            "UnauthRoleName": "amplify-betteruni-davisdev-141044-unauthRole",
-            "StackName": "amplify-betteruni-davisdev-141044",
-            "StackId": "arn:aws:cloudformation:us-east-1:045312015851:stack/amplify-betteruni-davisdev-141044/f3b049f0-6a0c-11ea-8584-0e29088293c9",
-            "AmplifyAppId": "d10zhgeiihhv0k"
-        },
-        "categories": {
-            "auth": {
-                "betteruni6666fc7a": {},
-                "userPoolGroups": {}
-            }
-        }
+    "categories": {
+      "auth": {
+        "betteruni6666fc7a": {},
+        "userPoolGroups": {}
+      }
     }
+  },
+  "authflow": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-betteruni-authflow-150646-authRole",
+      "UnauthRoleArn": "arn:aws:iam::045312015851:role/amplify-betteruni-authflow-150646-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::045312015851:role/amplify-betteruni-authflow-150646-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-betteruni-authflow-150646-deployment",
+      "UnauthRoleName": "amplify-betteruni-authflow-150646-unauthRole",
+      "StackName": "amplify-betteruni-authflow-150646",
+      "StackId": "arn:aws:cloudformation:us-east-1:045312015851:stack/amplify-betteruni-authflow-150646/200cdec0-66f0-11ea-85cd-1277ff2044b7",
+      "AmplifyAppId": "d10zhgeiihhv0k"
+    },
+    "categories": {
+      "auth": {
+        "betteruni6666fc7a": {},
+        "userPoolGroups": {}
+      }
+    }
+  },
+  "ariela": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-betteruni-ariela-222117-authRole",
+      "UnauthRoleArn": "arn:aws:iam::045312015851:role/amplify-betteruni-ariela-222117-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::045312015851:role/amplify-betteruni-ariela-222117-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-betteruni-ariela-222117-deployment",
+      "UnauthRoleName": "amplify-betteruni-ariela-222117-unauthRole",
+      "StackName": "amplify-betteruni-ariela-222117",
+      "StackId": "arn:aws:cloudformation:us-east-1:045312015851:stack/amplify-betteruni-ariela-222117/fce69600-67f5-11ea-8e4a-0ad9172a6ca8",
+      "AmplifyAppId": "d10zhgeiihhv0k"
+    },
+    "categories": {
+      "auth": {
+        "betteruni6666fc7a": {},
+        "userPoolGroups": {}
+      }
+    }
+  },
+  "davisdev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-betteruni-davisdev-141044-authRole",
+      "UnauthRoleArn": "arn:aws:iam::045312015851:role/amplify-betteruni-davisdev-141044-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::045312015851:role/amplify-betteruni-davisdev-141044-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-betteruni-davisdev-141044-deployment",
+      "UnauthRoleName": "amplify-betteruni-davisdev-141044-unauthRole",
+      "StackName": "amplify-betteruni-davisdev-141044",
+      "StackId": "arn:aws:cloudformation:us-east-1:045312015851:stack/amplify-betteruni-davisdev-141044/f3b049f0-6a0c-11ea-8584-0e29088293c9",
+      "AmplifyAppId": "d10zhgeiihhv0k"
+    },
+    "categories": {
+      "auth": {
+        "betteruni6666fc7a": {},
+        "userPoolGroups": {}
+      }
+    }
+  },
+  "richard": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-betteruni-richard-164413-authRole",
+      "UnauthRoleArn": "arn:aws:iam::045312015851:role/amplify-betteruni-richard-164413-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::045312015851:role/amplify-betteruni-richard-164413-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-betteruni-richard-164413-deployment",
+      "UnauthRoleName": "amplify-betteruni-richard-164413-unauthRole",
+      "StackName": "amplify-betteruni-richard-164413",
+      "StackId": "arn:aws:cloudformation:us-east-1:045312015851:stack/amplify-betteruni-richard-164413/10985720-6890-11ea-9cde-0a3d3edde975",
+      "AmplifyAppId": "d10zhgeiihhv0k"
+    },
+    "categories": {
+      "auth": {
+        "betteruni6666fc7a": {},
+        "userPoolGroups": {}
+      }
+    }
+  }
 }
