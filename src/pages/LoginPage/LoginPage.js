@@ -3,7 +3,8 @@ import {
   SignIn,
   SignUp,
   ConfirmSignUp,
-  ForgotPassword
+  ForgotPassword,
+  Greetings
 } from "aws-amplify-react";
 import App from "../../App";
 import { Authenticator } from "aws-amplify-react";
@@ -43,7 +44,7 @@ class LoginPage extends React.Component {
     return (
       <div>
         <Authenticator
-          hide={[SignIn, SignUp, ConfirmSignUp, ForgotPassword]}
+          hide={[SignIn, SignUp, ConfirmSignUp, ForgotPassword, Greetings]}
           signUpConfig={signUpConfig}
           amplifyConfig={config}
         >

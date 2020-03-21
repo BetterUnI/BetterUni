@@ -1,5 +1,10 @@
 import React from "react";
 
-export default function HomePage() {
-  return <div></div>;
+export function HomePage() {
+  return (
+    <>
+      <h1>Home page</h1>
+      <p>This is the home page</p>
+    </>
+  );
 }
