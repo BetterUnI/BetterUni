@@ -1,4 +1,7 @@
 import React from "react";
+import { ThemeProvider } from "@material-ui/styles";
+import theme from "../../theme";
+
 import {
   SignIn,
   SignUp,
@@ -42,7 +45,7 @@ class LoginPage extends React.Component {
     };
 
     return (
-      <div>
+      <ThemeProvider theme={theme}>
         <Authenticator
           hide={[SignIn, SignUp, ConfirmSignUp, ForgotPassword, Greetings]}
           signUpConfig={signUpConfig}
@@ -76,7 +79,7 @@ class LoginPage extends React.Component {
           <ResetPassword />
           <App />
         </Authenticator>
-      </div>
+      </ThemeProvider>
     );
   }
 }
