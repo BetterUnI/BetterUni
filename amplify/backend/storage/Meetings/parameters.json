@@ -1,5 +1,0 @@
-{
-    "tableName": "Meetings",
-    "partitionKeyName": "Meeting_ID",
-    "partitionKeyType": "N"
-}
