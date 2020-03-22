@@ -56,7 +56,6 @@ export const SidebarNav = props => {
     <List {...rest} className={clsx(classes.root, className)}>
       {pages.map(page => (
         <ListItem className={classes.item} disableGutters key={page.title}>
-          {console.log(page.href)}
           {page.href === "/sign-out" ? (
             <Button
               activeClassName={classes.active}
@@ -65,7 +64,7 @@ export const SidebarNav = props => {
               to={page.href}
               onClick={() => {
                 Auth.signOut()
-                  .then(data => console.log(data))
+                  .then(data => console.log("signing out"))
                   .catch(err => console.log(err));
               }}
             >

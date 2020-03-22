@@ -38,7 +38,8 @@ export class Login extends SignIn {
 
     const QuoteText = styled(Typography)({
       color: "#FFFFFF",
-      fontWeight: 300
+      fontWeight: 300,
+      padding: 50
     });
 
     const ContentGrid = styled(Grid)({
@@ -108,7 +109,7 @@ export class Login extends SignIn {
                       type="text"
                       label="Email address"
                       fullWidth
-                      autocomplete="off"
+                      variant="outlined"
                     />
                     <StyledTextField
                       id="password"
@@ -118,7 +119,7 @@ export class Login extends SignIn {
                       type="password"
                       label="Password"
                       fullWidth
-                      autocomplete="off"
+                      variant="outlined"
                     />
                     <p>
                       Forgot your password?{" "}
@@ -141,19 +142,21 @@ export class Login extends SignIn {
                     >
                       Sign in
                     </SignInButton>
-                    <Typography color="textSecondary" variant="body1">
-                      <p>
-                        No Account?{" "}
-                        <span
-                          onClick={() => super.changeState("signUp")}
-                          style={{
-                            textDecoration: "underline",
-                            cursor: "pointer"
-                          }}
-                        >
-                          Create an account
-                        </span>
-                      </p>
+                    <Typography
+                      color="textSecondary"
+                      variant="body1"
+                      style={{ marginTop: 20 }}
+                    >
+                      No Account?{" "}
+                      <span
+                        onClick={() => super.changeState("signUp")}
+                        style={{
+                          textDecoration: "underline",
+                          cursor: "pointer"
+                        }}
+                      >
+                        Create an account
+                      </span>
                     </Typography>
                   </Form>
                 </ContentBodyDiv>
