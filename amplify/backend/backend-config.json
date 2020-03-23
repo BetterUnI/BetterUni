@@ -23,13 +23,7 @@
 			]
 		}
 	},
-	"function": {
-		"webscrape": {
-			"service": "Lambda",
-			"providerPlugin": "awscloudformation",
-			"build": true
-		}
-	},
+	"function": {},
 	"storage": {
 		"Advisors": {
 			"service": "DynamoDB",
