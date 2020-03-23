@@ -4,6 +4,14 @@
 	"Parameters": {
 		"env": {
 			"Type": "String"
+		},
+		"storageCareerEventsName": {
+			"Type": "String",
+			"Default": "storageCareerEventsName"
+		},
+		"storageCareerEventsArn": {
+			"Type": "String",
+			"Default": "storageCareerEventsArn"
 		}
 	},
 	"Conditions": {
@@ -28,12 +36,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"webScrape_v1",
+						"webscrape",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"webScrape_v1",
+									"webscrape",
 									"-",
 									{
 										"Ref": "env"
@@ -50,6 +58,12 @@
 						},
 						"REGION": {
 							"Ref": "AWS::Region"
+						},
+						"STORAGE_CAREEREVENTS_NAME": {
+							"Ref": "storageCareerEventsName"
+						},
+						"STORAGE_CAREEREVENTS_ARN": {
+							"Ref": "storageCareerEventsArn"
 						}
 					}
 				},
@@ -63,7 +77,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-betteruni-dillon-122218-deployment",
-					"S3Key": "amplify-builds/webScrape-744b6f706a3576797832-build.zip"
+					"S3Key": "amplify-builds/webscrape-4d31786a565374416b43-build.zip"
 				}
 			}
 		},
@@ -73,12 +87,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"betteruniLambdaRole55ad2044",
+						"betteruniLambdaRole53dc2489",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"betteruniLambdaRole55ad2044",
+									"betteruniLambdaRole53dc2489",
 									"-",
 									{
 										"Ref": "env"
@@ -144,6 +158,58 @@
 									}
 								]
 							}
+						}
+					]
+				}
+			}
+		},
+		"AmplifyResourcesPolicy": {
+			"DependsOn": [
+				"LambdaExecutionRole"
+			],
+			"Type": "AWS::IAM::Policy",
+			"Properties": {
+				"PolicyName": "amplify-lambda-execution-policy",
+				"Roles": [
+					{
+						"Ref": "LambdaExecutionRole"
+					}
+				],
+				"PolicyDocument": {
+					"Version": "2012-10-17",
+					"Statement": [
+						{
+							"Effect": "Allow",
+							"Action": [
+								"dynamodb:Put*",
+								"dynamodb:Create*",
+								"dynamodb:BatchWriteItem",
+								"dynamodb:Get*",
+								"dynamodb:BatchGetItem",
+								"dynamodb:List*",
+								"dynamodb:Describe*",
+								"dynamodb:Scan",
+								"dynamodb:Query",
+								"dynamodb:Update*",
+								"dynamodb:RestoreTable*",
+								"dynamodb:Delete*"
+							],
+							"Resource": [
+								{
+									"Ref": "storageCareerEventsArn"
+								},
+								{
+									"Fn::Join": [
+										"/",
+										[
+											{
+												"Ref": "storageCareerEventsArn"
+											},
+											"index/*"
+										]
+									]
+								}
+							]
 						}
 					]
 				}

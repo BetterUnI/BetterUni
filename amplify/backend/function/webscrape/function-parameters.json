@@ -1,1 +1,12 @@
-{}
+{
+    "permissions": {
+        "storage": {
+            "CareerEvents": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ]
+        }
+    }
+}

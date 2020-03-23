@@ -14,9 +14,6 @@
             "auth": {
                 "betteruni6666fc7a": {},
                 "userPoolGroups": {}
-            },
-            "function": {
-                "webScrape": {}
             }
         }
     },
@@ -36,9 +33,6 @@
             "auth": {
                 "betteruni6666fc7a": {},
                 "userPoolGroups": {}
-            },
-            "function": {
-                "webScrape": {}
             }
         }
     },
@@ -58,9 +52,6 @@
             "auth": {
                 "betteruni6666fc7a": {},
                 "userPoolGroups": {}
-            },
-            "function": {
-                "webScrape": {}
             }
         }
     },
@@ -80,9 +71,6 @@
             "auth": {
                 "betteruni6666fc7a": {},
                 "userPoolGroups": {}
-            },
-            "function": {
-                "webScrape": {}
             }
         }
     },
@@ -102,9 +90,6 @@
             "auth": {
                 "betteruni6666fc7a": {},
                 "userPoolGroups": {}
-            },
-            "function": {
-                "webScrape": {}
             }
         }
     },
@@ -124,9 +109,6 @@
             "auth": {
                 "betteruni6666fc7a": {},
                 "userPoolGroups": {}
-            },
-            "function": {
-                "webScrape": {}
             }
         }
     },
@@ -146,9 +128,6 @@
             "auth": {
                 "betteruni6666fc7a": {},
                 "userPoolGroups": {}
-            },
-            "function": {
-                "webScrape": {}
             }
         }
     }

@@ -24,10 +24,20 @@
 		}
 	},
 	"function": {
-		"webScrape": {
+		"webscrape": {
 			"service": "Lambda",
 			"providerPlugin": "awscloudformation",
-			"build": true
+			"build": true,
+			"dependsOn": [
+				{
+					"category": "storage",
+					"resourceName": "CareerEvents",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
 		}
 	},
 	"storage": {
