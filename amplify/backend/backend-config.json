@@ -23,7 +23,23 @@
 			]
 		}
 	},
-	"function": {},
+	"function": {
+		"webscrape": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"dependsOn": [
+				{
+					"category": "storage",
+					"resourceName": "CareerEvents",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		}
+	},
 	"storage": {
 		"Advisors": {
 			"service": "DynamoDB",
