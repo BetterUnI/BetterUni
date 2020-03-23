@@ -6,9 +6,9 @@ or in the "license" file accompanying this file. This file is distributed on an 
 See the License for the specific language governing permissions and limitations under the License.
 */
 
-var express = require("express");
-var bodyParser = require("body-parser");
-var awsServerlessExpressMiddleware = require("aws-serverless-express/middleware");
+var express = require("./node_modules/express");
+var bodyParser = require("./node_modules/body-parser");
+var awsServerlessExpressMiddleware = require("./node_modules/aws-serverless-express/middleware");
 
 // Declare a new express app
 var app = express();
