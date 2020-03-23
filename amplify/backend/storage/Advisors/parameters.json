@@ -1,0 +1,5 @@
+{
+    "tableName": "Advisors",
+    "partitionKeyName": "Advisor_ID",
+    "partitionKeyType": "N"
+}

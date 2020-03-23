@@ -14,6 +14,9 @@
             "auth": {
                 "betteruni6666fc7a": {},
                 "userPoolGroups": {}
+            },
+            "function": {
+                "webScrape": {}
             }
         }
     },
@@ -33,6 +36,9 @@
             "auth": {
                 "betteruni6666fc7a": {},
                 "userPoolGroups": {}
+            },
+            "function": {
+                "webScrape": {}
             }
         }
     },
@@ -52,6 +58,9 @@
             "auth": {
                 "betteruni6666fc7a": {},
                 "userPoolGroups": {}
+            },
+            "function": {
+                "webScrape": {}
             }
         }
     },
@@ -71,6 +80,9 @@
             "auth": {
                 "betteruni6666fc7a": {},
                 "userPoolGroups": {}
+            },
+            "function": {
+                "webScrape": {}
             }
         }
     },
@@ -90,6 +102,9 @@
             "auth": {
                 "betteruni6666fc7a": {},
                 "userPoolGroups": {}
+            },
+            "function": {
+                "webScrape": {}
             }
         }
     },
@@ -109,6 +124,31 @@
             "auth": {
                 "betteruni6666fc7a": {},
                 "userPoolGroups": {}
+            },
+            "function": {
+                "webScrape": {}
+            }
+        }
+    },
+    "dillon": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-betteruni-dillon-122218-authRole",
+            "UnauthRoleArn": "arn:aws:iam::045312015851:role/amplify-betteruni-dillon-122218-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::045312015851:role/amplify-betteruni-dillon-122218-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-betteruni-dillon-122218-deployment",
+            "UnauthRoleName": "amplify-betteruni-dillon-122218-unauthRole",
+            "StackName": "amplify-betteruni-dillon-122218",
+            "StackId": "arn:aws:cloudformation:us-east-1:045312015851:stack/amplify-betteruni-dillon-122218/781fff60-6d22-11ea-8dd2-1201663355d3",
+            "AmplifyAppId": "d10zhgeiihhv0k"
+        },
+        "categories": {
+            "auth": {
+                "betteruni6666fc7a": {},
+                "userPoolGroups": {}
+            },
+            "function": {
+                "webScrape": {}
             }
         }
     }
