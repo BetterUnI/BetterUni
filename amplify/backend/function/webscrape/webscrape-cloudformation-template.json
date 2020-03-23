@@ -28,12 +28,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"webScrape_v1",
+						"webscrape_v1",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"webScrape_v1",
+									"webscrape_v1",
 									"-",
 									{
 										"Ref": "env"
@@ -63,7 +63,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-betteruni-dillon-122218-deployment",
-					"S3Key": "amplify-builds/webScrape-744b6f706a3576797832-build.zip"
+					"S3Key": "amplify-builds/webscrape-744b6f706a3576797832-build.zip"
 				}
 			}
 		},

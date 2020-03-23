@@ -16,7 +16,7 @@
                 "userPoolGroups": {}
             },
             "function": {
-                "webScrape": {}
+                "webscrape": {}
             }
         }
     },
@@ -38,7 +38,7 @@
                 "userPoolGroups": {}
             },
             "function": {
-                "webScrape": {}
+                "webscrape": {}
             }
         }
     },
@@ -60,7 +60,7 @@
                 "userPoolGroups": {}
             },
             "function": {
-                "webScrape": {}
+                "webscrape": {}
             }
         }
     },
@@ -82,7 +82,7 @@
                 "userPoolGroups": {}
             },
             "function": {
-                "webScrape": {}
+                "webscrape": {}
             }
         }
     },
@@ -104,7 +104,7 @@
                 "userPoolGroups": {}
             },
             "function": {
-                "webScrape": {}
+                "webscrape": {}
             }
         }
     },
@@ -126,7 +126,7 @@
                 "userPoolGroups": {}
             },
             "function": {
-                "webScrape": {}
+                "webscrape": {}
             }
         }
     },
@@ -148,7 +148,7 @@
                 "userPoolGroups": {}
             },
             "function": {
-                "webScrape": {}
+                "webscrape": {}
             }
         }
     }
