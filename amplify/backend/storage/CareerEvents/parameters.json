@@ -1,5 +1,0 @@
-{
-    "tableName": "Career_Events",
-    "partitionKeyName": "Career_Event_ID",
-    "partitionKeyType": "N"
-}
