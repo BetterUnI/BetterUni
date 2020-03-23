@@ -3,7 +3,7 @@ import { Link as RouterLink } from "react-router-dom";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/styles";
-import { AppBar, Toolbar, Badge, Hidden, IconButton } from "@material-ui/core";
+import { AppBar, Toolbar, Hidden, IconButton } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 
 const useStyles = makeStyles(theme => ({

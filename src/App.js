@@ -3,7 +3,7 @@ import "./App.css";
 import { ThemeProvider } from "@material-ui/styles";
 import theme from "./theme";
 
-import { BrowserRouter as Router } from "react-router-dom";
+import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import Routes from "./Routes";
 
