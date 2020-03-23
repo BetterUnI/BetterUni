@@ -1,5 +1,10 @@
 import React from "react";
 
-export default function CareerPage() {
-  return <div></div>;
+export function CareerPage() {
+  return (
+    <>
+      <h1>Career page</h1>
+      <p>This is the Career page</p>
+    </>
+  );
 }
