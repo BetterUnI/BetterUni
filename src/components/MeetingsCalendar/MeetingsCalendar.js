@@ -1,4 +1,12 @@
-export default [
+import React from "react";
+import { Calendar, momentLocalizer } from "react-big-calendar";
+import moment from "moment";
+
+import "react-big-calendar/lib/css/react-big-calendar.css";
+
+const localizer = momentLocalizer(moment);
+
+const events = [
   {
     id: 0,
     title: "Happy Hour",
@@ -61,3 +69,23 @@ export default [
     end: new Date(2020, 2, 28)
   }
 ];
+
+const MeetingsCalendar = () => {
+  return (
+    <div>
+      <Calendar
+        localizer={localizer}
+        defaultDate={new Date()}
+        defaultView="month"
+        events={events}
+        style={{
+          height: "70vh",
+          width: "70vw",
+          margin: "0 auto"
+        }}
+      />
+    </div>
+  );
+};
+
+export default MeetingsCalendar;
