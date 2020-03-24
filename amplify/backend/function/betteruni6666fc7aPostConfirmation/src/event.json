@@ -1,0 +1,11 @@
+{
+    "request": {
+        "userPoolId": "testID",
+        "userName": "testUser",
+        "userAttributes": {
+            "email": "tug40394@temple.edu",
+            "sub": "9d0d4500-f46d-4a6c-92c3-bf9b3344a308"
+        }
+    },
+    "response": {}
+}
