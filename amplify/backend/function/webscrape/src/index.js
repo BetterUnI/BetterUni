@@ -12,5 +12,5 @@ exports.handler = async (event, context) => {
     "https://bulletin.temple.edu/undergraduate/science-technology/computer-information-science/computer-science-bs/#academicplantext"
   );
 
-  console.log(html);
+  console.log(html.data);
 };
