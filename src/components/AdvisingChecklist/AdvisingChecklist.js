@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function AdvisingChecklist() {
-  return <div></div>;
+  return <div className="advisingChecklist"></div>;
 }
