@@ -1,8 +1,8 @@
 import React from "react";
 import { shallow } from "enzyme";
-import App from "./App";
+import { Sidebar } from "./Sidebar";
 
-describe("App Component", () => {
+describe("Sidebar Component", () => {
   test("Should render without errors", () => {
     // Finish test
   });

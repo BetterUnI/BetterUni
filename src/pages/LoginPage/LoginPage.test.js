@@ -1,8 +1,8 @@
 import React from "react";
 import { shallow } from "enzyme";
-import App from "./App";
+import LoginPage from "./LoginPage";
 
-describe("App Component", () => {
+describe("LoginPage Component", () => {
   test("Should render without errors", () => {
     // Finish test
   });

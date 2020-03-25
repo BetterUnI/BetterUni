@@ -78,6 +78,7 @@ export const Sidebar = props => {
     <Drawer
       anchor="left"
       classes={{ paper: classes.drawer }}
+      className="sidebar"
       onClose={onClose}
       open={open}
       variant={variant}

@@ -72,7 +72,7 @@ const events = [
 
 const MeetingsCalendar = () => {
   return (
-    <div>
+    <div className="meetingsCalendar">
       <Calendar
         localizer={localizer}
         defaultDate={new Date()}
