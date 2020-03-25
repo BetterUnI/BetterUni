@@ -51,11 +51,21 @@
     "userPoolGroupList": [
         "users"
     ],
-    "dependsOn": [],
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "betteruni6666fc7aPostConfirmation",
+            "triggerProvider": "Cognito",
+            "attributes": [
+                "Arn",
+                "Name"
+            ]
+        }
+    ],
     "thirdPartyAuth": false,
     "userPoolGroups": false,
     "adminQueries": false,
-    "triggers": "{}",
+    "triggers": "{\"PostConfirmation\":[\"custom\"]}",
     "hostedUI": false,
     "parentStack": {
         "Ref": "AWS::StackId"

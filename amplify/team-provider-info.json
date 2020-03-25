@@ -130,7 +130,8 @@
                 "userPoolGroups": {}
             },
             "function": {
-                "webscrape": {}
+                "webscrape": {},
+                "betteruni6666fc7aPostConfirmation": {}
             }
         }
     }
