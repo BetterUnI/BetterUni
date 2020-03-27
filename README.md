@@ -1,3 +1,11 @@
+# BetterUni
+## View our UI Prototypes
+- Web size: https://www.figma.com/proto/1YLLQ4cvWhcLwUq776a2bk/BetterUni-Web-Size-UI-Prototype?node-id=1%3A3&viewport=457%2C471%2C0.10185033082962036&scaling=contain
+- Tablet size: https://www.figma.com/proto/KbAMz2LllCaaZYiufXjvEs/BetterUni-Tablet-Size-UI-Prototype?node-id=1%3A2&viewport=660%2C561%2C0.2040012776851654&scaling=min-zoom
+- Mobile size: https://www.figma.com/proto/738yMbW2VdEj1jmlrtk5v4/BetterUni-Mobile-Size-UI-Prototype?node-id=1%3A2&viewport=519%2C735%2C0.22340570390224457&scaling=min-zoom
+
+You can click through each prototype. If you're ever unsure where to click to progress, click anywhere on the prototype and a box will highlight blue showing you where you can click next. These UI prototypes will be used to develop our actual web application for all screen sizes.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
