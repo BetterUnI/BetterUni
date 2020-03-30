@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function AdvisingOfficeList() {
-  return <div></div>;
+  return <div className="advisingOfficeList"></div>;
 }

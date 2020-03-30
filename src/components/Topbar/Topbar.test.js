@@ -1,8 +1,8 @@
 import React from "react";
 import { shallow } from "enzyme";
-import App from "./App";
+import { Topbar } from "./Topbar";
 
-describe("App Component", () => {
+describe("Topbar Component", () => {
   test("Should render without errors", () => {
     // Finish test
   });

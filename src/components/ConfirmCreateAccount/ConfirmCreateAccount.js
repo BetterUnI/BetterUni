@@ -82,7 +82,7 @@ export class ConfirmCreateAccount extends ConfirmSignUp {
 
     return (
       <>
-        <RootDiv style={{ height: "100vh" }}>
+        <RootDiv className="confirmCreateAccount" style={{ height: "100vh" }}>
           <StyledGrid container>
             <Grid item lg={5}>
               <Quote>

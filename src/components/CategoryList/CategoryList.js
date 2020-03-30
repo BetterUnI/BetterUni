@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function CategoryList() {
-  return <div></div>;
+  return <div className="categoryList"></div>;
 }
