@@ -24,5 +24,22 @@
 		}
 	},
 	"function": {},
-	"storage": {}
+	"storage": {},
+	"api": {
+		"betteruniapi": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"authConfig": {
+					"additionalAuthenticationProviders": [],
+					"defaultAuthentication": {
+						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
+						"userPoolConfig": {
+							"userPoolId": "authbetteruni6666fc7a"
+						}
+					}
+				}
+			}
+		}
+	}
 }

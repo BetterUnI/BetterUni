@@ -5,12 +5,10 @@
             "Type": "String",
             "Default": "authbetteruni6666fc7aUserPoolId"
         },
-        
         "authbetteruni6666fc7aIdentityPoolId": {
             "Type": "String",
             "Default": "authbetteruni6666fc7aIdentityPoolId"
         },
-        
         "authbetteruni6666fc7aAppClientID": {
             "Type": "String",
             "Default": "authbetteruni6666fc7aAppClientID"
@@ -46,20 +44,17 @@
           "Properties" : {
               "GroupName" : "users",
               "Precedence" : 1,
-              
               "RoleArn" : {
                 "Fn::GetAtt": [
                     "usersGroupRole",
                     "Arn"
                 ]
               },
-              
               "UserPoolId" : {
                 "Ref": "authbetteruni6666fc7aUserPoolId"
               } 
             }
         },
-        
         "usersGroupRole": {
             "Type": "AWS::IAM::Role",
             "Properties": {
@@ -93,8 +88,6 @@
                 }
             }
         },
-     
-    
     
         "LambdaExecutionRole": {
             "Type": "AWS::IAM::Role",
@@ -290,9 +283,7 @@
             },
             "DependsOn": ["RoleMapFunction"]
         }
-   
     },
-    
     "Outputs": {
       
         "usersGroupRole": {
@@ -307,5 +298,4 @@
         
       
     }
-    
 }
