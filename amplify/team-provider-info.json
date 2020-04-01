@@ -128,10 +128,6 @@
             "auth": {
                 "betteruni6666fc7a": {},
                 "userPoolGroups": {}
-            },
-            "function": {
-                "webscrape": {},
-                "betteruni6666fc7aPostConfirmation": {}
             }
         }
     }
