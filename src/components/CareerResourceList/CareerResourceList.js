@@ -104,21 +104,48 @@ const CareerResourceList = props => {
                   <TableCell>Description</TableCell>
                   <TableCell>Link</TableCell>
                 </TableRow>
+                <TableRow>
+                  <TableCell>Handshake</TableCell>
+                  <TableCell>
+                    Handshake is the #1 way college students find jobs. Join
+                    today to explore career options, find jobs and internships,
+                    and connect with employers.
+                  </TableCell>
+                  <TableCell>
+                    <a href="https://joinhandshake.com"> joinhandshake.com </a>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>LinkedIn</TableCell>
+                  <TableCell>
+                    LinkedIn is an American business and employment-oriented
+                    service that operates via websites and mobile apps. It is
+                    mainly used for professional networking, including employers
+                    posting jobs and job seekers posting their CVs.
+                  </TableCell>
+                  <TableCell>Test</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Indeed</TableCell>
+                  <TableCell>
+                    Indeed is an American worldwide employment-related search
+                    engine for job listings.
+                  </TableCell>
+                  <TableCell>Test</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Advisor Scheduler</TableCell>
+                  <TableCell>
+                    At BetterUni, we have an easy to use advisor scheduler.
+                  </TableCell>
+                  <TableCell>Test</TableCell>
+                </TableRow>
               </TableHead>
             </Table>
           </div>
         </PerfectScrollbar>
       </CardContent>
-      <CardActions className={classes.actions}>
-        <TablePagination
-          component="div"
-          onChangePage={handlePageChange}
-          onChangeRowsPerPage={handleRowsPerPageChange}
-          page={page}
-          rowsPerPage={rowsPerPage}
-          rowsPerPageOptions={[5, 10, 25]}
-        />
-      </CardActions>
+      <CardActions className={classes.actions}></CardActions>
     </Card>
   );
 };
