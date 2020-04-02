@@ -1,6 +1,6 @@
 {
     "identityPoolName": "betteruni6666fc7a_identitypool_6666fc7a",
-    "allowUnauthenticatedIdentities": true,
+    "allowUnauthenticatedIdentities": false,
     "resourceNameTruncated": "better6666fc7a",
     "userPoolName": "betteruni6666fc7a_userpool_6666fc7a",
     "autoVerifiedAttributes": [
@@ -51,21 +51,11 @@
     "userPoolGroupList": [
         "users"
     ],
-    "dependsOn": [
-        {
-            "category": "function",
-            "resourceName": "betteruni6666fc7aPostConfirmation",
-            "triggerProvider": "Cognito",
-            "attributes": [
-                "Arn",
-                "Name"
-            ]
-        }
-    ],
+    "dependsOn": [],
     "thirdPartyAuth": false,
     "userPoolGroups": false,
     "adminQueries": false,
-    "triggers": "{\"PostConfirmation\":[\"custom\"]}",
+    "triggers": "{}",
     "hostedUI": false,
     "parentStack": {
         "Ref": "AWS::StackId"

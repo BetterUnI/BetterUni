@@ -112,7 +112,7 @@ export class CreateAccount extends SignUp {
                       key="username"
                       name="username"
                       onChange={this.handleInputChange}
-                      type="text"
+                      type="email"
                       label="Email address"
                       fullWidth
                       variant="outlined"

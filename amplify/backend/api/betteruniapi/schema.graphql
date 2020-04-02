@@ -1,0 +1,43 @@
+type User @model {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  email: String!
+  isAdvisor: Boolean!
+  bio: String
+  college: String
+  major: String
+  credits: String
+  classStanding: String
+  advisingCategory: AdvisingCategory @connection(name: "AdvisingCategoryUsers")
+  meetings: [Meeting] @connection(name: "UserMeetings")
+}
+
+type Meeting @model @key(fields: [
+  "queryName", "date"
+], name: "queryName", queryField: "meetingsByDate") {
+  id: ID!
+  date: String!
+  startTime: String!
+  endTime: String!
+  reasonForMeeting: String
+  user: User @connection(name: "UserMeetings")
+  queryName: String
+}
+
+type AdvisingCategory @model {
+  id: ID!
+  name: String!
+  location: String!
+  description: String
+  users: [User] @connection(name: "AdvisingCategoryUsers")
+}
+
+type CareerResource @model {
+  id: ID!
+  name: String!
+  description: String!
+  link: String!
+  date: String
+  location: String
+}

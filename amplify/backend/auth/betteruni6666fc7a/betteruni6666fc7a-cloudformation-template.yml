@@ -7,13 +7,6 @@ Parameters:
     Type: String
   unauthRoleArn:
     Type: String
-  functionbetteruni6666fc7aPostConfirmationArn: 
-    Type: String
-    Default: functionbetteruni6666fc7aPostConfirmationArn
-  functionbetteruni6666fc7aPostConfirmationName: 
-    Type: String
-    Default: functionbetteruni6666fc7aPostConfirmationName
-
   
   
 
@@ -173,9 +166,7 @@ Resources:
         
       
       
-      LambdaConfig:
-          PostConfirmation: !Ref functionbetteruni6666fc7aPostConfirmationArn
-        
+      
       AutoVerifiedAttributes: !Ref autoVerifiedAttributes
       
       
@@ -205,15 +196,6 @@ Resources:
     
   
     
-  
-  UserPoolPostConfirmationLambdaInvokePermission: 
-    Type: "AWS::Lambda::Permission"
-    DependsOn: UserPool
-    Properties: 
-      Action: "lambda:invokeFunction"
-      Principal: "cognito-idp.amazonaws.com"
-      FunctionName: !Ref functionbetteruni6666fc7aPostConfirmationName
-      SourceArn: !GetAtt UserPool.Arn
     
   
   
