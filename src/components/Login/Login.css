@@ -1,0 +1,24 @@
+@media (max-width:481px)  { 
+  /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ 
+  .px-2 {
+    padding: 0 25px !important;
+  }
+}
+@media (max-width:641px)  { 
+  /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ 
+  .px-2 {
+    padding: 0 25px !important;
+  }
+}
+@media (max-width:961px)  { 
+  /* tablet, landscape iPad, lo-res laptops ands desktops */ 
+  .hide-hero-md-down {
+    display: none;
+  }
+}
+@media (max-width:1279px)  { 
+  /* small laptop */ 
+  .hide-hero-md-down {
+    display: none;
+  }
+}

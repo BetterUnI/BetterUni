@@ -27,11 +27,26 @@ class LoginPage extends React.Component {
       hiddenDefaults: ["email", "phone_number"],
       signUpFields: [
         {
+          label: "TUID",
+          key: "custom:tuid",
+          displayOrder: 1
+        },
+        {
+          label: "First Name",
+          key: "custom:firstName",
+          displayOrder: 2
+        },
+        {
+          label: "Last Name",
+          key: "custom:lastName",
+          displayOrder: 3
+        },
+        {
           label: "Email",
           key: "username",
           required: true,
           placeholder: "Email",
-          displayOrder: 1
+          displayOrder: 4
         },
         {
           label: "Password",
@@ -39,7 +54,7 @@ class LoginPage extends React.Component {
           required: true,
           placeholder: "Password",
           type: "password",
-          displayOrder: 2
+          displayOrder: 5
         }
       ]
     };

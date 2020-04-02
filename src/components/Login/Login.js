@@ -2,6 +2,7 @@ import React from "react";
 import { SignIn } from "aws-amplify-react";
 import { styled } from "@material-ui/styles";
 import { Grid, TextField, Typography, Button } from "@material-ui/core";
+import "./Login.css";
 
 export class Login extends SignIn {
   constructor(props) {
@@ -25,7 +26,7 @@ export class Login extends SignIn {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      backgroundImage: "url(/images/auth-hero.jpg)",
+      backgroundImage: "url(/images/tuhooter.jpg)",
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center"
@@ -38,8 +39,10 @@ export class Login extends SignIn {
 
     const QuoteText = styled(Typography)({
       color: "#FFFFFF",
-      fontWeight: 300,
-      padding: 50
+      fontWeight: 900,
+      padding: 50,
+      paddingTop: 120,
+      textShadow: "2px 4px 3px rgba(0,0,0,0.3);"
     });
 
     const ContentGrid = styled(Grid)({
@@ -84,12 +87,12 @@ export class Login extends SignIn {
       <>
         <RootDiv style={{ height: "100vh" }}>
           <StyledGrid container>
-            <Grid item lg={5}>
+            <Grid item lg={5} className="hide-hero-md-down">
               <Quote>
                 <QuoteInner>
                   <QuoteText variant="h2">
-                    BetterUni lorem ipsum dolor sit, amet consectetur
-                    adipisicing elit.
+                    BetterUni helps students find the campus resources they need
+                    when they need them.
                   </QuoteText>
                 </QuoteInner>
               </Quote>
@@ -97,7 +100,7 @@ export class Login extends SignIn {
             <ContentGrid item lg={7} xs={12}>
               <ContentDiv>
                 <ContentBodyDiv>
-                  <Form onSubmit={e => super.signIn(e)}>
+                  <Form onSubmit={e => super.signIn(e)} className="px-2">
                     <Title variant="h2" style={{ fontWeight: 700 }}>
                       Sign in
                     </Title>
