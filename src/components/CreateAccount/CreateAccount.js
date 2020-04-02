@@ -8,6 +8,7 @@ export class CreateAccount extends SignUp {
   constructor(props) {
     super(props);
     this._validAuthStates = ["signUp"];
+    this.signUpFields = props.signUpConfig.signUpFields;
   }
 
   showComponent() {
@@ -101,7 +102,7 @@ export class CreateAccount extends SignUp {
               <ContentDiv>
                 <ContentBodyDiv>
                   <Form
-                    onSubmit={() => {
+                    onSubmit={e => {
                       super.sortFields();
                       super.validate();
                       super.signUp();
@@ -118,6 +119,16 @@ export class CreateAccount extends SignUp {
                       onChange={this.handleInputChange}
                       type="text"
                       label="TUID"
+                      fullWidth
+                      variant="outlined"
+                    />
+                    <StyledTextField
+                      id="custom:major"
+                      key="custom:major"
+                      name="custom:major"
+                      onChange={this.handleInputChange}
+                      type="text"
+                      label="Major (if applicable)"
                       fullWidth
                       variant="outlined"
                     />
