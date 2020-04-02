@@ -30,7 +30,11 @@
         "custom:lastName"
     ],
     "userpoolClientReadAttributes": [
-        "email"
+        "email",
+        "custom:tuid",
+        "custom:major",
+        "custom:firstName",
+        "custom:lastName"
     ],
     "userpoolClientLambdaRole": "better4fc5aa3b_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": true,
