@@ -21,7 +21,8 @@ const useStyles = makeStyles(theme => ({
   content: {
     padding: 5,
     backgroundColor: "#E5E5E5",
-    maxWidth: 300
+    maxWidth: 300,
+    minHeight: 525
   },
   inner: {
     maxWidth: 290,
@@ -29,11 +30,13 @@ const useStyles = makeStyles(theme => ({
   },
   nameContainer: {
     display: "flex",
-    alignItems: "center",
-    fontWeight: "bold"
+    alignItems: "center"
   },
   cell: {
     backgroundColor: "white"
+  },
+  text: {
+    fontWeight: "bold"
   },
   avatar: {
     marginRight: theme.spacing(2)
@@ -64,8 +67,8 @@ export default function AdvisorList(props) {
                       className={classes.avatar}
                       src={advisor.url}
                     ></Avatar>
-                    <Typography variant="body1">
-                      <strong>{advisor.name}</strong>
+                    <Typography className={classes.text}>
+                      {advisor.name}
                     </Typography>
                   </div>
                 </TableCell>

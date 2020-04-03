@@ -1,5 +1,6 @@
 import React from "react";
 import AdvisorList from "../../components/AdvisorList/AdvisorList";
+import CategoryList from "../../components/CategoryList/CategoryList";
 
 const advisors = [
   {
@@ -34,11 +35,33 @@ const advisors = [
   }
 ];
 
+const categories = [
+  {
+    title: "CST Advising"
+  },
+  {
+    title: "Counseling"
+  },
+  {
+    title: "Career Center"
+  },
+  {
+    title: "Tutoring"
+  },
+  {
+    title: "Writing Center"
+  },
+  {
+    title: "Student Health Services"
+  }
+];
+
 export function SchedulePage() {
   return (
     <>
       <h1>Schedule page</h1>
       <p>This is the schedule page</p>
+      <CategoryList categories={categories} />
       <AdvisorList advisors={advisors} />
     </>
   );
