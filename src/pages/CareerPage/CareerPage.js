@@ -1,6 +1,8 @@
 import React from "react";
 
 import CareerResourceList from "../../components/CareerResourceList/CareerResourceList";
+import CareerEvent from "../../components/CareerEvent/CareerEvent";
+import { Table } from "@material-ui/core";
 
 export function CareerPage() {
   return (
@@ -12,6 +14,18 @@ export function CareerPage() {
         help you.
       </p>
       <CareerResourceList />
+      <Table>
+        <div>
+          <CareerEvent
+            careerEventID="1"
+            name="lorem"
+            date="date"
+            description="description"
+            location="location"
+            link="google.com"
+          />
+        </div>
+      </Table>
     </>
   );
 }

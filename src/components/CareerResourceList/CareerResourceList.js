@@ -40,6 +40,7 @@ const CareerResourceList = props => {
 
   const classes = useStyles();
 
+  /*
   return (
     <Card {...rest} className={clsx(classes.root, className)}>
       <CardContent className={classes.content}>
@@ -184,7 +185,7 @@ const CareerResourceList = props => {
       </CardContent>
       <CardActions className={classes.actions}></CardActions>
     </Card>
-  );
+  );*/
 };
 
 CareerResourceList.propTypes = {
