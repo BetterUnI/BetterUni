@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import Category from "../Category/Category";
 
-import { Card, CardContent, Table } from "@material-ui/core";
+import { Card, CardContent, Table, TableBody } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -31,9 +31,11 @@ export default function CategoryList(props) {
             <strong>Categories</strong>{" "}
           </h3>
           <Table className={classes.inner}>
-            {props.categories.map(category => (
-              <Category category={category} />
-            ))}
+            <TableBody>
+              {props.categories.map(category => (
+                <Category key={category.title} category={category} />
+              ))}
+            </TableBody>
           </Table>
         </CardContent>
       </Card>

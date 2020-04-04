@@ -188,8 +188,7 @@ const CareerResourceList = props => {
 };
 
 CareerResourceList.propTypes = {
-  className: PropTypes.string,
-  users: PropTypes.array.isRequired
+  className: PropTypes.string
 };
 
 export default CareerResourceList;

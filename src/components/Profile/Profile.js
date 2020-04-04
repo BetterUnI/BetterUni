@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/styles";
 import { Avatar, Typography } from "@material-ui/core";
+import { UserContext } from "../../UserContext";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -26,25 +27,21 @@ export const Profile = props => {
 
   const classes = useStyles();
 
-  const user = {
-    name: "John Doe",
-    avatar: "",
-    bio: "Computer Science"
-  };
+  const user = useContext(UserContext);
 
   return (
     <div {...rest} className={clsx(classes.root, className)}>
       <Avatar
-        alt="John Doe"
+        alt={user.firstName}
         className={classes.avatar}
         component={RouterLink}
-        src={user.avatar}
-        to="/settings"
+        src={user.firstName}
+        to="/profile"
       />
       <Typography className={classes.name} variant="h4">
-        {user.name}
+        {user.firstName} {user.lastName}
       </Typography>
-      <Typography variant="body2">{user.bio}</Typography>
+      <Typography variant="body2">{user.major}</Typography>
     </div>
   );
 };
