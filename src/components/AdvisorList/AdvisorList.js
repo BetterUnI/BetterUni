@@ -60,22 +60,7 @@ export default function AdvisorList(props) {
           </h3>
           <Table className={classes.inner}>
             {props.advisors.map(advisor => (
-              <TableRow className={classes.tableRow} hover key={advisor.id}>
-                <TableCell className={classes.cell}>
-                  <div className={classes.nameContainer}>
-                    <Avatar
-                      className={classes.avatar}
-                      src={advisor.url}
-                    ></Avatar>
-                    <Typography className={classes.text}>
-                      {advisor.name}
-                    </Typography>
-                  </div>
-                </TableCell>
-                <TableCell className={classes.cell}>
-                  <NavigateNextIcon className={classes.next}></NavigateNextIcon>
-                </TableCell>
-              </TableRow>
+              <Advisor advisor={advisor} />
             ))}
           </Table>
         </CardContent>
