@@ -1,31 +1,54 @@
 import React from "react";
-
-//STYLE dependencies
+//import PropTypes from "prop-types";
+//import { Link } from "react-router-dom";
+//import PerfectScrollbar from "react-perfect-scrollbar";
+//import { makeStyles } from "@material-ui/styles";
 import { TableRow, TableCell } from "@material-ui/core";
 
-const CareerResource = ({
-  CareerResourceID,
-  name,
-  date,
-  description,
-  location,
-  link
-}) => (
-  <TableRow>
-    {/*ID for debugging only*/}
-    <TableCell>{CareerResourceID}</TableCell>
-    <TableCell>{name}</TableCell>
+// const useStyles = makeStyles(theme => ({
+//   root: {},
+//   content: {
+//     padding: 0
+//   },
+//   inner: {
+//     minWidth: 1050
+//   },
+//   nameContainer: {
+//     display: "flex",
+//     alignItems: "center"
+//   },
+//   avatar: {
+//     marginRight: theme.spacing(2)
+//   },
+//   actions: {
+//     justifyContent: "flex-end"
+//   }
+// }));
+
+export default function CareerResource(props) {
+  if (props.resource.date != null) {
+    return <Event resource={props.resource} />;
+  }
+  return (
+    <TableRow hover key={props.resource.id}>
+      <TableCell>{props.resource.name}</TableCell>
+      <TableCell>{props.resource.description}</TableCell>
+      <TableCell>{props.resource.location}</TableCell>
+      <TableCell>{props.resource.link}</TableCell>
+    </TableRow>
+  );
+}
+
+const Event = props => (
+  <TableRow hover key={props.resource.id}>
+    <TableCell>{props.resource.name}</TableCell>
     {/*if there is a date then we know it is an event*/}
-    <TableCell>{date}</TableCell>
-    <TableCell>{description}</TableCell>
-    <TableCell>{location}</TableCell>
-    <TableCell>{link}</TableCell>
+    <TableCell>{props.resource.date}</TableCell>
+    <TableCell>{props.resource.description}</TableCell>
+    <TableCell>{props.resource.location}</TableCell>
+    <TableCell>{props.resource.link}</TableCell>
   </TableRow>
 );
-
-export default CareerResource;
-
-//test to see how it looks
 
 // export default function CareerResource() {
 //   return <div className="CareerResource"></div>;

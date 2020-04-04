@@ -1,19 +1,21 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
-import clsx from "clsx";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import PerfectScrollbar from "react-perfect-scrollbar";
+//import clsx from "clsx";
+//import PropTypes from "prop-types";
+//import { Link } from "react-router-dom";
+//import PerfectScrollbar from "react-perfect-scrollbar";
 import { makeStyles } from "@material-ui/styles";
 import {
   Card,
-  CardActions,
   CardContent,
   Table,
-  TableCell,
+  TableBody,
   TableHead,
-  TableRow
+  TableRow,
+  TableCell
 } from "@material-ui/core";
+
+import CareerResource from "../../components/CareerResource/CareerResource";
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -35,12 +37,73 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const CareerResourceList = props => {
+export default function CareerResourceList(props) {
   const { className, users, ...rest } = props;
-
   const classes = useStyles();
+  if (props.isEvent) {
+    return (
+      <CareerEventList resourceList={props.resourceList} classes={classes} />
+    );
+  }
+  return <ResourceList resourceList={props.resourceList} classes={classes} />;
+}
 
-  /*
+const CareerEventList = props => (
+  <div className="careerEventList">
+    <Card className={props.classes.content}>
+      <CardContent>
+        <h3>
+          <strong>Upcoming Career Events</strong>
+        </h3>
+        <Table className={props.classes.inner}>
+          <TableHead>
+            <TableRow>
+              <TableCell>Event</TableCell>
+              <TableCell>Date</TableCell>
+              <TableCell>Description</TableCell>
+              <TableCell>Location</TableCell>
+              <TableCell>Link</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {props.resourceList.map(resource => (
+              <CareerResource resource={resource} />
+            ))}
+          </TableBody>
+        </Table>
+      </CardContent>
+    </Card>
+  </div>
+);
+
+const ResourceList = props => (
+  <div className="resourceList">
+    <Card className={props.classes.content}>
+      <CardContent>
+        <h3>
+          <strong>Career Resources</strong>
+        </h3>
+        <Table className={props.classes.inner}>
+          <TableHead>
+            <TableRow>
+              <TableCell>Resource</TableCell>
+              <TableCell>Description</TableCell>
+              <TableCell>Location</TableCell>
+              <TableCell>Link</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {props.resourceList.map(resource => (
+              <CareerResource resource={resource} />
+            ))}
+          </TableBody>
+        </Table>
+      </CardContent>
+    </Card>
+  </div>
+);
+
+/*
   return (
     <Card {...rest} className={clsx(classes.root, className)}>
       <CardContent className={classes.content}>
@@ -186,11 +249,8 @@ const CareerResourceList = props => {
       <CardActions className={classes.actions}></CardActions>
     </Card>
   );*/
-};
 
-CareerResourceList.propTypes = {
-  className: PropTypes.string,
-  users: PropTypes.array.isRequired
-};
-
-export default CareerResourceList;
+// CareerResourceList.propTypes = {
+//   className: PropTypes.string,
+//   users: PropTypes.array.isRequired
+// };
