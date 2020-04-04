@@ -30,8 +30,14 @@ const advisors = [
   {
     id: 4,
     name: "Maria Garcia",
-    advisingCategory: "CST Advising",
+    advisingCategory: "Career Center",
     url: "images/avatars/avatar_9.png"
+  },
+  {
+    id: 5,
+    name: "Josh McAfee",
+    advisingCategory: "CST Advising",
+    url: "images/avatars/avatar_7.png"
   }
 ];
 

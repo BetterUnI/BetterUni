@@ -1,34 +1,11 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/styles";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
-import { borders } from "@material-ui/system";
-import Box from "@material-ui/core/Box";
 
-import {
-  Card,
-  CardActions,
-  CardContent,
-  Table,
-  TableCell,
-  TableHead,
-  TableRow,
-  Avatar,
-  Typography
-} from "@material-ui/core";
+import { TableCell, TableRow, Avatar, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   root: {},
-  content: {
-    padding: 5,
-    backgroundColor: "#E5E5E5",
-    maxWidth: 300,
-    minHeight: 525
-  },
-  inner: {
-    maxWidth: 290,
-    padding: 10
-  },
   nameContainer: {
     display: "flex",
     alignItems: "center"
@@ -58,7 +35,7 @@ export default function Advisor(props) {
   const classes = useStyles();
   return (
     <div className="advisor">
-      <TableRow className={classes.tableRow} hover key={props.advisor.id}>
+      <TableRow hover key={props.advisor.id}>
         <TableCell className={classes.cell}>
           <div className={classes.nameContainer}>
             <Avatar className={classes.avatar} src={props.advisor.url}></Avatar>
