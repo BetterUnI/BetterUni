@@ -77,7 +77,11 @@ export function App(props) {
             .then(returnedUser => {
               setUser(returnedUser);
             })
-            .then(setLoading(false));
+            .then(
+              setTimeout(() => {
+                setLoading(false);
+              }, 400)
+            );
         })
         .catch(err =>
           console.log(
