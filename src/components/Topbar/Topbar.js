@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/styles";
+import { styled } from "@material-ui/styles";
 import { AppBar, Toolbar, Hidden, IconButton } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 
@@ -18,21 +19,23 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const Logo = styled("div")({
+  backgroundImage: "url(/images/bulogo.png)",
+  backgroundSize: "cover",
+  width: "50px",
+  height: "50px"
+});
+
 export const Topbar = props => {
   const { className, onSidebarOpen, ...rest } = props;
 
   const classes = useStyles();
 
-  const [notifications] = useState([]);
-
   return (
     <AppBar {...rest} className={clsx(classes.root, className)}>
       <Toolbar>
         <RouterLink to="/">
-          <img
-            alt="BetterUni Logo"
-            src="https://image.flaticon.com/icons/svg/49/49944.svg"
-          />
+          <Logo />
         </RouterLink>
         <div className={classes.flexGrow} />
         <Hidden lgUp>

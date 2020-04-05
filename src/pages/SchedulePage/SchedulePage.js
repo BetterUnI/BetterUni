@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../../UserContext";
 import AdvisorList from "../../components/AdvisorList/AdvisorList";
 import CategoryList from "../../components/CategoryList/CategoryList";
 
@@ -63,6 +64,12 @@ const categories = [
 ];
 
 export function SchedulePage() {
+  /* 
+    Will use UserContext to set UserContext provider data - this will update the current user's meeting data across all components
+    See this video: https://youtu.be/lhMKvyLRWo0?t=265
+  */
+  const user = useContext(UserContext);
+
   return (
     <>
       <h1>Schedule page</h1>

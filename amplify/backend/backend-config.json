@@ -1,26 +1,9 @@
 {
 	"auth": {
-		"betteruni6666fc7a": {
+		"betteruni4fc5aa3b4fc5aa3b": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation",
-			"dependsOn": [],
-			"customAuth": false
-		},
-		"userPoolGroups": {
-			"service": "Cognito-UserPool-Groups",
-			"providerPlugin": "awscloudformation",
-			"dependsOn": [
-				{
-					"category": "auth",
-					"resourceName": "betteruni6666fc7a",
-					"attributes": [
-						"UserPoolId",
-						"AppClientIDWeb",
-						"AppClientID",
-						"IdentityPoolId"
-					]
-				}
-			]
+			"dependsOn": []
 		}
 	},
 	"function": {},
@@ -33,10 +16,7 @@
 				"authConfig": {
 					"additionalAuthenticationProviders": [],
 					"defaultAuthentication": {
-						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
-						"userPoolConfig": {
-							"userPoolId": "authbetteruni6666fc7a"
-						}
+						"authenticationType": "AMAZON_COGNITO_USER_POOLS"
 					}
 				}
 			}

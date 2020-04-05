@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../../UserContext";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/styles";
@@ -39,6 +40,8 @@ const useStyles = makeStyles(theme => ({
 export const Sidebar = props => {
   const { open, variant, onClose, className, ...rest } = props;
 
+  const user = useContext(UserContext);
+
   const classes = useStyles();
 
   const pages = [
@@ -73,6 +76,11 @@ export const Sidebar = props => {
       icon: <SignOutIcon />
     }
   ];
+
+  // If the user is an advisor, remove schedule page as an option in the SidebarNav
+  if (user.isAdvisor) {
+    pages.splice(1, 1);
+  }
 
   return (
     <Drawer
