@@ -28,6 +28,11 @@
             "StackName": "amplify-betteruni-authflow-150646",
             "StackId": "arn:aws:cloudformation:us-east-1:045312015851:stack/amplify-betteruni-authflow-150646/200cdec0-66f0-11ea-85cd-1277ff2044b7",
             "AmplifyAppId": "d10zhgeiihhv0k"
+        },
+        "categories": {
+            "auth": {
+                "betteruni4fc5aa3b4fc5aa3b": {}
+            }
         }
     },
     "ariela": {

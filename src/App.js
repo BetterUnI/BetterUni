@@ -73,10 +73,11 @@ export function App(props) {
     if (props.authState === "signedIn") {
       Auth.currentAuthenticatedUser({ bypassCache: true })
         .then(user => {
-          createUserInDB(user).then(returnedUser => {
-            setUser(returnedUser);
-            setLoading(false);
-          });
+          createUserInDB(user)
+            .then(returnedUser => {
+              setUser(returnedUser);
+            })
+            .then(setLoading(false));
         })
         .catch(err =>
           console.log(
@@ -85,6 +86,7 @@ export function App(props) {
           )
         );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.authState]);
 
   if (props.authState === "signedIn" && !isLoading) {
