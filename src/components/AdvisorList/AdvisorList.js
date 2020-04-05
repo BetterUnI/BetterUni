@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import Advisor from "../Advisor/Advisor";
 
-import { Card, CardContent, Table } from "@material-ui/core";
+import { Card, CardContent, Table, TableBody } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -31,9 +31,11 @@ export default function AdvisorList(props) {
             <strong>Staff</strong>{" "}
           </h3>
           <Table className={classes.inner}>
-            {props.advisors.map(advisor => (
-              <Advisor advisor={advisor} />
-            ))}
+            <TableBody>
+              {props.advisors.map(advisor => (
+                <Advisor key={advisor.id} advisor={advisor} />
+              ))}
+            </TableBody>
           </Table>
         </CardContent>
       </Card>

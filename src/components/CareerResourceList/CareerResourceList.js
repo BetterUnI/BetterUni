@@ -248,9 +248,14 @@ const ResourceList = props => (
       </CardContent>
       <CardActions className={classes.actions}></CardActions>
     </Card>
-  );*/
+  );
+};
+
+CareerResourceList.propTypes = {
+  className: PropTypes.string
+};
 
 // CareerResourceList.propTypes = {
 //   className: PropTypes.string,
 //   users: PropTypes.array.isRequired
-// };
+// };*/

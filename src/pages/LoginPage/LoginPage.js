@@ -24,24 +24,46 @@ Amplify.configure(config);
 class LoginPage extends React.Component {
   render() {
     const signUpConfig = {
-      hiddenDefaults: ["email", "phone_number"],
       signUpFields: [
+        {
+          label: "TUID",
+          key: "custom:tuid",
+          type: "string",
+          custom: true
+        },
+        {
+          label: "Major (if applicable)",
+          key: "custom:major",
+          type: "string",
+          custom: true
+        },
+        {
+          label: "First Name",
+          key: "custom:firstName",
+          type: "string",
+          custom: true
+        },
+        {
+          label: "Last Name",
+          key: "custom:lastName",
+          type: "string",
+          custom: true
+        },
         {
           label: "Email",
           key: "username",
           required: true,
-          placeholder: "Email",
-          displayOrder: 1
+          placeholder: "Email"
         },
         {
           label: "Password",
           key: "password",
           required: true,
           placeholder: "Password",
-          type: "password",
-          displayOrder: 2
+          type: "password"
         }
-      ]
+      ],
+      hiddenDefaults: ["email", "phone_number"]
     };
 
     return (
@@ -53,27 +75,43 @@ class LoginPage extends React.Component {
         >
           <Login />
           <CreateAccount
-            signUpConfig={{
-              hiddenDefaults: ["email", "phone_number"]
-            }}
+            signUpConfig={signUpConfig}
+            hiddenDefaults={["email", "phone_number"]}
             signUpFields={[
+              {
+                label: "TUID",
+                key: "custom:tuid",
+                type: "string"
+              },
+              {
+                label: "Major (if applicable)",
+                key: "custom:major",
+                type: "string"
+              },
+              {
+                label: "First Name",
+                key: "custom:firstName",
+                type: "string"
+              },
+              {
+                label: "Last Name",
+                key: "custom:lastName",
+                type: "string"
+              },
               {
                 label: "Email",
                 key: "username",
                 required: true,
-                placeholder: "Email",
-                displayOrder: 1
+                placeholder: "Email"
               },
               {
                 label: "Password",
                 key: "password",
                 required: true,
                 placeholder: "Password",
-                type: "password",
-                displayOrder: 2
+                type: "password"
               }
             ]}
-            hiddenDefaults={["email", "phone_number"]}
           />
           <ConfirmCreateAccount />
           <ResetPassword />

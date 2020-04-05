@@ -2,6 +2,7 @@ import React from "react";
 import { ForgotPassword } from "aws-amplify-react";
 import { styled } from "@material-ui/styles";
 import { Grid, TextField, Typography, Button } from "@material-ui/core";
+import "./ResetPassword.css";
 
 export class ResetPassword extends ForgotPassword {
   constructor(props) {
@@ -25,7 +26,7 @@ export class ResetPassword extends ForgotPassword {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      backgroundImage: "url(/images/auth-hero.jpg)",
+      backgroundImage: "url(/images/tuhooter.jpg)",
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center"
@@ -38,8 +39,10 @@ export class ResetPassword extends ForgotPassword {
 
     const QuoteText = styled(Typography)({
       color: "#FFFFFF",
-      fontWeight: 300,
-      padding: 50
+      fontWeight: 900,
+      padding: 50,
+      paddingTop: 120,
+      textShadow: "2px 4px 3px rgba(0,0,0,0.3);"
     });
 
     const ContentGrid = styled(Grid)({
@@ -84,12 +87,12 @@ export class ResetPassword extends ForgotPassword {
       <>
         <RootDiv style={{ height: "100vh" }}>
           <StyledGrid container>
-            <Grid item lg={5}>
+            <Grid item lg={5} className="hide-hero-md-down">
               <Quote>
                 <QuoteInner>
                   <QuoteText variant="h2">
-                    BetterUni lorem ipsum dolor sit, amet consectetur
-                    adipisicing elit.
+                    BetterUni helps students find the campus resources they need
+                    when they need them.
                   </QuoteText>
                 </QuoteInner>
               </Quote>
@@ -97,7 +100,7 @@ export class ResetPassword extends ForgotPassword {
             <ContentGrid item lg={7} xs={12}>
               <ContentDiv>
                 <ContentBodyDiv>
-                  <Form>
+                  <Form className="px-2">
                     <Title variant="h2" style={{ fontWeight: 700 }}>
                       Reset your password
                     </Title>

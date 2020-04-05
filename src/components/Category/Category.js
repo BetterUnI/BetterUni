@@ -26,24 +26,22 @@ const useStyles = makeStyles(theme => ({
 
 export default function Category(props) {
   const classes = useStyles();
-  console.log("these are the props: ", props);
+
   return (
-    <div className="category">
-      <TableRow hover key={props.category.title}>
-        <TableCell className={classes.cell}>
-          <Box
-            className={classes.nameContainer}
-            border={1}
-            borderColor="#A41E35"
-            borderRadius={4}
-            padding={1}
-          >
-            <Typography className={classes.text}>
-              {props.category.title}
-            </Typography>
-          </Box>
-        </TableCell>
-      </TableRow>
-    </div>
+    <TableRow className="category" hover key={props.category.title}>
+      <TableCell className={classes.cell}>
+        <Box
+          className={classes.nameContainer}
+          border={1}
+          borderColor="#A41E35"
+          borderRadius={4}
+          padding={1}
+        >
+          <Typography className={classes.text}>
+            {props.category.title}
+          </Typography>
+        </Box>
+      </TableCell>
+    </TableRow>
   );
 }

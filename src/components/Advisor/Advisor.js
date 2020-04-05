@@ -34,20 +34,16 @@ const useStyles = makeStyles(theme => ({
 export default function Advisor(props) {
   const classes = useStyles();
   return (
-    <div className="advisor">
-      <TableRow hover key={props.advisor.id}>
-        <TableCell className={classes.cell}>
-          <div className={classes.nameContainer}>
-            <Avatar className={classes.avatar} src={props.advisor.url}></Avatar>
-            <Typography className={classes.text}>
-              {props.advisor.name}
-            </Typography>
-          </div>
-        </TableCell>
-        <TableCell className={classes.cellNext}>
-          <NavigateNextIcon className={classes.next}></NavigateNextIcon>
-        </TableCell>
-      </TableRow>
-    </div>
+    <TableRow className="advisor" hover key={props.advisor.id}>
+      <TableCell className={classes.cell}>
+        <div className={classes.nameContainer}>
+          <Avatar className={classes.avatar} src={props.advisor.url}></Avatar>
+          <Typography className={classes.text}>{props.advisor.name}</Typography>
+        </div>
+      </TableCell>
+      <TableCell className={classes.cellNext}>
+        <NavigateNextIcon className={classes.next}></NavigateNextIcon>
+      </TableCell>
+    </TableRow>
   );
 }

@@ -1,15 +1,19 @@
 import { colors } from "@material-ui/core";
 
+const cherry = "#A41F35";
+const darkCherry = "#891a2d";
 const white = "#FFFFFF";
 const black = "#000000";
 
 export default {
-  black,
+  cherry,
+  darkCherry,
   white,
+  black,
   primary: {
     contrastText: white,
-    dark: colors.indigo[900],
-    main: colors.indigo[500],
+    dark: darkCherry,
+    main: cherry,
     light: colors.indigo[100]
   },
   secondary: {
