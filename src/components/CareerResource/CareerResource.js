@@ -34,7 +34,9 @@ export default function CareerResource(props) {
       <TableCell>{props.resource.name}</TableCell>
       <TableCell>{props.resource.description}</TableCell>
       <TableCell>{props.resource.location}</TableCell>
-      <TableCell>{props.resource.link}</TableCell>
+      <TableCell>
+        <a href={props.resource.link}>{props.resource.link}</a>
+      </TableCell>
     </TableRow>
   );
 }
@@ -46,7 +48,9 @@ const Event = props => (
     <TableCell>{props.resource.date}</TableCell>
     <TableCell>{props.resource.description}</TableCell>
     <TableCell>{props.resource.location}</TableCell>
-    <TableCell>{props.resource.link}</TableCell>
+    <TableCell>
+      <a href={props.resource.link}>{props.resource.link}</a>
+    </TableCell>
   </TableRow>
 );
 

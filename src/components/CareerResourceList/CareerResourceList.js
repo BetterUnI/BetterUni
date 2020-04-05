@@ -38,7 +38,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function CareerResourceList(props) {
-  const { className, users, ...rest } = props;
   const classes = useStyles();
   if (props.isEvent) {
     return (
