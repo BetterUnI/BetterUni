@@ -1,11 +1,6 @@
 import React from "react";
 
 import CareerResourceList from "../../components/CareerResourceList/CareerResourceList";
-//import { Table } from "@material-ui/core";
-// import clsx from "clsx";
-// import PropTypes from "prop-types";
-// import { Link } from "react-router-dom";
-// import PerfectScrollbar from "react-perfect-scrollbar";
 import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles(theme => ({
