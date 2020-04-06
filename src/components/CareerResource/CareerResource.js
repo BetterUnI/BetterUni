@@ -1,7 +1,4 @@
 import React from "react";
-//import PropTypes from "prop-types";
-//import { Link } from "react-router-dom";
-//import PerfectScrollbar from "react-perfect-scrollbar";
 import { makeStyles } from "@material-ui/styles";
 import { TableRow, TableCell } from "@material-ui/core";
 
@@ -23,7 +20,6 @@ export default function CareerResource(props) {
         {props.resource.name}
       </TableCell>
       <TableCell>{props.resource.description}</TableCell>
-      {/* <TableCell>{props.resource.location}</TableCell> */}
       <TableCell>
         <a href={props.resource.link}>{props.resource.link}</a>
       </TableCell>
@@ -45,7 +41,3 @@ const Event = props => (
     </TableCell>
   </TableRow>
 );
-
-// export default function CareerResource() {
-//   return <div className="CareerResource"></div>;
-// }

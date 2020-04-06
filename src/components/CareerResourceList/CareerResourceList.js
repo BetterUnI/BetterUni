@@ -1,9 +1,5 @@
-/* eslint-disable jsx-a11y/alt-text */
 import React from "react";
-//import clsx from "clsx";
-//import PropTypes from "prop-types";
-//import { Link } from "react-router-dom";
-//import PerfectScrollbar from "react-perfect-scrollbar";
+
 import { makeStyles } from "@material-ui/styles";
 import {
   Card,
@@ -85,7 +81,6 @@ const ResourceList = props => (
           <TableRow>
             <TableCell>Resource</TableCell>
             <TableCell>Description</TableCell>
-            {/* <TableCell>Location</TableCell> */}
             <TableCell>Link</TableCell>
           </TableRow>
         </TableHead>
