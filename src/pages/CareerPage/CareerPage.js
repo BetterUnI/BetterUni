@@ -37,6 +37,9 @@ const useStyles = makeStyles(theme => ({
   },
   actions: {
     justifyContent: "flex-end"
+  },
+  page: {
+    backgroundColor: "black"
   }
 }));
 
@@ -97,12 +100,8 @@ export function CareerPage(props) {
           help you.
         </p>
       </div>
-      <Card {...rest} className={clsx(classes.root, className)}>
-        <PerfectScrollbar>
-          <CareerResourceList resourceList={resourceList} />
-          <CareerResourceList resourceList={eventList} isEvent={true} />
-        </PerfectScrollbar>
-      </Card>
+      <CareerResourceList resourceList={resourceList} />
+      <CareerResourceList resourceList={eventList} isEvent={true} />
     </>
   );
 }
