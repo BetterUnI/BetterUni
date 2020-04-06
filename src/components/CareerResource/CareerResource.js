@@ -14,7 +14,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function CareerResource(props) {
-  const classes = useStyles;
   if (props.resource.date != null) {
     return <Event resource={props.resource} />;
   }
@@ -24,7 +23,7 @@ export default function CareerResource(props) {
         {props.resource.name}
       </TableCell>
       <TableCell>{props.resource.description}</TableCell>
-      <TableCell>{props.resource.location}</TableCell>
+      {/* <TableCell>{props.resource.location}</TableCell> */}
       <TableCell>
         <a href={props.resource.link}>{props.resource.link}</a>
       </TableCell>

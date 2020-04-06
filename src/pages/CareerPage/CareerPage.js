@@ -2,20 +2,11 @@ import React from "react";
 
 import CareerResourceList from "../../components/CareerResourceList/CareerResourceList";
 //import { Table } from "@material-ui/core";
-import clsx from "clsx";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import PerfectScrollbar from "react-perfect-scrollbar";
+// import clsx from "clsx";
+// import PropTypes from "prop-types";
+// import { Link } from "react-router-dom";
+// import PerfectScrollbar from "react-perfect-scrollbar";
 import { makeStyles } from "@material-ui/styles";
-import {
-  Card,
-  CardContent,
-  Table,
-  TableBody,
-  TableHead,
-  TableRow,
-  TableCell
-} from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -46,44 +37,69 @@ const useStyles = makeStyles(theme => ({
 const resourceList = [
   {
     id: 0,
-    name: "Dillon's Big Event",
-    location: "Dillon's House, Pittsburg, PA",
-    description: "Event to code some really big things",
-    link: "https://www.google.com"
+    name: "Handshake",
+    description:
+      "Handshake is the #1 way college students find jobs. Join today to explore career options, find jobs and internships, and connect with employers.",
+    link: "https://temple.joinhandshake.com/"
   },
   {
     id: 4,
-    name: "Noah",
-    location: "Philadelphia",
-    description: "Something Something",
-    link: "https://www.google.com"
+    name: "LinkedIn",
+    description:
+      "LinkedIn is an American business and employment-oriented service that operates via websites and mobile apps. It is mainly used for professional networking, including employers posting jobs and job seekers posting their CVs.",
+    link: "https://www.linkedin.com"
+  },
+  {
+    id: 5,
+    name: "Indeed",
+    description:
+      "Indeed is an American worldwide employment-related search engine for job listings.",
+    link: "https://www.linkedin.com"
+  },
+  {
+    id: 6,
+    name: "Advisor Scheduler",
+    description: "At BetterUni, we have an easy to use advisor scheduler.",
+    link: "Schedule"
   }
 ];
 
 const eventList = [
   {
     id: 1,
-    name: "Ariela's Career Event",
-    date: "March 23, 1998",
-    location: "SERC",
-    description: "A really good career event with all sorts of folks.",
-    link: "https://www.google.com"
+    name: "Career Fair",
+    date: "October 5, 2020",
+    location: "SAC 200C",
+    description:
+      "Network with recruiters from over 50 different companies. Formal dress code required.",
+    link: "https://temple.joinhandshake.com/"
   },
   {
     id: 2,
-    name: "Richard's Big Event",
-    date: "May 6th",
-    location: "Liacouras Center",
-    description: "Hooter The Owl party",
-    link: "https://www.google.com"
+    name: "Resume Review Workshop",
+    date: "October 17, 2020",
+    location: "SAC 200B",
+    description:
+      "Meet up with a CST advisor to get a resume review in the Student Center!",
+    link: "https://temple.joinhandshake.com/"
   },
   {
     id: 3,
-    name: "Davis's Big Event",
-    date: "September 22, 2020",
-    location: "Dillon's House, Pittsburg, PA",
-    description: "We are putting music in the app",
-    link: "https://www.google.com"
+    name: "Penn Hackathon",
+    date: "October 23-24, 2020",
+    location: "University of Pennsylvania",
+    description:
+      "Penn University is having its annual hackathon on October 23-24. Be sure to sign up on Handshake by October 7th if you wish to attend.",
+    link: "https://temple.joinhandshake.com/"
+  },
+  {
+    id: 8,
+    name: "Vaguard Networking Event",
+    date: "October 26, 2020",
+    location: "SERC 358",
+    description:
+      "Recruiters from Vanguard will be visiting on campus in the SERC from 12-3 PM. Bring your resume!",
+    link: "https://temple.joinhandshake.com/"
   }
 ];
 

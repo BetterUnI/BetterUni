@@ -85,7 +85,7 @@ const ResourceList = props => (
           <TableRow>
             <TableCell>Resource</TableCell>
             <TableCell>Description</TableCell>
-            <TableCell>Location</TableCell>
+            {/* <TableCell>Location</TableCell> */}
             <TableCell>Link</TableCell>
           </TableRow>
         </TableHead>
