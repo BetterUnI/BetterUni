@@ -82,8 +82,8 @@ export function HomePage() {
       <br></br>
       <div className={classes.content}>
         <AdvisingOfficeList offices={offices} />
-
-        <CareerResourceList resourceList={resource} isHome={true} />
+        <AdvisingOfficeList offices={offices} />
+        <AdvisingOfficeList offices={offices} />
       </div>
     </>
   );
