@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
   },
   page: {
     backgroundColor: "#9D2235",
-    color: "white",
+    color: "#FFFFFF",
     fontFamily: "Arial"
   }
 }));
@@ -48,6 +48,20 @@ const offices = [
   }
 ];
 
+const resource = [
+  {
+    title: "Career Fair"
+  },
+  {
+    title: "Resume Review Workshop"
+  },
+  {
+    title: "Penn Hackathon"
+  },
+  {
+    title: "Vanguard Networking Event"
+  }
+];
 export function HomePage() {
   const user = useContext(UserContext);
 
@@ -68,8 +82,8 @@ export function HomePage() {
       <br></br>
       <div className={classes.content}>
         <AdvisingOfficeList offices={offices} />
-        <AdvisingOfficeList offices={offices} />
-        <AdvisingOfficeList offices={offices} />
+
+        <CareerResourceList resourceList={resource} isHome={true} />
       </div>
     </>
   );

@@ -53,7 +53,7 @@ export default function AdvisingOfficeList(props) {
           title="Advising Offices"
           avatar={
             <Avatar variant="rounded" className={classes.avatarBackgroundColor}>
-              <SupervisorAccountOutlinedIcon fontSize="large" color="white" />
+              <SupervisorAccountOutlinedIcon fontSize="large" color="#FFFFFF" />
             </Avatar>
           }
         />
