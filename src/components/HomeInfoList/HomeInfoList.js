@@ -1,5 +1,5 @@
 import React from "react";
-import AdvisingOffice from "../AdvisingOffice/AdvisingOffice";
+import HomeInfoListItem from "../HomeInfoListItem/HomeInfoListItem";
 import { makeStyles } from "@material-ui/styles";
 import {
   Avatar,
@@ -13,6 +13,8 @@ import {
 } from "@material-ui/core";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import SupervisorAccountOutlinedIcon from "@material-ui/icons/SupervisorAccountOutlined";
+import AccessTimeIcon from "@material-ui/icons/AccessTime";
+import EventIcon from "@material-ui/icons/Event";
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -40,7 +42,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function AdvisingOfficeList(props) {
+export default function HomeInfoList(props) {
   const classes = useStyles();
 
   return (
@@ -50,7 +52,8 @@ export default function AdvisingOfficeList(props) {
           classes={{
             title: classes.headerTitle
           }}
-          title="Advising Offices"
+          title={props.listTitle}
+          backgroundColor={props.color}
           avatar={
             <Avatar variant="rounded" className={classes.avatarBackgroundColor}>
               <SupervisorAccountOutlinedIcon fontSize="large" color="#FFFFFF" />
@@ -63,7 +66,7 @@ export default function AdvisingOfficeList(props) {
             <Table>
               <TableBody>
                 {props.offices.map(office => (
-                  <AdvisingOffice office={office} />
+                  <HomeInfoListItem office={office} />
                 ))}
               </TableBody>
             </Table>

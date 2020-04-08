@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
 import { UserContext } from "../../UserContext";
 import { makeStyles } from "@material-ui/styles";
-import AdvisingOfficeList from "../../components/AdvisingOfficeList/AdvisingOfficeList";
-import CareerResourceList from "../../components/CareerResourceList/CareerResourceList";
+import HomeInfoList from "../../components/HomeInfoList/HomeInfoList";
 const useStyles = makeStyles(theme => ({
   content: {
     display: "inline-block",
@@ -34,7 +33,7 @@ const offices = [
   {
     title: "Student Health Services"
   },
-  -{
+  {
     title: "Fox Advising"
   },
   {
@@ -48,7 +47,7 @@ const offices = [
   }
 ];
 
-const resource = [
+const event = [
   {
     title: "Career Fair"
   },
@@ -60,6 +59,24 @@ const resource = [
   },
   {
     title: "Vanguard Networking Event"
+  }
+];
+const meeting = [
+  {
+    time: "9 AM",
+    title: "Sarah Parker"
+  },
+  {
+    time: "9 AM",
+    title: "Jack Doe"
+  },
+  {
+    time: "9 AM",
+    title: "Jane Smith"
+  },
+  {
+    time: "9 AM",
+    title: "Dr Lasname"
   }
 ];
 export function HomePage() {
@@ -81,9 +98,9 @@ export function HomePage() {
       </div>
       <br></br>
       <div className={classes.content}>
-        <AdvisingOfficeList offices={offices} />
-        <AdvisingOfficeList offices={offices} />
-        <AdvisingOfficeList offices={offices} />
+        <HomeInfoList listTitle="Advising Offices" offices={offices} />
+        <HomeInfoList listTitle="Career Events" offices={event} />
+        <HomeInfoList listTitle="Upcoming Meetings" offices={meeting} />
       </div>
     </>
   );
