@@ -1,5 +1,10 @@
 import React from "react";
+import CometChatUnified from "../../lib/CometChat/components/CometChatUnified";
 
 export default function CometchatConference() {
-  return <div className="cometchatConference"></div>;
+  return (
+    <div>
+      <CometChatUnified />
+    </div>
+  );
 }

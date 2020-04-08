@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/styles";
 import { List, ListItem, Button, colors } from "@material-ui/core";
 import { Auth } from "aws-amplify";
+import { CometChat } from "@cometchat-pro/chat";
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -63,9 +64,28 @@ export const SidebarNav = props => {
               component={CustomRouterLink}
               to={page.href}
               onClick={() => {
+                // Sign user out of our application
                 Auth.signOut()
-                  .then(data => console.log("signing out"))
+                  .then(data =>
+                    console.log("User successfully signed out of BetterUni!")
+                  )
                   .catch(err => console.log(err));
+                // Sign out user from CometChat
+                CometChat.logout().then(
+                  () => {
+                    // CometChat logout completed successfully
+                    console.log(
+                      "CometChat user logout completed successfully!"
+                    );
+                  },
+                  error => {
+                    // CometChat logout failed with exception
+                    console.log(
+                      "CometChat user logout failed with exception: ",
+                      { error }
+                    );
+                  }
+                );
               }}
             >
               <div className={classes.icon}>{page.icon}</div>
