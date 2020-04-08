@@ -2,11 +2,16 @@ import React, { useContext } from "react";
 import { UserContext } from "../../UserContext";
 import { makeStyles } from "@material-ui/styles";
 import AdvisingOfficeList from "../../components/AdvisingOfficeList/AdvisingOfficeList";
-
+import CareerResourceList from "../../components/CareerResourceList/CareerResourceList";
 const useStyles = makeStyles(theme => ({
   content: {
     display: "inline-block",
     width: "100%"
+  },
+  page: {
+    backgroundColor: "#9D2235",
+    color: "white",
+    fontFamily: "Arial"
   }
 }));
 
@@ -29,7 +34,7 @@ const offices = [
   {
     title: "Student Health Services"
   },
-  {
+  -{
     title: "Fox Advising"
   },
   {
@@ -49,11 +54,18 @@ export function HomePage() {
   const classes = useStyles();
   return (
     <>
-      <h1>Home page</h1>
-      <h2>
-        Current user name is {user.firstName} {user.lastName}
-      </h2>
-      <p>This is the home page</p>
+      <br></br>
+      <div className={classes.page}>
+        <center>
+          <br></br>
+          <h1>Welcome to BetterUni</h1>
+          <img src="images/bulogo.png" width="100" height="100"></img>
+          <h2>We aim to provide you the tools, opportunities,</h2>
+          <h2> and resources to succeed at Temple Univeristy and beyond</h2>
+        </center>
+        <br></br>
+      </div>
+      <br></br>
       <div className={classes.content}>
         <AdvisingOfficeList offices={offices} />
         <AdvisingOfficeList offices={offices} />
