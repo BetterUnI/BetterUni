@@ -2,7 +2,6 @@ import React from "react";
 import HomeInfoListItem from "../HomeInfoListItem/HomeInfoListItem";
 import { makeStyles } from "@material-ui/styles";
 import {
-  Avatar,
   Card,
   CardHeader,
   CardContent,
@@ -12,9 +11,6 @@ import {
   TableBody
 } from "@material-ui/core";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
-import SupervisorAccountOutlinedIcon from "@material-ui/icons/SupervisorAccountOutlined";
-import AccessTimeIcon from "@material-ui/icons/AccessTime";
-import EventIcon from "@material-ui/icons/Event";
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -33,9 +29,7 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: 30,
     paddingRight: 30
   },
-  avatarBackgroundColor: {
-    backgroundColor: "#765BF7"
-  },
+
   headerTitle: {
     fontSize: 16,
     fontWeight: "bold"
@@ -53,12 +47,7 @@ export default function HomeInfoList(props) {
             title: classes.headerTitle
           }}
           title={props.listTitle}
-          backgroundColor={props.color}
-          avatar={
-            <Avatar variant="rounded" className={classes.avatarBackgroundColor}>
-              <SupervisorAccountOutlinedIcon fontSize="large" color="#FFFFFF" />
-            </Avatar>
-          }
+          avatar={props.avatar}
         />
         <Divider />
         <CardContent className={classes.content}>
