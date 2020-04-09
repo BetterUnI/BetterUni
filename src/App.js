@@ -50,23 +50,7 @@ const headers = {
 
 const browserHistory = createBrowserHistory();
 
-// // Sign user out of our application
-// Auth.signOut()
-//   .then(data => console.log("User successfully signed out of BetterUni!"))
-//   .catch(err => console.log(err));
-// // Sign out user from CometChat
-// CometChat.logout().then(
-//   () => {
-//     // CometChat logout completed successfully
-//     console.log("CometChat user logout completed successfully!");
-//   },
-//   error => {
-//     // CometChat logout failed with exception
-//     console.log("CometChat user logout failed with exception: ", { error });
-//   }
-// );
-
-// this function will fetch token
+// This function will make a POST request to generate a new CometChat auth token
 const requestAuthToken = uid => {
   return new Promise((resolve, reject) => {
     axios
@@ -81,6 +65,7 @@ const requestAuthToken = uid => {
   });
 };
 
+// Creates new BetterUni user in our DynamoDB database or fetches the already created user
 async function createUserInDB(user) {
   const userAlreadyInDB = await API.graphql(
     graphqlOperation(GetUser, { id: user.attributes["custom:tuid"] })
