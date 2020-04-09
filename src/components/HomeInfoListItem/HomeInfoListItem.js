@@ -16,7 +16,9 @@ export default function HomeInfoListItem(props) {
   return (
     <div className="homeInfoListItem">
       <TableRow hover key={props.title}>
-        <TableCell className={classes.content}>{props.office.title}</TableCell>
+        <TableCell className={classes.content}>
+          {props.homelist.title}
+        </TableCell>
         <TableCell>
           <KeyboardArrowRightIcon></KeyboardArrowRightIcon>
         </TableCell>

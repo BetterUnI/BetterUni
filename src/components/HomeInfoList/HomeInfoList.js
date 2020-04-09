@@ -11,6 +11,7 @@ import {
   TableBody
 } from "@material-ui/core";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
+import "./HomeInfoList.css";
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -19,6 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
   inner: {
     height: 200,
+    width: "100%",
     overflow: "auto"
   },
   iconCenterAlignment: {
@@ -29,7 +31,9 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: 30,
     paddingRight: 30
   },
-
+  avatarBackgroundColor: {
+    backgroundColor: "#765BF7"
+  },
   headerTitle: {
     fontSize: 16,
     fontWeight: "bold"
@@ -54,8 +58,8 @@ export default function HomeInfoList(props) {
           <div className={classes.inner}>
             <Table>
               <TableBody>
-                {props.offices.map(office => (
-                  <HomeInfoListItem office={office} />
+                {props.homelists.map(homelist => (
+                  <HomeInfoListItem homelist={homelist} />
                 ))}
               </TableBody>
             </Table>

@@ -62,39 +62,33 @@ const offices = [
 
 const event = [
   {
-    title: "Career Fair"
+    title: "Career Fair @ Temple University"
   },
   {
-    title: "Resume Review Workshop"
+    title: "Resume Review Workshop @ SAC"
   },
   {
-    title: "Penn Hackathon"
+    title: "Penn Hackathon @ UPenn"
   },
   {
-    title: "Vanguard Networking Event"
+    title: "Vanguard Networking Event @ SERC"
   }
 ];
 const meeting = [
   {
-    time: "9 AM",
-    title: "Sarah Parker"
+    title: "Today 9am-10am : Sarah Parker"
   },
   {
-    time: "9 AM",
-    title: "Jack Doe"
+    title: "Tomorrow 11am-12pm : Jack Doe"
   },
   {
-    time: "9 AM",
-    title: "Jane Smith"
+    title: "Next week: Jane Smith"
   },
   {
-    time: "9 AM",
-    title: "Dr Lasname"
+    title: "Next week: Dr Lasname"
   }
 ];
 export function HomePage() {
-  const user = useContext(UserContext);
-
   const classes = useStyles();
   return (
     <>
@@ -121,7 +115,7 @@ export function HomePage() {
             </Avatar>
           }
           listTitle="Advising Offices"
-          offices={offices}
+          homelists={offices}
         />
         <HomeInfoList
           avatar={
@@ -133,7 +127,7 @@ export function HomePage() {
             </Avatar>
           }
           listTitle="Career Events"
-          offices={event}
+          homelists={event}
         />
         <HomeInfoList
           avatar={
@@ -145,7 +139,7 @@ export function HomePage() {
             </Avatar>
           }
           listTitle="Upcoming Meetings"
-          offices={meeting}
+          homelists={meeting}
         />
       </div>
     </>
