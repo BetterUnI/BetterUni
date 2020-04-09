@@ -36,7 +36,7 @@
     .cp-text-blue{
        color: $blue-background-primary
     }
-.cp-chat-avatar{
+.cp-chat-avatar {
     padding: 12px 12px 0;
     position: relative;
     margin-top: -1px;
@@ -52,15 +52,12 @@
 .cp-chathead-buttons{
     float: right;
     padding: 5px 0px;
-    button{
-    padding: 0px 20px;
-     background: none;
-    border: none;
-    img{
-        width: 22px;
-        // display: none
-
-    }
+    button {
+        background: none;
+        border: none;
+        img {
+            width: 40px;
+        }
     }
 }
     

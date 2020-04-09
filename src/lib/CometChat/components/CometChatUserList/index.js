@@ -10,32 +10,30 @@ class CometChatUserList extends React.Component {
     this.state = {
       userlist: [],
       onItemClick: null
-    }
+    };
     this.getUsersList = this.getUsersList.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
-
   }
   componentDidMount() {
     this.cometChatManager = new CometChatManager();
     this.getUsersList();
     this.cometChatManager.attachUserListener(this.userUpdated);
   }
-  // static getDerivedStateFromProps(props,state){    
+  // static getDerivedStateFromProps(props,state){
   //   return props;
   // }
   handleScroll(e) {
     const bottom =
-      Math.round(e.currentTarget.scrollHeight - e.currentTarget.scrollTop) === Math.round(e.currentTarget.clientHeight);
+      Math.round(e.currentTarget.scrollHeight - e.currentTarget.scrollTop) ===
+      Math.round(e.currentTarget.clientHeight);
     if (bottom) this.getUsersList();
   }
 
+  handleClick = user => {
+    this.props.onItemClick(user, "user");
+  };
 
-  handleClick = (user) => {
-    this.props.onItemClick(user, 'user');
-  }
-
-
-  userUpdated = (user) => {
+  userUpdated = user => {
     if (this.state.userlist) {
       let userlist = this.state.userlist;
 
@@ -49,28 +47,25 @@ class CometChatUserList extends React.Component {
       });
       this.setState({ userlist });
     }
-
-  }
-  searchUsers = (e) => {
+  };
+  searchUsers = e => {
     if (this.timeout) {
       clearTimeout(this.timeout);
     }
-    let val=e.target.value;
+    let val = e.target.value;
     this.timeout = setTimeout(() => {
       this.cometChatManager = new CometChatManager(val);
       this.setState({ userlist: [] }, () => {
         this.getUsersList();
-      })
-    }, 500)
-
-
-  }
+      });
+    }, 500);
+  };
 
   getUsersList() {
     this.cometChatManager.isCometChatUserLogedIn().then(
       user => {
         this.cometChatManager.fetchNextContacts().then(
-          (userlist) => {
+          userlist => {
             this.setState({ userlist: [...this.state.userlist, ...userlist] });
           },
           error => {
@@ -94,7 +89,9 @@ class CometChatUserList extends React.Component {
           currentLetter = user.name.substring(0, 1).toUpperCase();
           return (
             <div id={key} onClick={() => this.handleClick(user)} key={user.uid}>
-              <div className="cp-contact-alphabet font-bold">{currentLetter}</div>
+              <div className="cp-contact-alphabet font-bold">
+                {currentLetter}
+              </div>
               <UserView key={user.uid} user={user}></UserView>
               <div className="row cp-list-seperator"></div>
             </div>
@@ -104,42 +101,37 @@ class CometChatUserList extends React.Component {
             <div id={key} onClick={() => this.handleClick(user)} key={user.uid}>
               <UserView key={user.uid} user={user}></UserView>
               <div className="row cp-list-seperator"></div>
-
             </div>
           );
         }
-
-        // return 
-        // <div key={user.uid}>
-        //   <UserView onClick={this.state.onItemClick} key={user.uid} user={user}></UserView>
-        //   <Row className="cp-list-seperator"></Row>
-        // </div>
-        // return true;
       });
-
     }
   }
   render() {
     return (
-      <div className="cp-userlist-wrapper" >
-        <p className="cp-contact-list-title font-extra-large">Contacts</p>
+      <div className="cp-userlist-wrapper">
+        <p className="cp-contact-list-title font-extra-large">
+          Upcoming Meetings
+        </p>
         <p className="cp-searchbar">
-          <input className="font-normal" type="text" placeholder="Search" aria-label="Search" onChange={this.searchUsers} />
+          <input
+            className="font-normal"
+            type="text"
+            placeholder="Search"
+            aria-label="Search"
+            onChange={this.searchUsers}
+          />
         </p>
         <div className="cp-userlist" onScroll={this.handleScroll}>
-
           {this.displayUserList()}
         </div>
       </div>
-
     );
   }
 }
 
-
-
 export default CometChatUserList;
-export const cometChatUserList=CometChatUserList;
+export const cometChatUserList = CometChatUserList;
 
 CometChatUserList.defaultProps = {
   CometChatUserList: {}

@@ -2,9 +2,18 @@
 @import '../../resources/colors';
 
 .cometchat-container{
-  height: 100%;
-  overflow: hidden;
-  }
+  height: 83vh;
+  border-radius: 10px;
+  overflow: auto;
+  overflow: auto; // overflow for tablet and mobile size - users can scroll down to see messages
+  margin-top: 32px;
+}
+
+@media screen and (max-width: 768px) {
+    .cometchat-container {
+      height: 75vh;
+    }
+}
 
 .dark {
     background-color: $dark-background;
@@ -23,6 +32,7 @@
     background-color: $light-background;
 
     .cp-lists-container {
+        background-color: #E5E5E5;
         border-right: 1px solid $gray-lighten;
     }
     .cp-center-text {

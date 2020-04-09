@@ -13,15 +13,12 @@ import helpBlack from "./resources/help-black-icon.svg";
 import reportBlack from "./resources/report-black-icon.svg";
 // import reportWhite from "./resources/report-white-icon.svg";
 
-
-
-
 class CometChatUserInfoScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {},
-    }
+      user: {}
+    };
   }
 
   componentDidMount() {
@@ -49,98 +46,85 @@ class CometChatUserInfoScreen extends React.Component {
         <div className="cp-profile-view">
           <div className="row">
             <div className="col-xs-1">
-
-      
-              {(Object.keys(this.state.user).length>0?<Avatar src={this.state.user}></Avatar>:'')}
+              {Object.keys(this.state.user).length > 0 ? (
+                <Avatar src={this.state.user}></Avatar>
+              ) : (
+                ""
+              )}
             </div>
             <div className="col cp-user-info">
               <div className="cp-username cp-ellipsis font-bold">
                 {this.state.user.name}
               </div>
               <div className=" row cp-userstatus">
-
-                <span >Online </span>
+                <span>Online </span>
               </div>
             </div>
-
           </div>
         </div>
         <div className="cp-profile-preferences">
           <p className="text-muted">PREFERENCES</p>
-            <div className="row cp-row-padding">
-              <div xs={1} className=" col-xs-1 cp-no-padding">
-                <img src={notificationBlack} alt="notification"></img>
-              </div>
-              <div className="col cp-user-info">
-                <div className="cp-username cp-ellipsis font-bold">
-                  Notifications
-              </div>
-              </div>
-
+          <div className="row cp-row-padding">
+            <div xs={1} className=" col-xs-1 cp-no-padding">
+              <img src={notificationBlack} alt="notification"></img>
             </div>
-            <div className="row cp-list-seperator"></div>
-            <div className="row cp-row-padding">
-              <div className=" col-xs-1 cp-no-padding">
-                <img src={privacyBlack} alt="privacy"></img>
+            <div className="col cp-user-info">
+              <div className="cp-username cp-ellipsis font-bold">
+                Notifications
               </div>
-              <div className="col cp-user-info">
-                <div className="cp-username cp-ellipsis font-bold">
-                  Privacy and Security
-              </div>
-              </div>
-
             </div>
-            <div className="row cp-list-seperator"></div>
-            <div className="row cp-row-padding">
-              <div xs={1} className="col-xs-1 cp-no-padding">
-                <img src={chatBlack} alt="chat"></img>
-              </div>
-              <div className="col cp-user-info">
-                <div className="cp-username cp-ellipsis font-bold">
-                  Chats
-              </div>
-              </div>
-
+          </div>
+          <div className="row cp-list-seperator"></div>
+          <div className="row cp-row-padding">
+            <div className=" col-xs-1 cp-no-padding">
+              <img src={privacyBlack} alt="privacy"></img>
             </div>
-            <div className="row cp-list-seperator"></div>
-
-
+            <div className="col cp-user-info">
+              <div className="cp-username cp-ellipsis font-bold">
+                Privacy and Security
+              </div>
+            </div>
+          </div>
+          <div className="row cp-list-seperator"></div>
+          <div className="row cp-row-padding">
+            <div xs={1} className="col-xs-1 cp-no-padding">
+              <img src={chatBlack} alt="chat"></img>
+            </div>
+            <div className="col cp-user-info">
+              <div className="cp-username cp-ellipsis font-bold">Chats</div>
+            </div>
+          </div>
+          <div className="row cp-list-seperator"></div>
         </div>
         <div className="cp-profile-preferences">
           <p className="text-muted">OTHERS</p>
-            <div className="row cp-row-padding">
-              <div className="col-xs-1 cp-no-padding">
-                <img src={helpBlack} alt="help"></img>
-              </div>
-              <div className="col cp-user-info">
-                <div className="cp-username cp-ellipsis font-bold">
-                  Help
-              </div>
-              </div>
-
+          <div className="row cp-row-padding">
+            <div className="col-xs-1 cp-no-padding">
+              <img src={helpBlack} alt="help"></img>
             </div>
-            <div className="row cp-list-seperator"></div>
-            <div className="row cp-row-padding">
-              <div  className="col-xs-1 cp-no-padding">
-                <img src={reportBlack} alt="report"></img>
-              </div>
-              <div className="col cp-user-info">
-                <div className="cp-username cp-ellipsis font-bold">
-                 Report a Problem
-              </div>
-              </div>
-
+            <div className="col cp-user-info">
+              <div className="cp-username cp-ellipsis font-bold">Help</div>
             </div>
-            <div className="row cp-list-seperator"></div>
+          </div>
+          <div className="row cp-list-seperator"></div>
+          <div className="row cp-row-padding">
+            <div className="col-xs-1 cp-no-padding">
+              <img src={reportBlack} alt="report"></img>
+            </div>
+            <div className="col cp-user-info">
+              <div className="cp-username cp-ellipsis font-bold">
+                Report a Problem
+              </div>
+            </div>
+          </div>
+          <div className="row cp-list-seperator"></div>
         </div>
-
       </div>
-
     );
   }
 }
 export default CometChatUserInfoScreen;
-export const cometChatUserInfoScreen=CometChatUserInfoScreen;
+export const cometChatUserInfoScreen = CometChatUserInfoScreen;
 
 CometChatUserInfoScreen.defaultProps = {
   CometChatUserInfoScreen: {}

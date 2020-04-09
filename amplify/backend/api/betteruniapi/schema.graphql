@@ -4,6 +4,7 @@ type User @model {
   lastName: String!
   email: String!
   isAdvisor: Boolean!
+  cometChatAuthToken: String
   bio: String
   college: String
   major: String

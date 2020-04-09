@@ -4,7 +4,6 @@ import ConversationView from "../ConversationView";
 import { CometChatManager } from "./controller";
 import { CometChat } from "@cometchat-pro/chat";
 
-
 class CometChatConversationList extends React.Component {
   constructor(props) {
     super(props);
@@ -12,24 +11,25 @@ class CometChatConversationList extends React.Component {
       conversationList: [],
       onItemClick: null,
       selectedConversation: undefined
-    }
+    };
     this.getConversationList = this.getConversationList.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
-
   }
   componentDidMount() {
     this.cometChatManager = new CometChatManager();
     this.getConversationList();
     this.cometChatManager.attachMessageListener(this.conversationUpdated);
-
   }
-  conversationUpdated = (message) => {
+  conversationUpdated = message => {
     let conversationList = this.state.conversationList;
     let found = false;
     conversationList.map((stateConversation, key) => {
       if (stateConversation.conversationId === message.conversationId) {
         found = true;
-        if (this.state.selectedConversation && this.state.selectedConversation.uid === message.sender.uid) {
+        if (
+          this.state.selectedConversation &&
+          this.state.selectedConversation.uid === message.sender.uid
+        ) {
           stateConversation.unreadMessageCount = 0;
         } else {
           stateConversation.unreadMessageCount++;
@@ -41,22 +41,26 @@ class CometChatConversationList extends React.Component {
       return true;
     });
     if (!found) {
-      CometChat.CometChatHelper.getConversationFromMessage(message).then((conv) => {
-        conv.setUnreadMessageCount(1);
-        conversationList = [conv, ...conversationList];
-        this.setState({ conversationList });
-      }, error => {
-        console.log('This is an error in converting message to conversation', { error })
-      })
+      CometChat.CometChatHelper.getConversationFromMessage(message).then(
+        conv => {
+          conv.setUnreadMessageCount(1);
+          conversationList = [conv, ...conversationList];
+          this.setState({ conversationList });
+        },
+        error => {
+          console.log(
+            "This is an error in converting message to conversation",
+            { error }
+          );
+        }
+      );
+    } else this.setState({ conversationList });
+  };
 
-
-    } else
-      this.setState({ conversationList });
-  }
-  
   handleScroll(e) {
     const bottom =
-      Math.round(e.currentTarget.scrollHeight - e.currentTarget.scrollTop) === Math.round(e.currentTarget.clientHeight);
+      Math.round(e.currentTarget.scrollHeight - e.currentTarget.scrollTop) ===
+      Math.round(e.currentTarget.clientHeight);
     if (bottom) this.getConversationList();
   }
   handleClick = (item, type) => {
@@ -71,15 +75,19 @@ class CometChatConversationList extends React.Component {
       return true;
     });
     this.setState({ selectedConversation: item });
-  }
-
+  };
 
   getConversationList() {
     this.cometChatManager.isCometChatUserLogedIn().then(
       conversation => {
         this.cometChatManager.fetchNextConversation().then(
-          (conversationList) => {
-            this.setState({ conversationList: [...this.state.conversationList, ...conversationList] });
+          conversationList => {
+            this.setState({
+              conversationList: [
+                ...this.state.conversationList,
+                ...conversationList
+              ]
+            });
           },
           error => {
             //TODO Handle the erros in conatct List.
@@ -98,37 +106,43 @@ class CometChatConversationList extends React.Component {
     if (this.state.conversationList.length > 0) {
       return this.state.conversationList.map((conversation, key) => {
         return (
-          <div id={key} onClick={() => this.handleClick(conversation.conversationWith, conversation.conversationType)} key={conversation.conversationId}>
-            <ConversationView key={conversation.conversationId} conversation={conversation}></ConversationView>
+          <div
+            id={key}
+            onClick={() =>
+              this.handleClick(
+                conversation.conversationWith,
+                conversation.conversationType
+              )
+            }
+            key={conversation.conversationId}
+          >
+            <ConversationView
+              key={conversation.conversationId}
+              conversation={conversation}
+            ></ConversationView>
             <div className="row cp-list-seperator"></div>
-
           </div>
         );
-
       });
     }
   }
   render() {
     return (
       <div className="cp-conversatiolist-wrapper">
-        <p className="cp-contact-list-title font-extra-large">Chats</p>
+        <p className="cp-contact-list-title font-extra-large">History</p>
         {/* <p className="cp-searchbar">
           <input  className="font-normal" type="text" placeholder="Search" aria-label="Search"/>
         </p> */}
         <div className="cp-userlist" onScroll={this.handleScroll}>
-
           {this.displayConversationList()}
         </div>
       </div>
-
     );
   }
 }
 
-
-
 export default CometChatConversationList;
-export const cometChatConversationList=CometChatConversationList;
+export const cometChatConversationList = CometChatConversationList;
 
 CometChatConversationList.defaultProps = {
   CometChatConversationList: {}

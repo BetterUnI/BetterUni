@@ -7,8 +7,7 @@ export function MeetingsPage() {
 
   return (
     <>
-      <h1>Meetings page</h1>
-      <CometchatConference />
+      <CometchatConference style={{ marginTop: 20 }} />
     </>
   );
 }

@@ -2,12 +2,16 @@
 @import '../../resources/colors';
 
 .cp-message-composer {
+    display: flex;
+
     .cp-show-media{
         display: block;
         position: absolute;
         bottom: 45px;
         left: 17px;
         background-color: $light-background;
+        border: 1px solid lightgrey;
+        border-radius: 5px;
         button{
             background: none;
             border: none; 
@@ -21,29 +25,36 @@
     }
     .cp-media-button{
         display: inline-block;
-        button{
+        flex: auto;
+        button {
         background: none;
         border: none;
-        img{
-            width: 20px;
+        width: 100%;
+        img {
+            width: 32px;
+            padding-left: 8px;
         }
         }
     }
     .cp-send-button{
+        flex: auto;
+        color: #A41F35 !important;
         display: inline-block;
         button{
         background: none;
         border: none;
         padding: 3px 10px;
+        width: 100%;
         img{
-            width: 30px;
+            width: 32px;
         }
         }
     }
     width: 100%;
     bottom: 12px;
-    input{
-        width: 85%;
+    input {
+        flex: auto;
+        width: 80%;
         background-color: $gray-lighten-more-more;
         border: 1px solid #e8e8e8;
         border-radius: 5px;
@@ -61,11 +72,10 @@
 
 @media screen and (min-width: 768px) and (max-width : 992px){
     .cp-message-composer{
-        input{
-            width: 78%;
-        }
+        // input {
+        //     width: 78%;
+        // }
     }
-
 }
 
 

@@ -1,19 +1,7 @@
 import React from "react";
 import "./style.scss";
-import SenderMessageBubble from "../SenderMessageBubble";
-import ReceiverMessageBubble from "../ReceiverMessageBubble";
-import SenderImageBubble from "../SenderImageBubble";
-import ReceiverImageBubble from "../ReceiverImageBubble";
-import SenderFileBubble from "../SenderFileBubble";
-import ReceiverFileBubble from "../ReceiverFileBubble";
-import SenderAudioBubble from "../SenderAudioBubble";
-import ReceiverAudioBubble from "../ReceiverAudioBubble";
-import SenderVideoBubble from "../SenderVideoBubble";
-import ReceiverVideoBubble from "../ReceiverVideoBubble";
 import { CometChatManager } from "./controller";
 import { CometChat } from "@cometchat-pro/chat";
-import CallMessage from "../CallMessage";
-import callBlue from "./resources/call-blue-icon.svg";
 import Avatar from "../Avatar";
 
 class CallScreen extends React.Component {
@@ -31,7 +19,6 @@ class CallScreen extends React.Component {
     this.callScreenElement = React.createRef();
   }
   componentDidMount() {
-    console.log("I am called");
     this.cometChatManager = new CometChatManager();
 
     let listenerID = "UNIQUE_LISTENER_ID_CALL_SCREEN";

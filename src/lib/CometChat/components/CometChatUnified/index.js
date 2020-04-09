@@ -49,13 +49,14 @@ class CometChatUnified extends React.Component {
                     break;
                   case "videoCallInitiated":
                     this.setState({ outgoingCall: payload.call });
-
+                    break;
+                  default:
                     break;
                 }
               }}
             ></CometChatMessageScreen>
           ) : (
-            <h1 className="cp-center-text">Select a chat to start messaging</h1>
+            <h1 className="cp-center-text">Select a user to start messaging</h1>
           )}
         </div>
         <CallScreen

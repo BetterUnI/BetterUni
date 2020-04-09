@@ -9,6 +9,7 @@ export const getUser = /* GraphQL */ `
       lastName
       email
       isAdvisor
+      cometChatAuthToken
       bio
       college
       major
@@ -50,6 +51,7 @@ export const listUsers = /* GraphQL */ `
         lastName
         email
         isAdvisor
+        cometChatAuthToken
         bio
         college
         major
@@ -83,6 +85,7 @@ export const getMeeting = /* GraphQL */ `
         lastName
         email
         isAdvisor
+        cometChatAuthToken
         bio
         college
         major
@@ -121,6 +124,7 @@ export const listMeetings = /* GraphQL */ `
           lastName
           email
           isAdvisor
+          cometChatAuthToken
           bio
           college
           major
@@ -147,6 +151,7 @@ export const getAdvisingCategory = /* GraphQL */ `
           lastName
           email
           isAdvisor
+          cometChatAuthToken
           bio
           college
           major
@@ -242,6 +247,7 @@ export const meetingsByDate = /* GraphQL */ `
           lastName
           email
           isAdvisor
+          cometChatAuthToken
           bio
           college
           major
