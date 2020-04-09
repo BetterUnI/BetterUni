@@ -1,4 +1,3 @@
-// /* eslint-disable */
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import { UserContext } from "./UserContext";
