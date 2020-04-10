@@ -3,7 +3,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import {
   Card,
-  CardContent,
   Table,
   TableBody,
   TableHead,
@@ -24,6 +23,9 @@ const useStyles = makeStyles(theme => ({
   nameContainer: {
     display: "flex",
     alignItems: "center"
+  },
+  iconCenterAlignment: {
+    textAlign: "center"
   },
   avatar: {
     marginRight: theme.spacing(2)

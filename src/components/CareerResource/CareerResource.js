@@ -14,6 +14,7 @@ export default function CareerResource(props) {
   if (props.resource.date != null) {
     return <Event resource={props.resource} />;
   }
+
   return (
     <TableRow hover key={props.resource.id}>
       <TableCell className={useStyles.resourceName}>

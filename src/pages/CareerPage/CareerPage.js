@@ -89,7 +89,7 @@ const eventList = [
   },
   {
     id: 8,
-    name: "Vaguard Networking Event",
+    name: "Vanguard Networking Event",
     date: "October 26, 2020",
     location: "SERC 358",
     description:

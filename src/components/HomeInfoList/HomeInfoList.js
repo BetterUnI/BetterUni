@@ -1,8 +1,7 @@
 import React from "react";
-import AdvisingOffice from "../AdvisingOffice/AdvisingOffice";
+import HomeInfoListItem from "../HomeInfoListItem/HomeInfoListItem";
 import { makeStyles } from "@material-ui/styles";
 import {
-  Avatar,
   Card,
   CardHeader,
   CardContent,
@@ -12,7 +11,7 @@ import {
   TableBody
 } from "@material-ui/core";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
-import SupervisorAccountOutlinedIcon from "@material-ui/icons/SupervisorAccountOutlined";
+import "./HomeInfoList.css";
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -21,6 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
   inner: {
     height: 200,
+    width: "100%",
     overflow: "auto"
   },
   iconCenterAlignment: {
@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function AdvisingOfficeList(props) {
+export default function HomeInfoList(props) {
   const classes = useStyles();
 
   return (
@@ -50,20 +50,16 @@ export default function AdvisingOfficeList(props) {
           classes={{
             title: classes.headerTitle
           }}
-          title="Advising Offices"
-          avatar={
-            <Avatar variant="rounded" className={classes.avatarBackgroundColor}>
-              <SupervisorAccountOutlinedIcon fontSize="large" color="white" />
-            </Avatar>
-          }
+          title={props.listTitle}
+          avatar={props.avatar}
         />
         <Divider />
         <CardContent className={classes.content}>
           <div className={classes.inner}>
             <Table>
               <TableBody>
-                {props.offices.map(office => (
-                  <AdvisingOffice office={office} />
+                {props.homelists.map(homelist => (
+                  <HomeInfoListItem homelist={homelist} />
                 ))}
               </TableBody>
             </Table>

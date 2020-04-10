@@ -10,13 +10,15 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function AdvisingOffice(props) {
+export default function HomeInfoListItem(props) {
   const classes = useStyles();
 
   return (
-    <div className="advisingOffice">
+    <div className="homeInfoListItem">
       <TableRow hover key={props.title}>
-        <TableCell className={classes.content}>{props.office.title}</TableCell>
+        <TableCell className={classes.content}>
+          {props.homelist.title}
+        </TableCell>
         <TableCell>
           <KeyboardArrowRightIcon></KeyboardArrowRightIcon>
         </TableCell>
