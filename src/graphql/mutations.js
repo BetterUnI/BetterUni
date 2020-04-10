@@ -12,6 +12,7 @@ export const createUser = /* GraphQL */ `
       lastName
       email
       isAdvisor
+      cometChatAuthToken
       bio
       college
       major
@@ -51,6 +52,7 @@ export const updateUser = /* GraphQL */ `
       lastName
       email
       isAdvisor
+      cometChatAuthToken
       bio
       college
       major
@@ -90,6 +92,7 @@ export const deleteUser = /* GraphQL */ `
       lastName
       email
       isAdvisor
+      cometChatAuthToken
       bio
       college
       major
@@ -135,6 +138,7 @@ export const createMeeting = /* GraphQL */ `
         lastName
         email
         isAdvisor
+        cometChatAuthToken
         bio
         college
         major
@@ -171,6 +175,7 @@ export const updateMeeting = /* GraphQL */ `
         lastName
         email
         isAdvisor
+        cometChatAuthToken
         bio
         college
         major
@@ -207,6 +212,7 @@ export const deleteMeeting = /* GraphQL */ `
         lastName
         email
         isAdvisor
+        cometChatAuthToken
         bio
         college
         major
@@ -243,6 +249,7 @@ export const createAdvisingCategory = /* GraphQL */ `
           lastName
           email
           isAdvisor
+          cometChatAuthToken
           bio
           college
           major
@@ -271,6 +278,7 @@ export const updateAdvisingCategory = /* GraphQL */ `
           lastName
           email
           isAdvisor
+          cometChatAuthToken
           bio
           college
           major
@@ -299,6 +307,7 @@ export const deleteAdvisingCategory = /* GraphQL */ `
           lastName
           email
           isAdvisor
+          cometChatAuthToken
           bio
           college
           major
