@@ -65,7 +65,7 @@ const requestAuthToken = uid => {
 };
 
 // Creates new BetterUni user in our DynamoDB database or fetches the already created user
-async function createUserInDB(user) {
+async function getCurrentUserFromDynamoDB(user) {
   const userAlreadyInDB = await API.graphql(
     graphqlOperation(GetUser, { id: user.attributes["custom:tuid"] })
   );
@@ -216,14 +216,14 @@ async function createUserInDB(user) {
   } else {
     // Return the user that's already in the DB to set user state
     console.log(
-      "createUserInDB: user is in the DB already, returning that user: ",
+      "getCurrentUserFromDynamoDB: user is in the DB already, returning that user: ",
       userAlreadyInDB.data.getUser
     );
 
     // If the CometChat user is already logged in, don't call the CometChat login() function
     CometChat.getLoggedinUser().then(user => {
       if (user === null) {
-        // TODO Log the user in using their authToken saved in our database
+        // Log the user in using their authToken saved in our database
         CometChat.login(userAlreadyInDB.data.getUser.cometChatAuthToken).then(
           cometChatUser => {
             console.log("Existing CometChat user login successful: ", {
@@ -263,7 +263,7 @@ export function App(props) {
       // Fetch currently authenticated user from database and create them in database if they're a new user
       Auth.currentAuthenticatedUser({ bypassCache: true })
         .then(async user => {
-          const returnedUser = await createUserInDB(user);
+          const returnedUser = await getCurrentUserFromDynamoDB(user);
           setUser(returnedUser);
           setTimeout(() => {
             setLoading(false);
