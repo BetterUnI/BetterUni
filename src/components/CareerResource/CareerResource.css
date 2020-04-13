@@ -1,0 +1,6 @@
+@media (max-width: 961px) {
+  /* tablet, landscape iPad, lo-res laptops ands desktops */
+  .hide-sm {
+    display: none !important;
+  }
+}
