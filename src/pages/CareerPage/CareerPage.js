@@ -99,7 +99,6 @@ const eventList = [
 ];
 
 export function CareerPage(props) {
-  const { className, users, ...rest } = props;
   const classes = useStyles();
   return (
     <>

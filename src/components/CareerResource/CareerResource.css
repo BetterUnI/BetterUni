@@ -1,6 +1,6 @@
 @media (max-width: 961px) {
   /* tablet, landscape iPad, lo-res laptops ands desktops */
-  .full-width-list {
-    width: 100%;
+  .hide-sm {
+    display: none !important;
   }
 }

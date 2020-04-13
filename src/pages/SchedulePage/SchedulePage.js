@@ -68,6 +68,7 @@ export function SchedulePage() {
     Will use UserContext to set UserContext provider data - this will update the current user's meeting data across all components
     See this video: https://youtu.be/lhMKvyLRWo0?t=265
   */
+  // eslint-disable-next-line no-unused-vars
   const user = useContext(UserContext);
 
   return (

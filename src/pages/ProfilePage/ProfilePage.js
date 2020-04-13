@@ -4,6 +4,7 @@ import { UserContext } from "../../UserContext";
 import MeetingsCalendar from "../../components/MeetingsCalendar/MeetingsCalendar";
 
 export function ProfilePage() {
+  // eslint-disable-next-line no-unused-vars
   const user = useContext(UserContext); // will use to display user's current meetings data with user.meetings array
 
   return (
