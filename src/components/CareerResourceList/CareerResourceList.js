@@ -39,7 +39,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function CareerResourceList(props) {
-  const { className, users, ...rest } = props;
   if (props.isEvent) {
     return <CareerEventList resourceList={props.resourceList} />;
   }
@@ -64,7 +63,11 @@ const CareerEventList = props => (
         </TableHead>
         <TableBody>
           {props.resourceList.map(resource => (
-            <CareerResource resource={resource} isEvent={true} />
+            <CareerResource
+              key={resource.id}
+              resource={resource}
+              isEvent={true}
+            />
           ))}
         </TableBody>
       </Table>
@@ -88,7 +91,7 @@ const ResourceList = props => (
         </TableHead>
         <TableBody>
           {props.resourceList.map(resource => (
-            <CareerResource resource={resource} />
+            <CareerResource key={resource.id} resource={resource} />
           ))}
         </TableBody>
       </Table>

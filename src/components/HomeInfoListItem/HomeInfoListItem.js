@@ -5,7 +5,7 @@ import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 
 const useStyles = makeStyles(theme => ({
   content: {
-    minWidth: 150,
+    maxWidth: 200,
     fontWeight: "bold"
   }
 }));
@@ -14,15 +14,11 @@ export default function HomeInfoListItem(props) {
   const classes = useStyles();
 
   return (
-    <div className="homeInfoListItem">
-      <TableRow hover key={props.title}>
-        <TableCell className={classes.content}>
-          {props.homelist.title}
-        </TableCell>
-        <TableCell>
-          <KeyboardArrowRightIcon></KeyboardArrowRightIcon>
-        </TableCell>
-      </TableRow>
-    </div>
+    <TableRow hover key={props.title}>
+      <TableCell className={classes.content}>{props.homelist.title}</TableCell>
+      <TableCell>
+        <KeyboardArrowRightIcon></KeyboardArrowRightIcon>
+      </TableCell>
+    </TableRow>
   );
 }
