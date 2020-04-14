@@ -12,7 +12,6 @@ import {
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
-import "./HomeInfoList.css";
 
 const useStyles = makeStyles(theme => ({
   root: {},
