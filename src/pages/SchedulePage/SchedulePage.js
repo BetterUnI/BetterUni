@@ -57,14 +57,11 @@ export function SchedulePage() {
   useEffect(() => {
     API.graphql(graphqlOperation(ListAdvisingCategories))
       .then(res => {
-        console.log(res.data.listAdvisingCategorys.items);
         const advCats = res.data.listAdvisingCategorys.items;
         setAdvCats(advCats);
       })
       .catch(err => console.log(err));
   }, []);
-
-  console.log("returnedAdvCats", advCats);
 
   return (
     <>
