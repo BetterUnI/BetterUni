@@ -1,4 +1,5 @@
 import React from "react";
+import "./CareerResourceList.css";
 
 import { makeStyles } from "@material-ui/styles";
 import {
@@ -33,13 +34,12 @@ const useStyles = makeStyles(theme => ({
   actions: {
     justifyContent: "flex-end"
   },
-  tabelhead: {
+  tableHead: {
     backgroundColor: "black"
   }
 }));
 
 export default function CareerResourceList(props) {
-  const { className, users, ...rest } = props;
   if (props.isEvent) {
     return <CareerEventList resourceList={props.resourceList} />;
   }
@@ -53,18 +53,22 @@ const CareerEventList = props => (
     </h3>
     <Card className={useStyles.content}>
       <Table className={useStyles.inner}>
-        <TableHead className={useStyles.tabelhead}>
+        <TableHead className={useStyles.tableHead}>
           <TableRow>
             <TableCell>Event</TableCell>
             <TableCell>Date</TableCell>
-            <TableCell>Description</TableCell>
-            <TableCell>Location</TableCell>
+            <TableCell className="hide-sm">Description</TableCell>
+            <TableCell className="hide-sm">Location</TableCell>
             <TableCell>Link</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {props.resourceList.map(resource => (
-            <CareerResource resource={resource} isEvent={true} />
+            <CareerResource
+              key={resource.id}
+              resource={resource}
+              isEvent={true}
+            />
           ))}
         </TableBody>
       </Table>
@@ -82,13 +86,13 @@ const ResourceList = props => (
         <TableHead>
           <TableRow>
             <TableCell>Resource</TableCell>
-            <TableCell>Description</TableCell>
+            <TableCell className="hide-sm">Description</TableCell>
             <TableCell>Link</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {props.resourceList.map(resource => (
-            <CareerResource resource={resource} />
+            <CareerResource key={resource.id} resource={resource} />
           ))}
         </TableBody>
       </Table>

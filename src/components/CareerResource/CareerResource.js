@@ -1,4 +1,5 @@
 import React from "react";
+import "./CareerResource.css";
 import { makeStyles } from "@material-ui/styles";
 import { TableRow, TableCell } from "@material-ui/core";
 
@@ -20,7 +21,7 @@ export default function CareerResource(props) {
       <TableCell className={useStyles.resourceName}>
         {props.resource.name}
       </TableCell>
-      <TableCell>{props.resource.description}</TableCell>
+      <TableCell className="hide-sm">{props.resource.description}</TableCell>
       <TableCell>
         <a href={props.resource.link}>{props.resource.link}</a>
       </TableCell>
@@ -35,8 +36,8 @@ const Event = props => (
     </TableCell>
     {/*if there is a date then we know it is an event*/}
     <TableCell>{props.resource.date}</TableCell>
-    <TableCell>{props.resource.description}</TableCell>
-    <TableCell>{props.resource.location}</TableCell>
+    <TableCell className="hide-sm">{props.resource.description}</TableCell>
+    <TableCell className="hide-sm">{props.resource.location}</TableCell>
     <TableCell>
       <a href={props.resource.link}>{props.resource.link}</a>
     </TableCell>

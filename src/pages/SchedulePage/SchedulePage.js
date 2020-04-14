@@ -1,5 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../UserContext";
+import { API, graphqlOperation } from "aws-amplify";
+import { listAdvisingCategorys as ListAdvisingCategories } from "../../graphql/queries";
 import AdvisorList from "../../components/AdvisorList/AdvisorList";
 import CategoryList from "../../components/CategoryList/CategoryList";
 
@@ -42,39 +44,30 @@ const advisors = [
   }
 ];
 
-const categories = [
-  {
-    title: "CST Advising"
-  },
-  {
-    title: "Counseling"
-  },
-  {
-    title: "Career Center"
-  },
-  {
-    title: "Tutoring"
-  },
-  {
-    title: "Writing Center"
-  },
-  {
-    title: "Student Health Services"
-  }
-];
-
 export function SchedulePage() {
   /* 
     Will use UserContext to set UserContext provider data - this will update the current user's meeting data across all components
     See this video: https://youtu.be/lhMKvyLRWo0?t=265
   */
+  // eslint-disable-next-line no-unused-vars
   const user = useContext(UserContext);
+
+  const [advCats, setAdvCats] = useState([]);
+
+  useEffect(() => {
+    API.graphql(graphqlOperation(ListAdvisingCategories))
+      .then(res => {
+        const advCats = res.data.listAdvisingCategorys.items;
+        setAdvCats(advCats);
+      })
+      .catch(err => console.log(err));
+  }, []);
 
   return (
     <>
       <h1>Schedule page</h1>
       <p>This is the schedule page</p>
-      <CategoryList categories={categories} />
+      <CategoryList categories={advCats} />
       <AdvisorList advisors={advisors} />
     </>
   );

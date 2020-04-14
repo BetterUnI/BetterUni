@@ -33,7 +33,7 @@ export default function CategoryList(props) {
           <Table className={classes.inner}>
             <TableBody>
               {props.categories.map(category => (
-                <Category key={category.title} category={category} />
+                <Category key={category.name} category={category} />
               ))}
             </TableBody>
           </Table>

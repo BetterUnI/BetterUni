@@ -6,17 +6,20 @@ import {
   CardHeader,
   CardContent,
   Divider,
-  IconButton,
+  Button,
   Table,
   TableBody
 } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
-import "./HomeInfoList.css";
 
 const useStyles = makeStyles(theme => ({
   root: {},
   content: {
-    padding: 0
+    flex: "auto",
+    [theme.breakpoints.down("sm")]: {
+      marginRight: 0
+    }
   },
   inner: {
     height: 200,
@@ -27,9 +30,10 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center"
   },
   position: {
-    float: "left",
-    paddingLeft: 30,
-    paddingRight: 30
+    display: "flex",
+    [theme.breakpoints.down("md")]: {
+      marginTop: 20
+    }
   },
   avatarBackgroundColor: {
     backgroundColor: "#765BF7"
@@ -58,8 +62,8 @@ export default function HomeInfoList(props) {
           <div className={classes.inner}>
             <Table>
               <TableBody>
-                {props.homelists.map(homelist => (
-                  <HomeInfoListItem homelist={homelist} />
+                {props.homeLists.map(homelist => (
+                  <HomeInfoListItem key={homelist.title} homelist={homelist} />
                 ))}
               </TableBody>
             </Table>
@@ -67,9 +71,19 @@ export default function HomeInfoList(props) {
         </CardContent>
         <Divider />
         <div className={classes.iconCenterAlignment}>
-          <IconButton>
-            <KeyboardArrowDownIcon fontSize="large" />
-          </IconButton>
+          {props.listTitle === "Career Events" ? (
+            <Button component={Link} to="/career">
+              <KeyboardArrowDownIcon fontSize="large" />
+            </Button>
+          ) : props.listTitle === "Upcoming Meetings" ? (
+            <Button component={Link} to="/meetings">
+              <KeyboardArrowDownIcon fontSize="large" />
+            </Button>
+          ) : (
+            <Button href="http://www.temple.edu/vpus/advising/offices.html">
+              <KeyboardArrowDownIcon fontSize="large" />
+            </Button>
+          )}
         </div>
       </Card>
     </div>
