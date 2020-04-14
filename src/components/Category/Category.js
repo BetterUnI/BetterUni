@@ -28,7 +28,7 @@ export default function Category(props) {
   const classes = useStyles();
 
   return (
-    <TableRow className="category" hover key={props.category.title}>
+    <TableRow className="category" hover key={props.category.name}>
       <TableCell className={classes.cell}>
         <Box
           className={classes.nameContainer}
@@ -38,7 +38,7 @@ export default function Category(props) {
           padding={1}
         >
           <Typography className={classes.text}>
-            {props.category.title}
+            {props.category.name}
           </Typography>
         </Box>
       </TableCell>
