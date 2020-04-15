@@ -254,7 +254,7 @@ async function getCurrentUserFromDynamoDB(user) {
 async function googleSignIn() {
   // Initializes Google authentication for BetterUni user
   let auth2 = await loadAuth2(
-    "399957999889-j4a1hhcp9kdtk2cl5qkgrfv8cgme9fpe.apps.googleusercontent.com",
+    process.env.REACT_APP_CALENDAR_CLIENT_ID,
     "https://www.googleapis.com/auth/calendar"
   );
 
