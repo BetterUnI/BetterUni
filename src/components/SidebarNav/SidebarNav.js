@@ -87,6 +87,7 @@ export const SidebarNav = props => {
                     );
                   }
                 );
+                // Sign out user from Google
                 gapi.auth2
                   .getAuthInstance()
                   .signOut()

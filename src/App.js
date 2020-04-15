@@ -252,20 +252,24 @@ async function getCurrentUserFromDynamoDB(user) {
 }
 
 async function googleSignIn() {
-  //Initializes Google authentication
+  // Initializes Google authentication for BetterUni user
   let auth2 = await loadAuth2(
     "399957999889-j4a1hhcp9kdtk2cl5qkgrfv8cgme9fpe.apps.googleusercontent.com",
     "https://www.googleapis.com/auth/calendar"
   );
 
-  console.log("Is signed in", auth2.isSignedIn.get());
   if (!auth2.isSignedIn.get()) {
     auth2
       .signIn()
       .then(res => {
         console.log("Google user signed in: ", res);
       })
-      .catch(err => console.log(err));
+      .catch(err =>
+        console.log(
+          "There was an error signing the user into their Google account: ",
+          err
+        )
+      );
   }
 }
 
@@ -279,7 +283,7 @@ export function App(props) {
       // Initialize CometChat
       initCometChat();
 
-      // Initializes Google Auth and provides SignIn interface
+      // Initializes Google Auth and provides SignIn interface for Google OAuth flow
       googleSignIn();
 
       // Fetch currently authenticated user from database and create them in database if they're a new user
