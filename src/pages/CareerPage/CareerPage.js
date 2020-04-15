@@ -29,75 +29,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const resourceList = [
-  {
-    id: 0,
-    name: "Handshake",
-    description:
-      "Handshake is the #1 way college students find jobs. Join today to explore career options, find jobs and internships, and connect with employers.",
-    link: "https://temple.joinhandshake.com/"
-  },
-  {
-    id: 4,
-    name: "LinkedIn",
-    description:
-      "LinkedIn is an American business and employment-oriented service that operates via websites and mobile apps. It is mainly used for professional networking, including employers posting jobs and job seekers posting their CVs.",
-    link: "https://www.linkedin.com"
-  },
-  {
-    id: 5,
-    name: "Indeed",
-    description:
-      "Indeed is an American worldwide employment-related search engine for job listings.",
-    link: "https://www.linkedin.com"
-  },
-  {
-    id: 6,
-    name: "Advisor Scheduler",
-    description: "At BetterUni, we have an easy to use advisor scheduler.",
-    link: "Schedule"
-  }
-];
-
-const eventList = [
-  {
-    id: 1,
-    name: "Career Fair",
-    date: "October 5, 2020",
-    location: "SAC 200C",
-    description:
-      "Network with recruiters from over 50 different companies. Formal dress code required.",
-    link: "https://temple.joinhandshake.com/"
-  },
-  {
-    id: 2,
-    name: "Resume Review Workshop",
-    date: "October 17, 2020",
-    location: "SAC 200B",
-    description:
-      "Meet up with a CST advisor to get a resume review in the Student Center!",
-    link: "https://temple.joinhandshake.com/"
-  },
-  {
-    id: 3,
-    name: "Penn Hackathon",
-    date: "October 23-24, 2020",
-    location: "University of Pennsylvania",
-    description:
-      "Penn University is having its annual hackathon on October 23-24. Be sure to sign up on Handshake by October 7th if you wish to attend.",
-    link: "https://temple.joinhandshake.com/"
-  },
-  {
-    id: 8,
-    name: "Vanguard Networking Event",
-    date: "October 26, 2020",
-    location: "SERC 358",
-    description:
-      "Recruiters from Vanguard will be visiting on campus in the SERC from 12-3 PM. Bring your resume!",
-    link: "https://temple.joinhandshake.com/"
-  }
-];
-
 export function CareerPage(props) {
   const classes = useStyles();
   return (
@@ -110,8 +41,8 @@ export function CareerPage(props) {
           help you.
         </p>
       </div>
-      <CareerResourceList resourceList={resourceList} />
-      <CareerResourceList resourceList={eventList} isEvent={true} />
+      <CareerResourceList />
+      <CareerResourceList isEvent={true} />
     </>
   );
 }
