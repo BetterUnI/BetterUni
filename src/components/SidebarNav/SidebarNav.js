@@ -8,6 +8,7 @@ import { makeStyles } from "@material-ui/styles";
 import { List, ListItem, Button, colors } from "@material-ui/core";
 import { Auth } from "aws-amplify";
 import { CometChat } from "@cometchat-pro/chat";
+import { gapi } from "gapi-script";
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -86,6 +87,11 @@ export const SidebarNav = props => {
                     );
                   }
                 );
+                gapi.auth2
+                  .getAuthInstance()
+                  .signOut()
+                  .then(res => console.log("Google user signed out"))
+                  .catch(err => console.log(err));
               }}
             >
               <div className={classes.icon}>{page.icon}</div>

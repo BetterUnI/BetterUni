@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import { UserContext } from "./UserContext";
 import axios from "axios";
+import { loadAuth2 } from "gapi-script";
 
 // Routing imports
 import { Router } from "react-router-dom";
@@ -250,6 +251,24 @@ async function getCurrentUserFromDynamoDB(user) {
   }
 }
 
+async function googleSignIn() {
+  //Initializes Google authentication
+  let auth2 = await loadAuth2(
+    "399957999889-j4a1hhcp9kdtk2cl5qkgrfv8cgme9fpe.apps.googleusercontent.com",
+    "https://www.googleapis.com/auth/calendar"
+  );
+
+  console.log("Is signed in", auth2.isSignedIn.get());
+  if (!auth2.isSignedIn.get()) {
+    auth2
+      .signIn()
+      .then(res => {
+        console.log("Google user signed in: ", res);
+      })
+      .catch(err => console.log(err));
+  }
+}
+
 export function App(props) {
   const [user, setUser] = useState({});
   const [isLoading, setLoading] = useState(true);
@@ -259,6 +278,9 @@ export function App(props) {
     if (props.authState === "signedIn") {
       // Initialize CometChat
       initCometChat();
+
+      // Initializes Google Auth and provides SignIn interface
+      googleSignIn();
 
       // Fetch currently authenticated user from database and create them in database if they're a new user
       Auth.currentAuthenticatedUser({ bypassCache: true })
