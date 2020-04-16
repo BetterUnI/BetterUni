@@ -13,8 +13,10 @@ const useStyles = makeStyles(theme => ({
     float: "left"
   },
   inner: {
-    minWidth: 290,
-    padding: 10
+    width: "100%",
+    padding: 5,
+    height: 400,
+    overflow: "auto"
   },
   actions: {
     justifyContent: "flex-end"
@@ -30,13 +32,15 @@ export default function CategoryList(props) {
           <h3>
             <strong>Categories</strong>{" "}
           </h3>
-          <Table className={classes.inner}>
-            <TableBody>
-              {props.categories.map(category => (
-                <Category key={category.name} category={category} />
-              ))}
-            </TableBody>
-          </Table>
+          <div className={classes.inner}>
+            <Table>
+              <TableBody>
+                {props.categories.map(category => (
+                  <Category key={category.name} category={category} />
+                ))}
+              </TableBody>
+            </Table>
+          </div>
         </CardContent>
       </Card>
     </div>

@@ -13,8 +13,10 @@ const useStyles = makeStyles(theme => ({
     maxHeight: 525
   },
   inner: {
-    maxWidth: 290,
-    padding: 10
+    width: "100%",
+    padding: 5,
+    height: 400,
+    overflow: "auto"
   },
   actions: {
     justifyContent: "flex-end"
@@ -30,13 +32,15 @@ export default function AdvisorList(props) {
           <h3>
             <strong>Staff</strong>{" "}
           </h3>
-          <Table className={classes.inner}>
-            <TableBody>
-              {props.advisors.map(advisor => (
-                <Advisor key={advisor.id} advisor={advisor} />
-              ))}
-            </TableBody>
-          </Table>
+          <div className={classes.inner}>
+            <Table>
+              <TableBody>
+                {props.advisors.map(advisor => (
+                  <Advisor key={advisor.id} advisor={advisor} />
+                ))}
+              </TableBody>
+            </Table>
+          </div>
         </CardContent>
       </Card>
     </div>
