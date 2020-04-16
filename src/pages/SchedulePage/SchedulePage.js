@@ -4,6 +4,7 @@ import { API, graphqlOperation } from "aws-amplify";
 import { listAdvisingCategorys as ListAdvisingCategories } from "../../graphql/queries";
 import AdvisorList from "../../components/AdvisorList/AdvisorList";
 import CategoryList from "../../components/CategoryList/CategoryList";
+import SchedulerCalendar from "../../components/SchedulerCalendar/SchedulerCalendar";
 
 const advisors = [
   {
@@ -69,6 +70,7 @@ export function SchedulePage() {
       <p>This is the schedule page</p>
       <CategoryList categories={advCats} />
       <AdvisorList advisors={advisors} />
+      <SchedulerCalendar />
     </>
   );
 }
