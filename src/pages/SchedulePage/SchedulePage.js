@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/styles";
 import { listAdvisingCategorys as ListAdvisingCategories } from "../../graphql/queries";
 import AdvisorList from "../../components/AdvisorList/AdvisorList";
 import CategoryList from "../../components/CategoryList/CategoryList";
+import SchedulerCalendar from "../../components/SchedulerCalendar/SchedulerCalendar";
 
 const useStyles = makeStyles(theme => ({
   hero: {
@@ -97,6 +98,7 @@ export function SchedulePage() {
         <CategoryList categories={advCats} />
         <AdvisorList advisors={advisors} />
       </div>
+      <SchedulerCalendar />
     </>
   );
 }
