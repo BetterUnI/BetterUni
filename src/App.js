@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import { UserContext } from "./UserContext";
 import axios from "axios";
-import { loadAuth2 } from "gapi-script";
+import { gapi, loadAuth2 } from "gapi-script";
 
 // Routing imports
 import { Router } from "react-router-dom";
@@ -22,6 +22,9 @@ import { CircularProgress } from "@material-ui/core";
 
 // CometChat API imports
 import { CometChat } from "@cometchat-pro/chat";
+
+const discoverDocs =
+  "https://content.googleapis.com/discovery/v1/apis/calendar/v3/rest";
 
 const cometChatConfig = new CometChat.AppSettingsBuilder()
   .subscribePresenceForAllUsers()
@@ -273,6 +276,52 @@ async function googleSignIn() {
   }
 }
 
+function makeApiCall() {
+  gapi.load("client", {
+    callback: function() {
+      // Handles gapi.client initialization for the Google Calendar API
+      initGapiClient();
+
+      // Handles loading the client library interface to the Calendar API
+      loadGapiClient();
+    },
+    onerror: function() {
+      // Handle loading error.
+      alert("gapi.client failed to load!");
+    },
+    timeout: 5000, // 5 seconds.
+    ontimeout: function() {
+      // Handle timeout.
+      alert("gapi.client could not load in a timely manner!");
+    }
+  });
+}
+
+function initGapiClient() {
+  gapi.client.init({
+    apiKey: process.env.REACT_APP_CALENDAR_API_KEY,
+    discoverDocs: discoverDocs
+  });
+}
+
+function loadGapiClient() {
+  gapi.client.load(discoverDocs).then(
+    function() {
+      console.log("GAPI client loaded for API");
+      var request = gapi.client.calendar.events.list({
+        calendarId: "primary"
+      });
+      request.execute(function(resp) {
+        console.log(resp);
+        // TODO: Save the resp.items object so it can be used throughout the app
+      });
+    },
+    function(err) {
+      console.error("Error loading GAPI client for API", err);
+    }
+  );
+}
+
 export function App(props) {
   const [user, setUser] = useState({});
   const [isLoading, setLoading] = useState(true);
@@ -285,6 +334,9 @@ export function App(props) {
 
       // Initializes Google Auth and provides SignIn interface for Google OAuth flow
       googleSignIn();
+
+      // Makes the Google Calendar API call
+      makeApiCall();
 
       // Fetch currently authenticated user from database and create them in database if they're a new user
       Auth.currentAuthenticatedUser({ bypassCache: true })
