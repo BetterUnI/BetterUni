@@ -1,5 +1,6 @@
 import React from "react";
 import HomeInfoListItem from "../HomeInfoListItem/HomeInfoListItem";
+import MeetingListItem from "../MeetingListItem/MeetingListItem";
 import { makeStyles } from "@material-ui/styles";
 import {
   Card,
@@ -61,11 +62,22 @@ export default function HomeInfoList(props) {
         <CardContent className={classes.content}>
           <div className={classes.inner}>
             <Table>
-              <TableBody>
-                {props.homeLists.map(homelist => (
-                  <HomeInfoListItem key={homelist.name} homelist={homelist} />
-                ))}
-              </TableBody>
+              {props.listTitle === "Upcoming Meetings" ? (
+                <TableBody>
+                  {props.homeLists.map(homelist => (
+                    <MeetingListItem
+                      key={homelist.reasonForMeeting}
+                      homelist={homelist}
+                    />
+                  ))}
+                </TableBody>
+              ) : (
+                <TableBody>
+                  {props.homeLists.map(homelist => (
+                    <HomeInfoListItem key={homelist.name} homelist={homelist} />
+                  ))}
+                </TableBody>
+              )}
             </Table>
           </div>
         </CardContent>

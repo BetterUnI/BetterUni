@@ -14,8 +14,10 @@ export default function HomeInfoListItem(props) {
   const classes = useStyles();
 
   return (
-    <TableRow hover key={props.name}>
-      <TableCell className={classes.content}>{props.homelist.name}</TableCell>
+    <TableRow hover key={props.reasonForMeeting}>
+      <TableCell className={classes.content}>
+        {props.homelist.reasonForMeeting}
+      </TableCell>
       <TableCell>
         <KeyboardArrowRightIcon></KeyboardArrowRightIcon>
       </TableCell>

@@ -3,6 +3,7 @@ import { UserContext } from "../../UserContext";
 import { API, graphqlOperation } from "aws-amplify";
 import { listAdvisingCategorys as ListAdvisingCategories } from "../../graphql/queries";
 import { listCareerResources as ListCareerResources } from "../../graphql/queries";
+import { listMeetings as ListMeetings } from "../../graphql/queries";
 import { makeStyles } from "@material-ui/styles";
 import HomeInfoList from "../../components/HomeInfoList/HomeInfoList";
 import SupervisorAccountOutlinedIcon from "@material-ui/icons/SupervisorAccountOutlined";
@@ -51,66 +52,18 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#70B757"
   }
 }));
-
-const offices = [
-  {
-    title: "CST Advising"
-  },
-  {
-    title: "Counseling"
-  },
-  {
-    title: "Career Center"
-  },
-  {
-    title: "Tutoring"
-  },
-  {
-    title: "Writing Center"
-  },
-  {
-    title: "Student Health Services"
-  },
-  {
-    title: "Fox Advising"
-  },
-  {
-    title: "Engineering Advising"
-  },
-  {
-    title: "Klein Advising"
-  },
-  {
-    title: "Boyer Advising"
-  }
-];
-
-const event = [
-  {
-    title: "Career Fair @ Temple University"
-  },
-  {
-    title: "Resume Review Workshop @ SAC"
-  },
-  {
-    title: "Penn Hackathon @ UPenn"
-  },
-  {
-    title: "Vanguard Networking Event @ SERC"
-  }
-];
 const meeting = [
   {
-    title: "Today 9am-10am : Sarah Parker"
+    name: "Today 9am-10am : Sarah Parker"
   },
   {
-    title: "Tomorrow 11am-12pm : Jack Doe"
+    name: "Tomorrow 11am-12pm : Jack Doe"
   },
   {
-    title: "Next week: Jane Smith"
+    name: "Next week: Jane Smith"
   },
   {
-    title: "Next week: Dr Lasname"
+    name: "Next week: Dr Lasname"
   }
 ];
 export function HomePage(props) {
@@ -119,25 +72,35 @@ export function HomePage(props) {
 
   const [advCats, setAdvCats] = useState([]);
   const [resources, setResources] = useState([]);
+  const [meetings, setMeetings] = useState([]);
+
   useEffect(() => {
     API.graphql(graphqlOperation(ListAdvisingCategories))
       .then(res => {
         const advCats = res.data.listAdvisingCategorys.items;
         setAdvCats(advCats);
+        console.log(advCats);
       })
       .catch(err => console.log(err));
   }, []);
-  console.log("returned these advcats: ", advCats);
-
   useEffect(() => {
     API.graphql(graphqlOperation(ListCareerResources))
       .then(res => {
         const resources = res.data.listCareerResources.items;
         setResources(resources);
+        console.log(resources);
       })
       .catch(err => console.log(err));
   }, []);
-  console.log("returned these resources: ", resources);
+  useEffect(() => {
+    API.graphql(graphqlOperation(ListMeetings))
+      .then(res => {
+        const meetings = res.data.listMeetings.items;
+        setMeetings(meetings);
+        console.log("Meetings: ", meetings);
+      })
+      .catch(err => console.log(err));
+  }, []);
   return (
     <>
       <div className={classes.hero}>
@@ -193,7 +156,7 @@ export function HomePage(props) {
             </ListIcon>
           }
           listTitle="Upcoming Meetings"
-          homeLists={meeting}
+          homeLists={meetings}
         />
       </div>
     </>
