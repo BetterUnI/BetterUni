@@ -33,12 +33,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"eventdata",
+						"eventdata2",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"eventdata",
+									"eventdata2",
 									"-",
 									{
 										"Ref": "env"
@@ -68,7 +68,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-betteruni-shared-113204-deployment",
-					"S3Key": "amplify-builds/eventdata-395a43565831396e5648-build.zip"
+					"S3Key": "amplify-builds/eventdata2-4766484d6c4662337776-build.zip"
 				}
 			}
 		},
@@ -78,12 +78,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"betteruniLambdaRole415392f5",
+						"betteruniLambdaRolea6f42f24",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"betteruniLambdaRole415392f5",
+									"betteruniLambdaRolea6f42f24",
 									"-",
 									{
 										"Ref": "env"
