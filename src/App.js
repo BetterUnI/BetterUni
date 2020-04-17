@@ -278,6 +278,7 @@ async function loadGapiClient() {
     callback: function() {
       // Handles gapi.client initialization for the Google Calendar API
       initGapiClient();
+      console.log("Initialized Google API Client");
     },
     onerror: function() {
       // Handle loading error.
