@@ -7,6 +7,8 @@ import { listAdvisingCategorys as ListAdvisingCategories } from "../../graphql/q
 import AdvisorList from "../../components/AdvisorList/AdvisorList";
 import CategoryList from "../../components/CategoryList/CategoryList";
 import AnimatedModal from "../../components/Modal/AnimatedModal";
+import SchedulerCalendar from "../../components/SchedulerCalendar/SchedulerCalendar";
+
 
 const useStyles = makeStyles(theme => ({
   hero: {
@@ -104,6 +106,7 @@ export function SchedulePage() {
         <AdvisorList advisors={advisors} />
       </div>
       <AnimatedModal />
+      <SchedulerCalendar />
     </>
   );
 }
