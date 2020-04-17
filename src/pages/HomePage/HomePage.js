@@ -1,4 +1,6 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useContext, useEffect, useState } from "react";
+// eslint-disable-next-line no-unused-vars
 import { UserContext } from "../../UserContext";
 import { API, graphqlOperation } from "aws-amplify";
 import { listAdvisingCategorys as ListAdvisingCategories } from "../../graphql/queries";
