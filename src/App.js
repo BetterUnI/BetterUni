@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import { UserContext } from "./UserContext";
 import axios from "axios";
-import { loadAuth2 } from "gapi-script";
+import { gapi, loadAuth2 } from "gapi-script";
 
 // Routing imports
 import { Router } from "react-router-dom";
@@ -273,6 +273,33 @@ async function googleSignIn() {
   }
 }
 
+async function loadGapiClient() {
+  return await gapi.load("client", {
+    callback: function() {
+      // Handles gapi.client initialization for the Google Calendar API
+      initGapiClient();
+      console.log("Initialized Google API Client");
+    },
+    onerror: function() {
+      // Handle loading error.
+      alert("gapi.client failed to load!");
+    },
+    timeout: 5000, // 5 seconds.
+    ontimeout: function() {
+      // Handle timeout.
+      alert("gapi.client could not load in a timely manner!");
+    }
+  });
+}
+
+function initGapiClient() {
+  gapi.client.init({
+    apiKey: process.env.REACT_APP_CALENDAR_API_KEY,
+    discoverDocs:
+      "https://content.googleapis.com/discovery/v1/apis/calendar/v3/rest"
+  });
+}
+
 export function App(props) {
   const [user, setUser] = useState({});
   const [isLoading, setLoading] = useState(true);
@@ -291,6 +318,7 @@ export function App(props) {
         .then(async user => {
           const returnedUser = await getCurrentUserFromDynamoDB(user);
           setUser(returnedUser);
+          loadGapiClient();
           setTimeout(() => {
             setLoading(false);
           }, 1000);

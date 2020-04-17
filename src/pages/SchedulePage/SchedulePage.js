@@ -2,9 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../UserContext";
 import { API, graphqlOperation } from "aws-amplify";
 import { makeStyles } from "@material-ui/styles";
+import Modal from "react-modal";
 import { listAdvisingCategorys as ListAdvisingCategories } from "../../graphql/queries";
 import AdvisorList from "../../components/AdvisorList/AdvisorList";
 import CategoryList from "../../components/CategoryList/CategoryList";
+import AnimatedModal from "../../components/Modal/AnimatedModal";
+import SchedulerCalendar from "../../components/SchedulerCalendar/SchedulerCalendar";
+
 
 const useStyles = makeStyles(theme => ({
   hero: {
@@ -68,6 +72,8 @@ const advisors = [
   }
 ];
 
+Modal.setAppElement("#root");
+
 export function SchedulePage() {
   /* 
     Will use UserContext to set UserContext provider data - this will update the current user's meeting data across all components
@@ -78,6 +84,7 @@ export function SchedulePage() {
   const user = useContext(UserContext);
 
   const [advCats, setAdvCats] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
     API.graphql(graphqlOperation(ListAdvisingCategories))
@@ -88,6 +95,7 @@ export function SchedulePage() {
       .catch(err => console.log(err));
   }, []);
 
+  console.log("Schedule Page: modal = ", modalIsOpen);
   return (
     <>
       <div className={classes.hero}>
@@ -97,6 +105,8 @@ export function SchedulePage() {
         <CategoryList categories={advCats} />
         <AdvisorList advisors={advisors} />
       </div>
+      <AnimatedModal />
+      <SchedulerCalendar />
     </>
   );
 }
