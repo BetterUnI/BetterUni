@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function AnimatedModal(props) {
+export default function SchedulerCalendarModal(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
