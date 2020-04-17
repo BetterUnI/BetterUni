@@ -9,7 +9,6 @@ import CategoryList from "../../components/CategoryList/CategoryList";
 import AnimatedModal from "../../components/Modal/AnimatedModal";
 import SchedulerCalendar from "../../components/SchedulerCalendar/SchedulerCalendar";
 
-
 const useStyles = makeStyles(theme => ({
   hero: {
     borderRadius: 4,
@@ -79,11 +78,12 @@ export function SchedulePage() {
     Will use UserContext to set UserContext provider data - this will update the current user's meeting data across all components
     See this video: https://youtu.be/lhMKvyLRWo0?t=265
   */
-  // eslint-disable-next-line no-unused-vars
   const classes = useStyles();
+  // eslint-disable-next-line no-unused-vars
   const user = useContext(UserContext);
 
   const [advCats, setAdvCats] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
