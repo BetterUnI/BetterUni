@@ -103,18 +103,6 @@ export function SchedulePage() {
         <CategoryList categories={advCats} />
         <AdvisorList advisors={advisors} />
       </div>
-      {/* <button onClick={() => setModalIsOpen(true)}> Open modal</button>
-      <Modal
-        className={classes.modal}
-        isOpen={modalIsOpen}
-        onRequestClose={() => setModalIsOpen(false)}
-      >
-        <div>
-          <h1>i am modal</h1>
-          <h1>i am modhdufhsdal</h1>
-          <button onClick={() => setModalIsOpen(false)}> Close modal </button>
-        </div>
-      </Modal> */}
       <AnimatedModal />
     </>
   );
