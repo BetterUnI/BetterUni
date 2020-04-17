@@ -63,7 +63,7 @@ export default function HomeInfoList(props) {
             <Table>
               <TableBody>
                 {props.homeLists.map(homelist => (
-                  <HomeInfoListItem key={homelist.title} homelist={homelist} />
+                  <HomeInfoListItem key={homelist.name} homelist={homelist} />
                 ))}
               </TableBody>
             </Table>

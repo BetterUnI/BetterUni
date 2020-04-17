@@ -1,7 +1,8 @@
-// eslint-disable-next-line no-unused-vars
-import React, { useContext } from "react";
-// eslint-disable-next-line no-unused-vars
+import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../UserContext";
+import { API, graphqlOperation } from "aws-amplify";
+import { listAdvisingCategorys as ListAdvisingCategories } from "../../graphql/queries";
+import { listCareerResources as ListCareerResources } from "../../graphql/queries";
 import { makeStyles } from "@material-ui/styles";
 import HomeInfoList from "../../components/HomeInfoList/HomeInfoList";
 import SupervisorAccountOutlinedIcon from "@material-ui/icons/SupervisorAccountOutlined";
@@ -114,7 +115,29 @@ const meeting = [
 ];
 export function HomePage(props) {
   const classes = useStyles();
+  const user = useContext(UserContext);
 
+  const [advCats, setAdvCats] = useState([]);
+  const [resources, setResources] = useState([]);
+  useEffect(() => {
+    API.graphql(graphqlOperation(ListAdvisingCategories))
+      .then(res => {
+        const advCats = res.data.listAdvisingCategorys.items;
+        setAdvCats(advCats);
+      })
+      .catch(err => console.log(err));
+  }, []);
+  console.log("returned these advcats: ", advCats);
+
+  useEffect(() => {
+    API.graphql(graphqlOperation(ListCareerResources))
+      .then(res => {
+        const resources = res.data.listCareerResources.items;
+        setResources(resources);
+      })
+      .catch(err => console.log(err));
+  }, []);
+  console.log("returned these resources: ", resources);
   return (
     <>
       <div className={classes.hero}>
@@ -146,7 +169,7 @@ export function HomePage(props) {
             </ListIcon>
           }
           listTitle="Advising Offices"
-          homeLists={offices}
+          homeLists={advCats}
         />
         <HomeInfoList
           avatar={
@@ -158,7 +181,7 @@ export function HomePage(props) {
             </ListIcon>
           }
           listTitle="Career Events"
-          homeLists={event}
+          homeLists={resources}
         />
         <HomeInfoList
           avatar={
