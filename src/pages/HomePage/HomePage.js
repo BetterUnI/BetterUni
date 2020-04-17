@@ -52,20 +52,6 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#70B757"
   }
 }));
-const meeting = [
-  {
-    name: "Today 9am-10am : Sarah Parker"
-  },
-  {
-    name: "Tomorrow 11am-12pm : Jack Doe"
-  },
-  {
-    name: "Next week: Jane Smith"
-  },
-  {
-    name: "Next week: Dr Lasname"
-  }
-];
 export function HomePage(props) {
   const classes = useStyles();
   const user = useContext(UserContext);
@@ -79,7 +65,6 @@ export function HomePage(props) {
       .then(res => {
         const advCats = res.data.listAdvisingCategorys.items;
         setAdvCats(advCats);
-        console.log(advCats);
       })
       .catch(err => console.log(err));
   }, []);
@@ -88,7 +73,6 @@ export function HomePage(props) {
       .then(res => {
         const resources = res.data.listCareerResources.items;
         setResources(resources);
-        console.log(resources);
       })
       .catch(err => console.log(err));
   }, []);
@@ -97,7 +81,6 @@ export function HomePage(props) {
       .then(res => {
         const meetings = res.data.listMeetings.items;
         setMeetings(meetings);
-        console.log("Meetings: ", meetings);
       })
       .catch(err => console.log(err));
   }, []);
