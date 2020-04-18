@@ -35,7 +35,16 @@ exports.handler = async (event, context) => {
   const title = a(".l-content-inner")
     .children("h1")
     .text();
+  const date = a(".field--event-body")
+    .children("p")
+    .next()
+    .text();
+  const description = a(".field--event-body")
+    .children("p")
+    .text();
+
   console.log("TITLE: " + title);
+  console.log("DATE" + date);
 
   return {
     statusCode: 200,
