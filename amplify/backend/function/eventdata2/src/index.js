@@ -1,50 +1,48 @@
 // in index.js - make sure to `yarn add axios`in this directory - you can use `amplify invoke functionname` to test function running
 const axios = require("axios");
 const cheerio = require("cheerio");
-const fs = require("fs");
 
 exports.handler = async (event, context) => {
   console.log(`EVENT: ${JSON.stringify(event)}`);
+
+  var today = new Date();
 
   const html = await axios.get(
     "https://events.temple.edu/calendar-grid?js-filter=true"
   );
   const $ = cheerio.load(html.data);
   //console.log($.html());
-  let eventLinks = [];
+  let eventData = [];
 
   $(".fullcalendar-event").each((i, elem) => {
     if (i <= 5) {
-      eventLinks.push({
-        // title: $(elem)
-        //   .children("h3")
-        //   .text(),
-        link: $(elem) //gets link
-          .find(".fullcalendar-instance a")
-          .attr("href")
+      eventData.push({
+        title: $(elem)
+          .children("h3")
+          .text(),
+        link:
+          "https://events.temple.edu" +
+          $(elem)
+            .find(".fullcalendar-instance a")
+            .attr("href"),
+        date: new Date(
+          $(elem)
+            .find(".date-display-single")
+            .attr("content")
+        ),
+        dateText: $(elem)
+          .find(".date-display-single")
+          .text()
       });
     }
   });
 
-  const singleEvent = await axios.get(
-    "https://events.temple.edu" + eventLinks[0].link
-  );
-  const a = cheerio.load(singleEvent.data);
-  console.log(a.html());
-  //eventLinks.forEach();
-  const title = a(".l-content-inner")
-    .children("h1")
-    .text();
-  const date = a(".field--event-body")
-    .children("p")
-    .next()
-    .text();
-  const description = a(".field--event-body")
-    .children("p")
-    .text();
+  /* If today - eventDate < 0 then that means the event 
+    is in the future therefore add it to DB
+  */
+  //TODO: add DB code here
 
-  console.log("TITLE: " + title);
-  console.log("DATE" + date);
+  //console.log(eventData);
 
   return {
     statusCode: 200,
