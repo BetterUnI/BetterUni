@@ -38,25 +38,28 @@ exports.handler = async (event, context) => {
     }
   });
 
-  eventData.forEach(element => {
-    const description = async () => {
-      const eventPage = await axios.get(
-        "https://events.temple.edu" + element.link
-      );
-      const $$ = await cheerio.load(eventPage.data);
-      return $$(".l-content-inner")
-        .children("p")
-        .text();
-    };
-    element.description = description();
-  });
+  // try {
+  //   eventData.forEach(async element => {
+  //     console.log("ELEMENT.LINK: " + element.link + "\n");
+  //     const eventpage = await axios.get(element.link);
+  //     console.log("EVENT PAGE: " + eventpage + "\n");
+  //     const $$ = cheerio.load(eventpage.data);
+  //     console.log($$.html);
+
+  //     element.description = $$(".field--event-body")
+  //       .children("p")
+  //       .text();
+  //   });
+  // } catch (err) {
+  //   console.log(err);
+  // }
 
   /* If today - eventDate < 0 then that means the event 
     is in the future therefore add it to DB
   */
   //TODO: add DB code here
 
-  console.log(eventData);
+  //sconsole.log(eventData);
 
   return {
     statusCode: 200,
