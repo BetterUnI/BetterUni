@@ -15,7 +15,7 @@ exports.handler = async (event, context) => {
   let eventData = [];
 
   $(".fullcalendar-event").each((i, elem) => {
-    if (i <= 5) {
+    if (i <= 3) {
       eventData.push({
         title: $(elem)
           .children("h3")
@@ -32,9 +32,23 @@ exports.handler = async (event, context) => {
         ),
         dateText: $(elem)
           .find(".date-display-single")
-          .text()
+          .text(),
+        description: ""
       });
     }
+  });
+
+  eventData.forEach(element => {
+    const description = async () => {
+      const eventPage = await axios.get(
+        "https://events.temple.edu" + element.link
+      );
+      const $$ = await cheerio.load(eventPage.data);
+      return $$(".l-content-inner")
+        .children("p")
+        .text();
+    };
+    element.description = description();
   });
 
   /* If today - eventDate < 0 then that means the event 
@@ -42,7 +56,7 @@ exports.handler = async (event, context) => {
   */
   //TODO: add DB code here
 
-  //console.log(eventData);
+  console.log(eventData);
 
   return {
     statusCode: 200,
