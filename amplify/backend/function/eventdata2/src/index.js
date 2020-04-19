@@ -12,18 +12,20 @@ exports.handler = async (event, context) => {
   let $ = cheerio.load(html.data);
   //console.log($.html());
   let eventData = [];
-  let pageLink = [];
 
-  const lastPage = $(".pager__item--last")
-    .find("a")
-    .attr("href");
-  console.log(lastPage);
+  const lastPage =
+    "https://events.temple.edu" +
+    $(".pager__item--last")
+      .find("a")
+      .attr("href");
+  let indexOfPageNum = lastPage.indexOf("page=");
+  let lastPageNum = lastPage.substring(indexOfPageNum + 5, lastPage.length);
 
   let i = 1;
-
-  //Get the goods from one of the pages
   try {
     do {
+      //Get the goods from one of the pages
+      //eslint-disable-next-line no-loop-func
       $(".views-row").each((i, elem) => {
         eventData.push({
           title: $(elem)
@@ -52,22 +54,25 @@ exports.handler = async (event, context) => {
             .text()
         });
       });
-      html = await axios.get(url, {
-        params: {
-          page: i++
-        }
-      });
-    } while (i <= 17);
+      try {
+        html = await axios.get(url, {
+          params: {
+            page: i
+          }
+        });
+        $ = await cheerio.load(html.data);
+      } catch (err) {
+        alert(err);
+      }
+    } while (i++ < lastPageNum);
   } catch (err) {
-    console.log(err);
+    alert(err);
   }
 
   /* If today - eventDate < 0 then that means the event 
     is in the future therefore add it to DB
   */
   //TODO: add DB code here
-
-  console.log(eventData);
 
   return {
     statusCode: 200,
