@@ -57,7 +57,7 @@ exports.handler = async (event, context) => {
           date: new Date(
             htmlPageData(elem)
               .find(".field--event-date-time")
-              .find(".date-display-single")
+              .find(".date-display-start")
               .attr("content")
           ),
           dateText: htmlPageData(elem)
