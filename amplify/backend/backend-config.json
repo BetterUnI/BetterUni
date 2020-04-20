@@ -6,7 +6,13 @@
 			"dependsOn": []
 		}
 	},
-	"function": {},
+	"function": {
+		"eventdata2": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda"
+		}
+	},
 	"storage": {},
 	"api": {
 		"betteruniapi": {
