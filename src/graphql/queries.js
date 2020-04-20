@@ -101,6 +101,28 @@ export const getMeeting = /* GraphQL */ `
           nextToken
         }
       }
+      advisorUser {
+        id
+        firstName
+        lastName
+        email
+        isAdvisor
+        cometChatAuthToken
+        bio
+        college
+        major
+        credits
+        classStanding
+        advisingCategory {
+          id
+          name
+          location
+          description
+        }
+        meetings {
+          nextToken
+        }
+      }
       queryName
     }
   }
@@ -119,6 +141,19 @@ export const listMeetings = /* GraphQL */ `
         endTime
         reasonForMeeting
         user {
+          id
+          firstName
+          lastName
+          email
+          isAdvisor
+          cometChatAuthToken
+          bio
+          college
+          major
+          credits
+          classStanding
+        }
+        advisorUser {
           id
           firstName
           lastName
@@ -242,6 +277,19 @@ export const meetingsByDate = /* GraphQL */ `
         endTime
         reasonForMeeting
         user {
+          id
+          firstName
+          lastName
+          email
+          isAdvisor
+          cometChatAuthToken
+          bio
+          college
+          major
+          credits
+          classStanding
+        }
+        advisorUser {
           id
           firstName
           lastName
