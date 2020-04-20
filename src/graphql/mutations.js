@@ -154,6 +154,28 @@ export const createMeeting = /* GraphQL */ `
           nextToken
         }
       }
+      advisorUser {
+        id
+        firstName
+        lastName
+        email
+        isAdvisor
+        cometChatAuthToken
+        bio
+        college
+        major
+        credits
+        classStanding
+        advisingCategory {
+          id
+          name
+          location
+          description
+        }
+        meetings {
+          nextToken
+        }
+      }
       queryName
     }
   }
@@ -191,6 +213,28 @@ export const updateMeeting = /* GraphQL */ `
           nextToken
         }
       }
+      advisorUser {
+        id
+        firstName
+        lastName
+        email
+        isAdvisor
+        cometChatAuthToken
+        bio
+        college
+        major
+        credits
+        classStanding
+        advisingCategory {
+          id
+          name
+          location
+          description
+        }
+        meetings {
+          nextToken
+        }
+      }
       queryName
     }
   }
@@ -207,6 +251,28 @@ export const deleteMeeting = /* GraphQL */ `
       endTime
       reasonForMeeting
       user {
+        id
+        firstName
+        lastName
+        email
+        isAdvisor
+        cometChatAuthToken
+        bio
+        college
+        major
+        credits
+        classStanding
+        advisingCategory {
+          id
+          name
+          location
+          description
+        }
+        meetings {
+          nextToken
+        }
+      }
+      advisorUser {
         id
         firstName
         lastName

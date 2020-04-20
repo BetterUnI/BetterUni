@@ -22,7 +22,8 @@ type Meeting @model @key(fields: [
   startTime: String!
   endTime: String!
   reasonForMeeting: String
-  user: User @connection(name: "UserMeetings")
+  user: User! @connection(name: "UserMeetings")
+  advisorUser: User! @connection(name: "UserMeetings")
   queryName: String
 }
 
