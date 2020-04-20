@@ -1,4 +1,5 @@
 import React from "react";
+import SchedulerCalendar from "../../components/SchedulerCalendar/SchedulerCalendar";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
@@ -78,11 +79,7 @@ export default function SchedulerCalendarModal(props) {
                 Please select an available time slot{" "}
               </p>
             </div>
-            <img
-              src="https://media1.tenor.com/images/4a665d6ac3b442a0f29b209b2afb5746/tenor.gif?itemid=16520592"
-              alt="johnnyboi"
-              style={{ margin: "10" }}
-            />
+            <SchedulerCalendar />
             <Button className={classes.btn} variant="contained">
               Confirm{" "}
             </Button>
