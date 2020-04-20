@@ -68,7 +68,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-betteruni-shared-113204-deployment",
-					"S3Key": "amplify-builds/eventdata2-4766484d6c4662337776-build.zip"
+					"S3Key": "amplify-builds/eventdata2-6e4755584d4c58686a48-build.zip"
 				}
 			}
 		},
