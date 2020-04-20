@@ -1,7 +1,11 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { UserContext } from "../../UserContext";
+import { API, graphqlOperation } from "aws-amplify";
+import { listAdvisingCategorys as ListAdvisingCategories } from "../../graphql/queries";
+import { listCareerResources as ListCareerResources } from "../../graphql/queries";
+import { listMeetings as ListMeetings } from "../../graphql/queries";
 import { makeStyles } from "@material-ui/styles";
 import HomeInfoList from "../../components/HomeInfoList/HomeInfoList";
 import SupervisorAccountOutlinedIcon from "@material-ui/icons/SupervisorAccountOutlined";
@@ -50,71 +54,38 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#70B757"
   }
 }));
-
-const offices = [
-  {
-    title: "CST Advising"
-  },
-  {
-    title: "Counseling"
-  },
-  {
-    title: "Career Center"
-  },
-  {
-    title: "Tutoring"
-  },
-  {
-    title: "Writing Center"
-  },
-  {
-    title: "Student Health Services"
-  },
-  {
-    title: "Fox Advising"
-  },
-  {
-    title: "Engineering Advising"
-  },
-  {
-    title: "Klein Advising"
-  },
-  {
-    title: "Boyer Advising"
-  }
-];
-
-const event = [
-  {
-    title: "Career Fair @ Temple University"
-  },
-  {
-    title: "Resume Review Workshop @ SAC"
-  },
-  {
-    title: "Penn Hackathon @ UPenn"
-  },
-  {
-    title: "Vanguard Networking Event @ SERC"
-  }
-];
-const meeting = [
-  {
-    title: "Today 9am-10am : Sarah Parker"
-  },
-  {
-    title: "Tomorrow 11am-12pm : Jack Doe"
-  },
-  {
-    title: "Next week: Jane Smith"
-  },
-  {
-    title: "Next week: Dr Lasname"
-  }
-];
 export function HomePage(props) {
   const classes = useStyles();
+  const user = useContext(UserContext);
 
+  const [advCats, setAdvCats] = useState([]);
+  const [resources, setResources] = useState([]);
+  const [meetings, setMeetings] = useState([]);
+
+  useEffect(() => {
+    API.graphql(graphqlOperation(ListAdvisingCategories))
+      .then(res => {
+        const advCats = res.data.listAdvisingCategorys.items;
+        setAdvCats(advCats);
+      })
+      .catch(err => console.log(err));
+  }, []);
+  useEffect(() => {
+    API.graphql(graphqlOperation(ListCareerResources))
+      .then(res => {
+        const resources = res.data.listCareerResources.items;
+        setResources(resources);
+      })
+      .catch(err => console.log(err));
+  }, []);
+  useEffect(() => {
+    API.graphql(graphqlOperation(ListMeetings))
+      .then(res => {
+        const meetings = res.data.listMeetings.items;
+        setMeetings(meetings);
+      })
+      .catch(err => console.log(err));
+  }, []);
   return (
     <>
       <div className={classes.hero}>
@@ -146,7 +117,7 @@ export function HomePage(props) {
             </ListIcon>
           }
           listTitle="Advising Offices"
-          homeLists={offices}
+          homeLists={advCats}
         />
         <HomeInfoList
           avatar={
@@ -158,7 +129,7 @@ export function HomePage(props) {
             </ListIcon>
           }
           listTitle="Career Events"
-          homeLists={event}
+          homeLists={resources}
         />
         <HomeInfoList
           avatar={
@@ -170,7 +141,7 @@ export function HomePage(props) {
             </ListIcon>
           }
           listTitle="Upcoming Meetings"
-          homeLists={meeting}
+          homeLists={meetings}
         />
       </div>
     </>

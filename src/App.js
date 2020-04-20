@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import { UserContext } from "./UserContext";
 import axios from "axios";
+import { gapi, loadAuth2 } from "gapi-script";
 
 // Routing imports
 import { Router } from "react-router-dom";
@@ -250,6 +251,55 @@ async function getCurrentUserFromDynamoDB(user) {
   }
 }
 
+async function googleSignIn() {
+  // Initializes Google authentication for BetterUni user
+  let auth2 = await loadAuth2(
+    process.env.REACT_APP_CALENDAR_CLIENT_ID,
+    "https://www.googleapis.com/auth/calendar"
+  );
+
+  if (!auth2.isSignedIn.get()) {
+    auth2
+      .signIn()
+      .then(res => {
+        console.log("Google user signed in: ", res);
+      })
+      .catch(err =>
+        console.log(
+          "There was an error signing the user into their Google account: ",
+          err
+        )
+      );
+  }
+}
+
+async function loadGapiClient() {
+  return await gapi.load("client", {
+    callback: function() {
+      // Handles gapi.client initialization for the Google Calendar API
+      initGapiClient();
+      console.log("Initialized Google API Client");
+    },
+    onerror: function() {
+      // Handle loading error.
+      alert("gapi.client failed to load!");
+    },
+    timeout: 5000, // 5 seconds.
+    ontimeout: function() {
+      // Handle timeout.
+      alert("gapi.client could not load in a timely manner!");
+    }
+  });
+}
+
+function initGapiClient() {
+  gapi.client.init({
+    apiKey: process.env.REACT_APP_CALENDAR_API_KEY,
+    discoverDocs:
+      "https://content.googleapis.com/discovery/v1/apis/calendar/v3/rest"
+  });
+}
+
 export function App(props) {
   const [user, setUser] = useState({});
   const [isLoading, setLoading] = useState(true);
@@ -260,11 +310,15 @@ export function App(props) {
       // Initialize CometChat
       initCometChat();
 
+      // Initializes Google Auth and provides SignIn interface for Google OAuth flow
+      googleSignIn();
+
       // Fetch currently authenticated user from database and create them in database if they're a new user
       Auth.currentAuthenticatedUser({ bypassCache: true })
         .then(async user => {
           const returnedUser = await getCurrentUserFromDynamoDB(user);
           setUser(returnedUser);
+          loadGapiClient();
           setTimeout(() => {
             setLoading(false);
           }, 1000);

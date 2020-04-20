@@ -1,9 +1,36 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../UserContext";
 import { API, graphqlOperation } from "aws-amplify";
+import { makeStyles } from "@material-ui/styles";
+import Modal from "react-modal";
 import { listAdvisingCategorys as ListAdvisingCategories } from "../../graphql/queries";
 import AdvisorList from "../../components/AdvisorList/AdvisorList";
 import CategoryList from "../../components/CategoryList/CategoryList";
+import SchedulerCalendar from "../../components/SchedulerCalendar/SchedulerCalendar";
+import SchedulerCalendarModal from "../../components/SchedulerCalendarModal/SchedulerCalendarModal";
+
+const useStyles = makeStyles(theme => ({
+  hero: {
+    borderRadius: 4,
+    marginTop: 32,
+    backgroundColor: "#A41F35",
+    color: "#FFFFFF",
+    padding: 20,
+    [theme.breakpoints.up("md")]: {
+      height: "100%"
+    }
+  },
+  h3: {
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 25
+    }
+  },
+  content: {
+    display: "flex",
+    marginTop: 20,
+    justifyContent: "start"
+  }
+}));
 
 const advisors = [
   {
@@ -44,15 +71,20 @@ const advisors = [
   }
 ];
 
+Modal.setAppElement("#root");
+
 export function SchedulePage() {
   /* 
     Will use UserContext to set UserContext provider data - this will update the current user's meeting data across all components
     See this video: https://youtu.be/lhMKvyLRWo0?t=265
   */
+  const classes = useStyles();
   // eslint-disable-next-line no-unused-vars
   const user = useContext(UserContext);
 
   const [advCats, setAdvCats] = useState([]);
+  // eslint-disable-next-line no-unused-vars
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
     API.graphql(graphqlOperation(ListAdvisingCategories))
@@ -63,12 +95,18 @@ export function SchedulePage() {
       .catch(err => console.log(err));
   }, []);
 
+  console.log("Schedule Page: modal = ", modalIsOpen);
   return (
     <>
-      <h1>Schedule page</h1>
-      <p>This is the schedule page</p>
-      <CategoryList categories={advCats} />
-      <AdvisorList advisors={advisors} />
+      <div className={classes.hero}>
+        <h3 className={classes.h3}>I would like to speak to someone from...</h3>
+      </div>
+      <div className={classes.content}>
+        <CategoryList categories={advCats} />
+        <AdvisorList advisors={advisors} />
+      </div>
+      <SchedulerCalendarModal />
+      <SchedulerCalendar />
     </>
   );
 }
