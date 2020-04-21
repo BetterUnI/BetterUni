@@ -6,7 +6,6 @@ import Modal from "react-modal";
 import { listAdvisingCategorys as ListAdvisingCategories } from "../../graphql/queries";
 import AdvisorList from "../../components/AdvisorList/AdvisorList";
 import CategoryList from "../../components/CategoryList/CategoryList";
-import SchedulerCalendar from "../../components/SchedulerCalendar/SchedulerCalendar";
 import SchedulerCalendarModal from "../../components/SchedulerCalendarModal/SchedulerCalendarModal";
 
 const useStyles = makeStyles(theme => ({
@@ -106,7 +105,6 @@ export function SchedulePage() {
         <AdvisorList advisors={advisors} />
       </div>
       <SchedulerCalendarModal />
-      <SchedulerCalendar />
     </>
   );
 }
