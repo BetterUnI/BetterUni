@@ -4,9 +4,11 @@ import { API, graphqlOperation } from "aws-amplify";
 import { makeStyles } from "@material-ui/styles";
 import Modal from "react-modal";
 import { listAdvisingCategorys as ListAdvisingCategories } from "../../graphql/queries";
+import { listAdvisingCategorys as ListAdvisingCategoriesAdvisors } from "../../graphql/queries";
 import AdvisorList from "../../components/AdvisorList/AdvisorList";
 import CategoryList from "../../components/CategoryList/CategoryList";
 import SchedulerCalendarModal from "../../components/SchedulerCalendarModal/SchedulerCalendarModal";
+import { SchedulePageContext } from "../../SchedulePageContext";
 
 const useStyles = makeStyles(theme => ({
   hero: {
@@ -82,8 +84,12 @@ export function SchedulePage() {
   const user = useContext(UserContext);
 
   const [advCats, setAdvCats] = useState([]);
+  const [advisorList, setAdvisorList] = useState([]);
+
   // eslint-disable-next-line no-unused-vars
   const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
     API.graphql(graphqlOperation(ListAdvisingCategories))
@@ -94,17 +100,32 @@ export function SchedulePage() {
       .catch(err => console.log(err));
   }, []);
 
+  // useEffect(() => {
+  //   API.graphql(graphqlOperation(ListAdvisingCategoriesAdvisors))
+  //     .then(res => {
+  //       const advisorList = res.data.listAdvisingCategorys.items.users.items;
+  //       setAdvisorList(advisorList);
+  //     })
+  //     .catch(err => console.log(err));
+  // }, []);
+
   console.log("Schedule Page: modal = ", modalIsOpen);
+  console.log("Schedule Page: Selected category is: ", selectedCategory);
+
   return (
     <>
       <div className={classes.hero}>
         <h3 className={classes.h3}>I would like to speak to someone from...</h3>
       </div>
-      <div className={classes.content}>
-        <CategoryList categories={advCats} />
-        <AdvisorList advisors={advisors} />
-      </div>
-      <SchedulerCalendarModal />
+      <SchedulePageContext.Provider
+        value={{ selectedCategory, setSelectedCategory }}
+      >
+        <div className={classes.content}>
+          <CategoryList categories={advCats} />
+          <AdvisorList advisors={advisors} />
+        </div>
+        <SchedulerCalendarModal />
+      </SchedulePageContext.Provider>
     </>
   );
 }
