@@ -108,22 +108,25 @@ export function SchedulePage() {
   }, []);
 
   useEffect(() => {
-    API.graphql(graphqlOperation(GetAdvisingCategory, { id: 1 }))
-      .then(res => {
-        console.log("GET ADVISING CATEGORY RESPONSE: ", res);
-        const advCats = res.data.getAdvisingCategory.users.items;
-        console.log("get advCat: ", advCats);
-        // setAdvCats(advCats);
-      })
-      .catch(err => console.log(err));
-  }, []);
+    if (selectedCategory != null) {
+      API.graphql(
+        graphqlOperation(GetAdvisingCategory, { id: selectedCategory.id })
+      )
+        .then(res => {
+          //console.log("GET ADVISING CATEGORY RESPONSE: ", res);
+          const advisorList = res.data.getAdvisingCategory.users.items;
+          console.log("get advCat: ", advisorList);
+          setAdvisorList(advisorList);
+        })
+        .catch(err => console.log(err));
+    }
+  }, [selectedCategory]);
 
-  //console.log("Schedule Page: modal = ", modalIsOpen);
   console.log("Schedule Page: Selected category is: ", selectedCategory);
   console.log("Schedule Page: Selected advisor is: ", selectedAdvisor);
-  console.log("Schedule Page: AdvisorList ", advisorList);
-  console.log("Schedule Page: Modal is open ", open);
-  console.log("Schedule Page: Confirmation Modal is open ", openConfirmation);
+  //console.log("Schedule Page: AdvisorList ", advisorList);
+  //console.log("Schedule Page: Schedular Modal is open ", open);
+  //console.log("Schedule Page: Confirmation Modal is open ", openConfirmation);
 
   return (
     <>
@@ -145,7 +148,7 @@ export function SchedulePage() {
         <div className={classes.content}>
           <CategoryList categories={advCats} />
           {selectedCategory != null ? (
-            <AdvisorList advisors={advisors} />
+            <AdvisorList advisors={advisorList} />
           ) : null}
         </div>
         <SchedulerCalendarModal />
