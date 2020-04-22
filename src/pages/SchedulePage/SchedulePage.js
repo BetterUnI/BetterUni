@@ -5,8 +5,7 @@ import { makeStyles } from "@material-ui/styles";
 import Modal from "react-modal";
 import {
   listAdvisingCategorys as ListAdvisingCategories,
-  listAdvisingCategorys as ListAdvisingCategoriesAdvisors,
-  getAdvisingCategory as GetAdvisingCategory
+  getAdvisingCategory as GetListOfAdvisors
 } from "../../graphql/queries";
 import AdvisorList from "../../components/AdvisorList/AdvisorList";
 import CategoryList from "../../components/CategoryList/CategoryList";
@@ -37,45 +36,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const advisors = [
-  {
-    id: 0,
-    name: "Sarah Parker",
-    advisingCategory: "CST Advising",
-    url: "images/avatars/avatar_2.png"
-  },
-  {
-    id: 1,
-    name: "Jack Doe",
-    advisingCategory: "CST Advising",
-    url: "images/avatars/avatar_1.png"
-  },
-  {
-    id: 2,
-    name: "Jane Smith",
-    advisingCategory: "CST Advising",
-    url: "images/avatars/avatar_6.png"
-  },
-  {
-    id: 3,
-    name: "Michael Smith",
-    advisingCategory: "CST Advising",
-    url: "images/avatars/avatar_5.png"
-  },
-  {
-    id: 4,
-    name: "Maria Garcia",
-    advisingCategory: "Career Center",
-    url: "images/avatars/avatar_9.png"
-  },
-  {
-    id: 5,
-    name: "Josh McAfee",
-    advisingCategory: "CST Advising",
-    url: "images/avatars/avatar_7.png"
-  }
-];
-
 Modal.setAppElement("#root");
 
 export function SchedulePage() {
@@ -87,12 +47,10 @@ export function SchedulePage() {
   // eslint-disable-next-line no-unused-vars
   const user = useContext(UserContext);
 
-  const [advCats, setAdvCats] = useState([]);
+  const [advisingCategories, setAdvisingCategories] = useState([]);
   const [advisorList, setAdvisorList] = useState([]);
 
   // eslint-disable-next-line no-unused-vars
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedAdvisor, setSelectedAdvisor] = useState(null);
   const [open, setOpen] = useState(false);
@@ -101,8 +59,8 @@ export function SchedulePage() {
   useEffect(() => {
     API.graphql(graphqlOperation(ListAdvisingCategories))
       .then(res => {
-        const advCats = res.data.listAdvisingCategorys.items;
-        setAdvCats(advCats);
+        const advisingCategories = res.data.listAdvisingCategorys.items;
+        setAdvisingCategories(advisingCategories);
       })
       .catch(err => console.log(err));
   }, []);
@@ -110,20 +68,23 @@ export function SchedulePage() {
   useEffect(() => {
     if (selectedCategory != null) {
       API.graphql(
-        graphqlOperation(GetAdvisingCategory, { id: selectedCategory.id })
+        graphqlOperation(GetListOfAdvisors, { id: selectedCategory.id })
       )
         .then(res => {
           //console.log("GET ADVISING CATEGORY RESPONSE: ", res);
           const advisorList = res.data.getAdvisingCategory.users.items;
-          console.log("get advCat: ", advisorList);
+          // console.log(
+          //   "Schedule Page: Advisors for the selected category are ",
+          //   advisorList
+          // );
           setAdvisorList(advisorList);
         })
         .catch(err => console.log(err));
     }
   }, [selectedCategory]);
 
-  console.log("Schedule Page: Selected category is: ", selectedCategory);
-  console.log("Schedule Page: Selected advisor is: ", selectedAdvisor);
+  //console.log("Schedule Page: Selected category is: ", selectedCategory);
+  //console.log("Schedule Page: Selected advisor is: ", selectedAdvisor);
   //console.log("Schedule Page: AdvisorList ", advisorList);
   //console.log("Schedule Page: Schedular Modal is open ", open);
   //console.log("Schedule Page: Confirmation Modal is open ", openConfirmation);
@@ -146,7 +107,7 @@ export function SchedulePage() {
         }}
       >
         <div className={classes.content}>
-          <CategoryList categories={advCats} />
+          <CategoryList categories={advisingCategories} />
           {selectedCategory != null ? (
             <AdvisorList advisors={advisorList} />
           ) : null}
