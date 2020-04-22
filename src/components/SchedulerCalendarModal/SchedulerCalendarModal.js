@@ -40,13 +40,19 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "blue",
     borderColor: "red",
     boxShadow: "none"
-  }
+  },
+  scheduler: { padding: "100px" }
 }));
 
 export default function SchedulerCalendarModal(props) {
   const classes = useStyles();
-  const { open, setOpen } = useContext(SchedulePageContext);
-
+  const { open, setOpen, setOpenConfirmation } = useContext(
+    SchedulePageContext
+  );
+  const handleClick = () => {
+    setOpen(false);
+    setOpenConfirmation(true);
+  };
   return (
     <div>
       <Modal
@@ -68,8 +74,12 @@ export default function SchedulerCalendarModal(props) {
                 Please select an available time slot{" "}
               </p>
             </div>
-            <SchedulerCalendar />
-            <Button className={classes.btn} variant="contained">
+            <SchedulerCalendar className={classes.scheduler} />
+            <Button
+              className={classes.btn}
+              variant="contained"
+              onClick={handleClick}
+            >
               Confirm{" "}
             </Button>
           </div>

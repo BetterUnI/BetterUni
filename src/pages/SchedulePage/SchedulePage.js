@@ -8,6 +8,7 @@ import { listAdvisingCategorys as ListAdvisingCategoriesAdvisors } from "../../g
 import AdvisorList from "../../components/AdvisorList/AdvisorList";
 import CategoryList from "../../components/CategoryList/CategoryList";
 import SchedulerCalendarModal from "../../components/SchedulerCalendarModal/SchedulerCalendarModal";
+import SchedulerConfirmationModal from "../../components/SchedulerConfirmationModal/SchedulerConfirmationModal";
 import { SchedulePageContext } from "../../SchedulePageContext";
 
 const useStyles = makeStyles(theme => ({
@@ -92,6 +93,7 @@ export function SchedulePage() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedAdvisor, setSelectedAdvisor] = useState(null);
   const [open, setOpen] = useState(false);
+  const [openConfirmation, setOpenConfirmation] = useState(false);
 
   useEffect(() => {
     API.graphql(graphqlOperation(ListAdvisingCategories))
@@ -116,6 +118,7 @@ export function SchedulePage() {
   console.log("Schedule Page: Selected advisor is: ", selectedAdvisor);
   console.log("Schedule Page: AdvisorList ", advisorList);
   console.log("Schedule Page: Modal is open ", open);
+  console.log("Schedule Page: Confirmation Modal is open ", openConfirmation);
 
   return (
     <>
@@ -129,7 +132,9 @@ export function SchedulePage() {
           selectedAdvisor,
           setSelectedAdvisor,
           open,
-          setOpen
+          setOpen,
+          openConfirmation,
+          setOpenConfirmation
         }}
       >
         <div className={classes.content}>
@@ -137,6 +142,7 @@ export function SchedulePage() {
           <AdvisorList advisors={advisors} />
         </div>
         <SchedulerCalendarModal />
+        <SchedulerConfirmationModal />
       </SchedulePageContext.Provider>
     </>
   );
