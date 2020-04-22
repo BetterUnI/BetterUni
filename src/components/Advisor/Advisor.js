@@ -33,14 +33,20 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Advisor(props) {
+  const handleClick = () => {
+    setSelectedAdvisor(props.advisor.id);
+    setOpen(true);
+  };
+
   const classes = useStyles();
-  const { setSelectedAdvisor } = useContext(SchedulePageContext);
+  const { setSelectedAdvisor, setOpen } = useContext(SchedulePageContext);
+
   return (
     <TableRow
       className="advisor"
       hover
       key={props.advisor.id}
-      onClick={() => setSelectedAdvisor(props.advisor.id)}
+      onClick={handleClick}
     >
       <TableCell className={classes.cell}>
         <div className={classes.nameContainer}>

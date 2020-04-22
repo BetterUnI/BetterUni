@@ -91,6 +91,7 @@ export function SchedulePage() {
 
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedAdvisor, setSelectedAdvisor] = useState(null);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     API.graphql(graphqlOperation(ListAdvisingCategories))
@@ -101,19 +102,20 @@ export function SchedulePage() {
       .catch(err => console.log(err));
   }, []);
 
-  useEffect(() => {
-    API.graphql(graphqlOperation(ListAdvisingCategoriesAdvisors))
-      .then(res => {
-        const advisorList = res.data.listAdvisingCategorys.items;
-        setAdvisorList(advisorList);
-      })
-      .catch(err => console.log(err));
-  }, []);
+  // useEffect(() => {
+  //   API.graphql(graphqlOperation(ListAdvisingCategoriesAdvisors))
+  //     .then(res => {
+  //       const advisorList = res.data.listAdvisingCategorys.items;
+  //       setAdvisorList(advisorList);
+  //     })
+  //     .catch(err => console.log(err));
+  // }, []);
 
   //console.log("Schedule Page: modal = ", modalIsOpen);
   console.log("Schedule Page: Selected category is: ", selectedCategory);
   console.log("Schedule Page: Selected advisor is: ", selectedAdvisor);
   console.log("Schedule Page: AdvisorList ", advisorList);
+  console.log("Schedule Page: Modal is open ", open);
 
   return (
     <>
@@ -125,7 +127,9 @@ export function SchedulePage() {
           selectedCategory,
           setSelectedCategory,
           selectedAdvisor,
-          setSelectedAdvisor
+          setSelectedAdvisor,
+          open,
+          setOpen
         }}
       >
         <div className={classes.content}>
