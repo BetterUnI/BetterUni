@@ -27,9 +27,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Category(props) {
   const classes = useStyles();
-  const { selectedCategory, setSelectedCategory } = useContext(
-    SchedulePageContext
-  );
+  const { setSelectedCategory } = useContext(SchedulePageContext);
 
   return (
     <TableRow

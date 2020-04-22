@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/styles";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 
 import { TableCell, TableRow, Avatar, Typography } from "@material-ui/core";
+import { SchedulePageContext } from "../../SchedulePageContext";
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -33,8 +34,14 @@ const useStyles = makeStyles(theme => ({
 
 export default function Advisor(props) {
   const classes = useStyles();
+  const { setSelectedAdvisor } = useContext(SchedulePageContext);
   return (
-    <TableRow className="advisor" hover key={props.advisor.id}>
+    <TableRow
+      className="advisor"
+      hover
+      key={props.advisor.id}
+      onClick={() => setSelectedAdvisor(props.advisor.id)}
+    >
       <TableCell className={classes.cell}>
         <div className={classes.nameContainer}>
           <Avatar className={classes.avatar} src={props.advisor.url}></Avatar>

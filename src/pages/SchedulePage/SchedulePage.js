@@ -90,6 +90,7 @@ export function SchedulePage() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedAdvisor, setSelectedAdvisor] = useState(null);
 
   useEffect(() => {
     API.graphql(graphqlOperation(ListAdvisingCategories))
@@ -111,6 +112,7 @@ export function SchedulePage() {
 
   //console.log("Schedule Page: modal = ", modalIsOpen);
   console.log("Schedule Page: Selected category is: ", selectedCategory);
+  console.log("Schedule Page: Selected advisor is: ", selectedAdvisor);
   console.log("Schedule Page: AdvisorList ", advisorList);
 
   return (
@@ -119,7 +121,12 @@ export function SchedulePage() {
         <h3 className={classes.h3}>I would like to speak to someone from...</h3>
       </div>
       <SchedulePageContext.Provider
-        value={{ selectedCategory, setSelectedCategory }}
+        value={{
+          selectedCategory,
+          setSelectedCategory,
+          selectedAdvisor,
+          setSelectedAdvisor
+        }}
       >
         <div className={classes.content}>
           <CategoryList categories={advCats} />
