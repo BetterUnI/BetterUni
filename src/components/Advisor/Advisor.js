@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Advisor(props) {
   const handleClick = () => {
-    setSelectedAdvisor(props.advisor.id);
+    setSelectedAdvisor(props.advisor);
     setOpen(true);
   };
 

@@ -3,8 +3,11 @@ import { UserContext } from "../../UserContext";
 import { API, graphqlOperation } from "aws-amplify";
 import { makeStyles } from "@material-ui/styles";
 import Modal from "react-modal";
-import { listAdvisingCategorys as ListAdvisingCategories } from "../../graphql/queries";
-import { listAdvisingCategorys as ListAdvisingCategoriesAdvisors } from "../../graphql/queries";
+import {
+  listAdvisingCategorys as ListAdvisingCategories,
+  listAdvisingCategorys as ListAdvisingCategoriesAdvisors,
+  getAdvisingCategory as GetAdvisingCategory
+} from "../../graphql/queries";
 import AdvisorList from "../../components/AdvisorList/AdvisorList";
 import CategoryList from "../../components/CategoryList/CategoryList";
 import SchedulerCalendarModal from "../../components/SchedulerCalendarModal/SchedulerCalendarModal";
@@ -104,14 +107,16 @@ export function SchedulePage() {
       .catch(err => console.log(err));
   }, []);
 
-  // useEffect(() => {
-  //   API.graphql(graphqlOperation(ListAdvisingCategoriesAdvisors))
-  //     .then(res => {
-  //       const advisorList = res.data.listAdvisingCategorys.items;
-  //       setAdvisorList(advisorList);
-  //     })
-  //     .catch(err => console.log(err));
-  // }, []);
+  useEffect(() => {
+    API.graphql(graphqlOperation(GetAdvisingCategory, { id: 1 }))
+      .then(res => {
+        console.log("GET ADVISING CATEGORY RESPONSE: ", res);
+        const advCats = res.data.getAdvisingCategory.users.items;
+        console.log("get advCat: ", advCats);
+        // setAdvCats(advCats);
+      })
+      .catch(err => console.log(err));
+  }, []);
 
   //console.log("Schedule Page: modal = ", modalIsOpen);
   console.log("Schedule Page: Selected category is: ", selectedCategory);

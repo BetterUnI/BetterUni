@@ -34,7 +34,7 @@ export default function Category(props) {
       className="category"
       hover
       key={props.category.name}
-      onClick={() => setSelectedCategory(props.category.name)}
+      onClick={() => setSelectedCategory(props.category)}
     >
       <TableCell className={classes.cell}>
         <Box
