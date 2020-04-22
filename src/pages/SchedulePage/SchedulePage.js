@@ -144,7 +144,9 @@ export function SchedulePage() {
       >
         <div className={classes.content}>
           <CategoryList categories={advCats} />
-          <AdvisorList advisors={advisors} />
+          {selectedCategory != null ? (
+            <AdvisorList advisors={advisors} />
+          ) : null}
         </div>
         <SchedulerCalendarModal />
         <SchedulerConfirmationModal />
