@@ -32,7 +32,10 @@ const useStyles = makeStyles(theme => ({
   content: {
     display: "flex",
     marginTop: 20,
-    justifyContent: "start"
+    justifyContent: "space-around",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column"
+    }
   }
 }));
 
@@ -44,6 +47,8 @@ export function SchedulePage() {
   const user = useContext(UserContext);
 
   // State
+  const [categoriesLoading, setCategoriesLoading] = useState(true);
+  const [advisorsLoading, setAdvisorsLoading] = useState(true);
   const [advisingCategories, setAdvisingCategories] = useState([]);
   const [advisorList, setAdvisorList] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -56,6 +61,7 @@ export function SchedulePage() {
       .then(res => {
         const advisingCategories = res.data.listAdvisingCategorys.items;
         setAdvisingCategories(advisingCategories);
+        setCategoriesLoading(false);
       })
       .catch(err => console.log(err));
   }, []);
@@ -68,6 +74,7 @@ export function SchedulePage() {
         .then(res => {
           const advisorList = res.data.getAdvisingCategory.users.items;
           setAdvisorList(advisorList);
+          setAdvisorsLoading(false);
         })
         .catch(err => console.log(err));
     }
@@ -91,9 +98,12 @@ export function SchedulePage() {
         }}
       >
         <div className={classes.content}>
-          <CategoryList categories={advisingCategories} />
+          <CategoryList
+            categories={advisingCategories}
+            loading={categoriesLoading}
+          />
           {selectedCategory != null ? (
-            <AdvisorList advisors={advisorList} />
+            <AdvisorList advisors={advisorList} loading={advisorsLoading} />
           ) : null}
         </div>
         <SchedulerCalendarModal />

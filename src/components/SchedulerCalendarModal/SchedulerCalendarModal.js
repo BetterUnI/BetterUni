@@ -34,7 +34,9 @@ const useStyles = makeStyles(theme => ({
     height: 48,
     padding: "0 100px",
     margin: "0 auto",
-    display: "block"
+    display: "block",
+    marginTop: 20,
+    marginBottom: 20
   },
   "btn:hover": {
     backgroundColor: "blue",

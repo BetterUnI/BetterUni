@@ -16,6 +16,9 @@
                 "betteruni6666fc7a": {},
                 "userPoolGroups": {},
                 "betteruni4fc5aa3b4fc5aa3b": {}
+            },
+            "function": {
+                "eventdata2": {}
             }
         }
     },
@@ -52,6 +55,9 @@
         "categories": {
             "auth": {
                 "betteruni4fc5aa3b4fc5aa3b": {}
+            },
+            "function": {
+                "eventdata2": {}
             }
         }
     },

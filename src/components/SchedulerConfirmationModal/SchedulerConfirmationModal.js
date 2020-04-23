@@ -5,7 +5,6 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import { SchedulePageContext } from "../../SchedulePageContext";
 import { Link } from "react-router-dom";
-import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   modal: {
