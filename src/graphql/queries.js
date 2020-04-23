@@ -32,6 +32,12 @@ export const getUser = /* GraphQL */ `
           endTime
           reasonForMeeting
           queryName
+          advisorUser {
+            firstName
+            advisingCategory {
+              name
+            }
+          }
         }
         nextToken
       }
@@ -192,6 +198,13 @@ export const getAdvisingCategory = /* GraphQL */ `
           major
           credits
           classStanding
+          meetings {
+            items {
+              startTime
+              endTime
+              reasonForMeeting
+            }
+          }
         }
         nextToken
       }
@@ -215,6 +228,19 @@ export const listAdvisingCategorys = /* GraphQL */ `
         location
         description
         users {
+          items {
+          id
+          firstName
+          lastName
+          email
+          isAdvisor
+          cometChatAuthToken
+          bio
+          college
+          major
+          credits
+          classStanding
+        }
           nextToken
         }
       }

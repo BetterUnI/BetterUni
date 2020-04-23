@@ -15,7 +15,6 @@ import { Link } from "react-router-dom";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 
 const useStyles = makeStyles(theme => ({
-  root: {},
   content: {
     flex: "auto",
     [theme.breakpoints.down("sm")]: {
@@ -32,6 +31,7 @@ const useStyles = makeStyles(theme => ({
   },
   position: {
     display: "flex",
+    minWidth: 300,
     [theme.breakpoints.down("md")]: {
       marginTop: 20
     }
@@ -64,17 +64,17 @@ export default function HomeInfoList(props) {
             <Table>
               {props.listTitle === "Upcoming Meetings" ? (
                 <TableBody>
-                  {props.homeLists.map(homelist => (
+                  {props.homeLists.map(homeList => (
                     <MeetingListItem
-                      key={homelist.reasonForMeeting}
-                      homelist={homelist}
+                      key={homeList.reasonForMeeting}
+                      homeList={homeList}
                     />
                   ))}
                 </TableBody>
               ) : (
                 <TableBody>
-                  {props.homeLists.map(homelist => (
-                    <HomeInfoListItem key={homelist.name} homelist={homelist} />
+                  {props.homeLists.map(homeList => (
+                    <HomeInfoListItem key={homeList.name} homeList={homeList} />
                   ))}
                 </TableBody>
               )}
