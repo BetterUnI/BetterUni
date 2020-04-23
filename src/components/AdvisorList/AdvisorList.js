@@ -10,7 +10,8 @@ const useStyles = makeStyles(theme => ({
     padding: 5,
     backgroundColor: "#E5E5E5",
     maxWidth: 300,
-    maxHeight: 525
+    maxHeight: 525,
+    marginLeft: "20px"
   },
   inner: {
     width: "100%",

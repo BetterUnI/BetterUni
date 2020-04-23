@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/styles";
 import Box from "@material-ui/core/Box";
 import { TableCell, TableRow, Typography } from "@material-ui/core";
+import { SchedulePageContext } from "../../SchedulePageContext";
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -26,9 +27,15 @@ const useStyles = makeStyles(theme => ({
 
 export default function Category(props) {
   const classes = useStyles();
+  const { setSelectedCategory } = useContext(SchedulePageContext);
 
   return (
-    <TableRow className="category" hover key={props.category.name}>
+    <TableRow
+      className="category"
+      hover
+      key={props.category.name}
+      onClick={() => setSelectedCategory(props.category)}
+    >
       <TableCell className={classes.cell}>
         <Box
           className={classes.nameContainer}

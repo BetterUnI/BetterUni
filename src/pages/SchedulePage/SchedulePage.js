@@ -3,10 +3,15 @@ import { UserContext } from "../../UserContext";
 import { API, graphqlOperation } from "aws-amplify";
 import { makeStyles } from "@material-ui/styles";
 import Modal from "react-modal";
-import { listAdvisingCategorys as ListAdvisingCategories } from "../../graphql/queries";
+import {
+  listAdvisingCategorys as ListAdvisingCategories,
+  getAdvisingCategory as GetListOfAdvisors
+} from "../../graphql/queries";
 import AdvisorList from "../../components/AdvisorList/AdvisorList";
 import CategoryList from "../../components/CategoryList/CategoryList";
 import SchedulerCalendarModal from "../../components/SchedulerCalendarModal/SchedulerCalendarModal";
+import SchedulerConfirmationModal from "../../components/SchedulerConfirmationModal/SchedulerConfirmationModal";
+import { SchedulePageContext } from "../../SchedulePageContext";
 
 const useStyles = makeStyles(theme => ({
   hero: {
@@ -31,80 +36,69 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const advisors = [
-  {
-    id: 0,
-    name: "Sarah Parker",
-    advisingCategory: "CST Advising",
-    url: "images/avatars/avatar_2.png"
-  },
-  {
-    id: 1,
-    name: "Jack Doe",
-    advisingCategory: "CST Advising",
-    url: "images/avatars/avatar_1.png"
-  },
-  {
-    id: 2,
-    name: "Jane Smith",
-    advisingCategory: "CST Advising",
-    url: "images/avatars/avatar_6.png"
-  },
-  {
-    id: 3,
-    name: "Michael Smith",
-    advisingCategory: "CST Advising",
-    url: "images/avatars/avatar_5.png"
-  },
-  {
-    id: 4,
-    name: "Maria Garcia",
-    advisingCategory: "Career Center",
-    url: "images/avatars/avatar_9.png"
-  },
-  {
-    id: 5,
-    name: "Josh McAfee",
-    advisingCategory: "CST Advising",
-    url: "images/avatars/avatar_7.png"
-  }
-];
-
 Modal.setAppElement("#root");
 
 export function SchedulePage() {
-  /* 
-    Will use UserContext to set UserContext provider data - this will update the current user's meeting data across all components
-    See this video: https://youtu.be/lhMKvyLRWo0?t=265
-  */
   const classes = useStyles();
   // eslint-disable-next-line no-unused-vars
   const user = useContext(UserContext);
 
-  const [advCats, setAdvCats] = useState([]);
-  // eslint-disable-next-line no-unused-vars
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  // State
+  const [advisingCategories, setAdvisingCategories] = useState([]);
+  const [advisorList, setAdvisorList] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedAdvisor, setSelectedAdvisor] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [openConfirmation, setOpenConfirmation] = useState(false);
 
   useEffect(() => {
     API.graphql(graphqlOperation(ListAdvisingCategories))
       .then(res => {
-        const advCats = res.data.listAdvisingCategorys.items;
-        setAdvCats(advCats);
+        const advisingCategories = res.data.listAdvisingCategorys.items;
+        setAdvisingCategories(advisingCategories);
       })
       .catch(err => console.log(err));
   }, []);
 
-  console.log("Schedule Page: modal = ", modalIsOpen);
+  useEffect(() => {
+    if (selectedCategory != null) {
+      API.graphql(
+        graphqlOperation(GetListOfAdvisors, { id: selectedCategory.id })
+      )
+        .then(res => {
+          const advisorList = res.data.getAdvisingCategory.users.items;
+          setAdvisorList(advisorList);
+        })
+        .catch(err => console.log(err));
+    }
+  }, [selectedCategory]);
+
   return (
     <>
       <div className={classes.hero}>
         <h3 className={classes.h3}>I would like to speak to someone from...</h3>
       </div>
-      <div className={classes.content}>
-        <CategoryList categories={advCats} />
-        <AdvisorList advisors={advisors} />
-      </div>
-      <SchedulerCalendarModal />
+      <SchedulePageContext.Provider
+        value={{
+          selectedCategory,
+          setSelectedCategory,
+          selectedAdvisor,
+          setSelectedAdvisor,
+          open,
+          setOpen,
+          openConfirmation,
+          setOpenConfirmation
+        }}
+      >
+        <div className={classes.content}>
+          <CategoryList categories={advisingCategories} />
+          {selectedCategory != null ? (
+            <AdvisorList advisors={advisorList} />
+          ) : null}
+        </div>
+        <SchedulerCalendarModal />
+        <SchedulerConfirmationModal />
+      </SchedulePageContext.Provider>
     </>
   );
 }

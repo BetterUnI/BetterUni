@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import SchedulerCalendar from "../../components/SchedulerCalendar/SchedulerCalendar";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
+import { SchedulePageContext } from "../../SchedulePageContext";
 
 const useStyles = makeStyles(theme => ({
   modal: {
@@ -39,33 +40,27 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "blue",
     borderColor: "red",
     boxShadow: "none"
-  }
+  },
+  scheduler: { padding: "100px" }
 }));
 
 export default function SchedulerCalendarModal(props) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
+  const { open, setOpen, setOpenConfirmation } = useContext(
+    SchedulePageContext
+  );
+  const handleClick = () => {
     setOpen(false);
+    setOpenConfirmation(true);
   };
-
   return (
     <div>
-      <Button variant="contained" onClick={handleOpen}>
-        Open Animated Modal
-      </Button>
-
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         className={classes.modal}
         open={open}
-        onClose={handleClose}
+        onClose={() => setOpen(false)}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
@@ -79,8 +74,12 @@ export default function SchedulerCalendarModal(props) {
                 Please select an available time slot{" "}
               </p>
             </div>
-            <SchedulerCalendar />
-            <Button className={classes.btn} variant="contained">
+            <SchedulerCalendar className={classes.scheduler} />
+            <Button
+              className={classes.btn}
+              variant="contained"
+              onClick={handleClick}
+            >
               Confirm{" "}
             </Button>
           </div>
