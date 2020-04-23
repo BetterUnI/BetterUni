@@ -9,7 +9,6 @@ import { createMeeting as CreateMeeting } from "../../graphql/mutations";
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
-// TODO once ClickedAdvisorContext is created: const advisorUser = useContext(ClickedAdvisorContext);
 async function createMeeting(
   studentUser,
   advisorUser,
