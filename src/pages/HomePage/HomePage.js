@@ -82,12 +82,6 @@ export function HomePage(props) {
   }, []);
 
   useEffect(() => {
-    // API.graphql(graphqlOperation(ListMeetings))
-    //   .then(res => {
-    //     const meetings = res.data.listMeetings.items;
-    //     setMeetings(meetings);
-    //   })
-    //   .catch(err => console.log(err));
     setMeetings(user.meetings.items);
   }, [user.meetings.items]);
 
