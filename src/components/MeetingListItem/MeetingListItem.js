@@ -33,24 +33,42 @@ export default function MeetingListItem(props) {
           {props.homeList.reasonForMeeting}
         </span>
 
-        <br />
+        {props.homeList.advisorUser.isAdvisor ? (
+          <>
+            <br />
 
-        <span style={{ fontSize: 12, fontWeight: "normal" }}>with </span>
-        <span style={{ color: "#A41E35" }}>
-          {props.homeList.advisorUser.firstName}
-        </span>
+            <span style={{ fontSize: 12, fontWeight: "normal" }}>with </span>
+            <span style={{ color: "#A41E35" }}>
+              {props.homeList.advisorUser.firstName}
+            </span>
 
-        <br />
+            <br />
 
-        <span style={{ fontSize: 12, fontWeight: "normal" }}>from </span>
-        <span style={{ color: "#A41E35" }}>
-          {props.homeList.advisorUser.advisingCategory.name}
-        </span>
+            <span style={{ fontSize: 12, fontWeight: "normal" }}>from </span>
+            <span style={{ color: "#A41E35" }}>
+              {props.homeList.advisorUser.advisingCategory.name}
+            </span>
 
-        <br />
+            <br />
 
-        <span style={{ fontSize: 12, fontWeight: "normal" }}>on </span>
-        <span style={{ color: "#A41E35" }}>{formattedDate}</span>
+            <span style={{ fontSize: 12, fontWeight: "normal" }}>on </span>
+            <span style={{ color: "#A41E35" }}>{formattedDate}</span>
+          </>
+        ) : (
+          <>
+            <br />
+
+            <span style={{ fontSize: 12, fontWeight: "normal" }}>with </span>
+            <span style={{ color: "#A41E35" }}>
+              {props.homeList.advisorUser.firstName}
+            </span>
+
+            <br />
+
+            <span style={{ fontSize: 12, fontWeight: "normal" }}>on </span>
+            <span style={{ color: "#A41E35" }}>{formattedDate}</span>
+          </>
+        )}
       </TableCell>
     </TableRow>
   );
