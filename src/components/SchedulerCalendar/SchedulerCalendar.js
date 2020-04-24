@@ -6,8 +6,24 @@ import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import { API, graphqlOperation } from "aws-amplify";
 import { createMeeting as CreateMeeting } from "../../graphql/mutations";
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
+const useStyles = makeStyles(theme => ({
+  btn: {
+    background: "#A41F35",
+    borderRadius: 3,
+    border: 0,
+    color: "white",
+    height: 48,
+    padding: "0 100px",
+    margin: "0 auto",
+    display: "block",
+    marginTop: 20,
+    marginBottom: 20
+  }
+}));
 
 async function createMeeting(
   studentUser,
@@ -131,10 +147,14 @@ export default function SchedulerCalendar() {
   const studentUser = useContext(UserContext);
   const schedulePageContext = useContext(SchedulePageContext);
   const advisorUser = schedulePageContext.selectedAdvisor;
+  const [reasonForMeeting, setReasonForMeeting] = useState([]);
+  const [formattedStartTime, setFormattedStartTime] = useState(null);
+  const [formattedEndTime, setFormattedEndTime] = useState(null);
+  const classes = useStyles();
 
   const handleSelect = ({ start, end }) => {
-    const reasonForMeeting = window.prompt("Reason for Meeting");
-    if (reasonForMeeting) {
+    const reason = window.prompt("Reason for Meeting");
+    if (reason) {
       setEvents(
         events.concat({
           start,
@@ -142,11 +162,18 @@ export default function SchedulerCalendar() {
           reasonForMeeting
         })
       );
-
       // Formats the Date object to RFC3339 which is used by Google APIs
-      const formattedStartTime = start.toISOString();
-      const formattedEndTime = end.toISOString();
+      setReasonForMeeting(reason);
+      setFormattedStartTime(start.toISOString());
+      setFormattedEndTime(end.toISOString());
+    } else {
+      return; // student cancelled event creation
+    }
+  };
+  const { setOpen, setOpenConfirmation } = useContext(SchedulePageContext);
 
+  const handleClick = () => {
+    if (formattedStartTime != null && formattedEndTime != null) {
       createMeeting(
         studentUser,
         advisorUser,
@@ -155,8 +182,11 @@ export default function SchedulerCalendar() {
         reasonForMeeting
       );
     } else {
-      return; // student cancelled event creation
+      window.alert("Please select a time before continuing!");
+      return;
     }
+    setOpen(false);
+    setOpenConfirmation(true);
   };
 
   return (
@@ -182,6 +212,9 @@ export default function SchedulerCalendar() {
           }
         })}
       />
+      <Button className={classes.btn} variant="contained" onClick={handleClick}>
+        Confirm{" "}
+      </Button>
     </div>
   );
 }

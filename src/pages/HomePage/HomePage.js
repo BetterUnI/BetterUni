@@ -64,26 +64,49 @@ export function HomePage(props) {
   const user = useContext(UserContext);
 
   useEffect(() => {
+    let isCancelled = false;
+
     API.graphql(graphqlOperation(ListAdvisingCategories))
       .then(res => {
-        const advCats = res.data.listAdvisingCategorys.items;
-        setAdvCats(advCats);
+        if (!isCancelled) {
+          const advCats = res.data.listAdvisingCategorys.items;
+          setAdvCats(advCats);
+        }
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        if (!isCancelled) {
+          console.log(err);
+        }
+      });
+    return () => {
+      isCancelled = true;
+    };
   }, []);
 
   useEffect(() => {
+    let isCancelled = false;
     API.graphql(graphqlOperation(ListCareerResources))
       .then(res => {
-        const resources = res.data.listCareerResources.items;
-        setResources(resources);
+        if (!isCancelled) {
+          const resources = res.data.listCareerResources.items;
+          setResources(resources);
+        }
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        if (!isCancelled) {
+          console.log(err);
+        }
+      });
+    return () => {
+      isCancelled = true;
+    };
   }, []);
 
   useEffect(() => {
-    setMeetings(user.meetings.items);
-  }, [user.meetings.items]);
+    if (typeof user.meetings !== "undefined") {
+      setMeetings(user.meetings.items);
+    }
+  }, [user.meetings]);
 
   return (
     <>
