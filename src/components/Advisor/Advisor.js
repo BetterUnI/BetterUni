@@ -32,16 +32,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "flex-end"
   },
   next: {
-    alignitems: "right"
-  },
-  cellNext: {
-    backgroundColor: "white",
-    color: "#A41E35",
-    cursor: "pointer",
-    "&:hover": {
-      background: theme.palette.primary.main,
-      color: "#FFFFFF"
-    }
+    marginLeft: "auto"
   }
 }));
 
