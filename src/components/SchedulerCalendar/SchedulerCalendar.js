@@ -1,11 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../../UserContext";
+import { SchedulePageContext } from "../../SchedulePageContext";
 import { gapi } from "gapi-script";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
+import { API, graphqlOperation } from "aws-amplify";
+import { createMeeting as CreateMeeting } from "../../graphql/mutations";
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
-async function createGoogleEvent(startTime, endTime, title) {
+async function createMeeting(
+  studentUser,
+  advisorUser,
+  startTime,
+  endTime,
+  reasonForMeeting
+) {
   return await gapi.client
     .load("https://content.googleapis.com/discovery/v1/apis/calendar/v3/rest")
     .then(
@@ -15,9 +25,9 @@ async function createGoogleEvent(startTime, endTime, title) {
           calendarId: "primary",
           sendUpdates: "all", // sends email invite to attendees of event
           resource: {
-            summary: title,
+            summary: reasonForMeeting,
             location: "1801 N. Broad Street, Philadelphia, PA 19122",
-            description: "An event for testing purposes",
+            description: reasonForMeeting,
             start: {
               dateTime: startTime,
               timeZone: "America/New_York"
@@ -29,12 +39,12 @@ async function createGoogleEvent(startTime, endTime, title) {
             // Attendees to send an email invite to (the advisor)
             attendees: [
               {
-                email: "studentemail@gmails.com",
-                displayName: "studentname"
+                email: studentUser.email,
+                displayName: `${studentUser.firstName}+${studentUser.lastName}`
               },
               {
-                email: "advisoremail@gmail.com",
-                displayName: "advisorname"
+                email: advisorUser.email,
+                displayName: `${advisorUser.firstName}+${advisorUser.lastName}`
               }
             ],
             // Sends email notification to organizer of event (student that scheduled meeting)
@@ -50,7 +60,63 @@ async function createGoogleEvent(startTime, endTime, title) {
 
         request.execute(function(resp) {
           console.log("response: ", resp);
-          // TODO: Store new event as meeting in Meetings table for specific user
+          // GraphQL mutation to store new meeting event as meeting in DynamoDB Meetings table for student and advisor users
+          const createGraphQLMeetingForStudent = async () => {
+            try {
+              const newMeeting = await API.graphql(
+                graphqlOperation(CreateMeeting, {
+                  input: {
+                    date: startTime, // this is redundant but a required field for the current way our GraphQL API is indexed with fields in our DynamoDB
+                    startTime: startTime,
+                    endTime: endTime,
+                    reasonForMeeting: reasonForMeeting,
+                    meetingUserId: studentUser.id,
+                    meetingAdvisorUserId: advisorUser.id
+                  }
+                })
+              );
+              console.log(
+                "GraphQL newMeeting for student created in Meeting DynamoDB table: ",
+                newMeeting
+              );
+              return newMeeting;
+            } catch (err) {
+              console.log(
+                "Error in the GraphQL mutation for creating a new meeting for a student: ",
+                err
+              );
+            }
+          };
+
+          const createGraphQLMeetingForAdvisor = async () => {
+            try {
+              const newMeeting = await API.graphql(
+                graphqlOperation(CreateMeeting, {
+                  input: {
+                    date: startTime, // this is redundant but a required field for the current way our GraphQL API is indexed with fields in our DynamoDB
+                    startTime: startTime,
+                    endTime: endTime,
+                    reasonForMeeting: reasonForMeeting,
+                    meetingUserId: advisorUser.id,
+                    meetingAdvisorUserId: studentUser.id
+                  }
+                })
+              );
+              console.log(
+                "GraphQL newMeeting for advisor created in Meeting DynamoDB table: ",
+                newMeeting
+              );
+              return newMeeting;
+            } catch (err) {
+              console.log(
+                "Error in the GraphQL mutation for creating a new meeting for an advisor: ",
+                err
+              );
+            }
+          };
+
+          createGraphQLMeetingForStudent();
+          createGraphQLMeetingForAdvisor();
         });
       },
       function(err) {
@@ -62,28 +128,35 @@ async function createGoogleEvent(startTime, endTime, title) {
 export default function SchedulerCalendar() {
   const [events, setEvents] = useState([]);
   const localizer = momentLocalizer(moment);
+  const studentUser = useContext(UserContext);
+  const schedulePageContext = useContext(SchedulePageContext);
+  const advisorUser = schedulePageContext.selectedAdvisor;
 
   const handleSelect = ({ start, end }) => {
-    const title = window.prompt("New Event name");
-    if (title)
+    const reasonForMeeting = window.prompt("Reason for Meeting");
+    if (reasonForMeeting) {
       setEvents(
         events.concat({
           start,
           end,
-          title
+          reasonForMeeting
         })
       );
 
-    // Formats the Date object to RFC3339 which is used by Google APIs
-    const formattedStartTime = start.toISOString();
-    const formattedEndTime = end.toISOString();
-    console.log("Start time is ", formattedStartTime);
-    console.log("End time is ", formattedEndTime);
+      // Formats the Date object to RFC3339 which is used by Google APIs
+      const formattedStartTime = start.toISOString();
+      const formattedEndTime = end.toISOString();
 
-    // Creates Google Calendar event
-    createGoogleEvent(formattedStartTime, formattedEndTime, title);
-
-    // TODO: Insert GraphQL API code in order to push event to Meetings table
+      createMeeting(
+        studentUser,
+        advisorUser,
+        formattedStartTime,
+        formattedEndTime,
+        reasonForMeeting
+      );
+    } else {
+      return; // student cancelled event creation
+    }
   };
 
   return (
@@ -98,7 +171,7 @@ export default function SchedulerCalendar() {
         onSelectSlot={handleSelect}
         style={{
           height: "70vh",
-          width: "70vw",
+          width: "90vw",
           margin: "0 auto",
           padding: "5px 5px 5px 5px"
         }}

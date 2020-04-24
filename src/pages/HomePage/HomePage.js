@@ -1,11 +1,11 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useContext, useEffect, useState } from "react";
-// eslint-disable-next-line no-unused-vars
 import { UserContext } from "../../UserContext";
 import { API, graphqlOperation } from "aws-amplify";
-import { listAdvisingCategorys as ListAdvisingCategories } from "../../graphql/queries";
-import { listCareerResources as ListCareerResources } from "../../graphql/queries";
-import { listMeetings as ListMeetings } from "../../graphql/queries";
+import {
+  listAdvisingCategorys as ListAdvisingCategories,
+  listCareerResources as ListCareerResources
+} from "../../graphql/queries";
 import { makeStyles } from "@material-ui/styles";
 import HomeInfoList from "../../components/HomeInfoList/HomeInfoList";
 import SupervisorAccountOutlinedIcon from "@material-ui/icons/SupervisorAccountOutlined";
@@ -56,11 +56,12 @@ const useStyles = makeStyles(theme => ({
 }));
 export function HomePage(props) {
   const classes = useStyles();
-  const user = useContext(UserContext);
 
   const [advCats, setAdvCats] = useState([]);
   const [resources, setResources] = useState([]);
   const [meetings, setMeetings] = useState([]);
+
+  const user = useContext(UserContext);
 
   useEffect(() => {
     API.graphql(graphqlOperation(ListAdvisingCategories))
@@ -70,6 +71,7 @@ export function HomePage(props) {
       })
       .catch(err => console.log(err));
   }, []);
+
   useEffect(() => {
     API.graphql(graphqlOperation(ListCareerResources))
       .then(res => {
@@ -78,14 +80,11 @@ export function HomePage(props) {
       })
       .catch(err => console.log(err));
   }, []);
+
   useEffect(() => {
-    API.graphql(graphqlOperation(ListMeetings))
-      .then(res => {
-        const meetings = res.data.listMeetings.items;
-        setMeetings(meetings);
-      })
-      .catch(err => console.log(err));
-  }, []);
+    setMeetings(user.meetings.items);
+  }, [user.meetings.items]);
+
   return (
     <>
       <div className={classes.hero}>
