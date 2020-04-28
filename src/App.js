@@ -14,7 +14,8 @@ import { Auth, API, graphqlOperation } from "aws-amplify";
 import { getUser as GetUser } from "./graphql/queries";
 import {
   createUser as CreateUser,
-  updateUser as UpdateUser
+  updateUser as UpdateUser,
+  deleteMeeting as DeleteMeeting
 } from "./graphql/mutations";
 
 // Material UI imports
@@ -220,6 +221,29 @@ async function getCurrentUserFromDynamoDB(user) {
       "getCurrentUserFromDynamoDB: user is in the DB already, returning that user: ",
       userAlreadyInDB.data.getUser
     );
+
+    // Check for expired user meeting data
+    const userMeetings = userAlreadyInDB.data.getUser.meetings.items;
+    const currentDate = new Date();
+
+    userMeetings.forEach(meeting => {
+      const meetingDate = new Date(meeting.date);
+      if (meetingDate.getTime() < currentDate.getTime()) {
+        API.graphql(
+          graphqlOperation(DeleteMeeting, {
+            input: {
+              id: meeting.id
+            }
+          })
+        )
+          .then(res => {
+            console.log("Deleted expired advisor meeting: ", res);
+          })
+          .catch(err =>
+            console.log("Error deleting expired advisor meeting: ", err)
+          );
+      }
+    });
 
     // If the CometChat user is already logged in, don't call the CometChat login() function
     CometChat.getLoggedinUser().then(user => {
