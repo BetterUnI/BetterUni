@@ -31,6 +31,7 @@
     ],
     "userpoolClientReadAttributes": [
         "email",
+        "email_verified",
         "custom:tuid",
         "custom:major",
         "custom:firstName",
