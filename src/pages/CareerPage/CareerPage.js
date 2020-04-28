@@ -18,6 +18,9 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     alignItems: "center"
   },
+  avatar: {
+    marginRight: theme.spacing(2)
+  },
   actions: {
     justifyContent: "flex-end"
   },
