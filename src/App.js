@@ -222,10 +222,43 @@ async function getCurrentUserFromDynamoDB(user) {
     );
 
     // If the CometChat user is already logged in, don't call the CometChat login() function
-    CometChat.getLoggedinUser().then(user => {
+    CometChat.getLoggedinUser().then(async user => {
       if (user === null) {
-        // Log the user in using their authToken saved in our database
-        CometChat.login(userAlreadyInDB.data.getUser.cometChatAuthToken).then(
+        // 1. Generate new CometChat auth token for existing user - it's good practice to generate an auth token each time the user logs in
+        const ccUserGeneratedAuthToken = await requestAuthToken(
+          userAlreadyInDB.data.getUser.id
+        );
+        console.log(
+          "Successfully requested new authToken from CometChat for EXISTING user:" +
+            JSON.stringify(ccUserGeneratedAuthToken)
+        );
+
+        // Generated CometChat authToken is returned to client - save CometChat authToken to user in database
+        const userCometChatAuthToken = ccUserGeneratedAuthToken.authToken;
+
+        const updatedExistingUserWithCCAuthToken = await API.graphql(
+          graphqlOperation(UpdateUser, {
+            input: {
+              id: userAlreadyInDB.data.getUser.id,
+              cometChatAuthToken: userCometChatAuthToken
+            }
+          })
+        );
+        console.log(
+          "newUpdatedUser with AUTH TOKEN: ",
+          updatedExistingUserWithCCAuthToken.data.updateUser
+        );
+        const newUserCometChatAuthToken =
+          updatedExistingUserWithCCAuthToken.data.updateUser.cometChatAuthToken;
+        console.log(
+          "NEW USER COMETCHAT AUTH TOKEN FOR EXISTING USER: ",
+          newUserCometChatAuthToken
+        );
+
+        // 2. Log the user in using their newly generated authToken saved in our database
+        CometChat.login(
+          updatedExistingUserWithCCAuthToken.data.updateUser.cometChatAuthToken
+        ).then(
           cometChatUser => {
             console.log("Existing CometChat user login successful: ", {
               cometChatUser
