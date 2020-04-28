@@ -44,10 +44,6 @@ context("Actions", () => {
     cy.get('input[id="username"]').type("davis.samuel@temple.edu");
     cy.get('input[id="password"]').type("password{enter}");
 
-    cy.wait(500);
-
-    cy.get('[data-test="verify-contact-skip-link"]').click();
-
     cy.url().should("include", "/home");
   });
 });
