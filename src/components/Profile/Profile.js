@@ -31,17 +31,23 @@ export const Profile = props => {
 
   return (
     <div {...rest} className={clsx(classes.root, className)}>
-      <Avatar
-        alt={user.firstName}
-        className={classes.avatar}
-        component={RouterLink}
-        src={user.firstName}
-        to="/profile"
-      />
-      <Typography className={classes.name} variant="h4">
-        {user.firstName} {user.lastName}
-      </Typography>
-      <Typography variant="body2">{user.major}</Typography>
+      {typeof user !== "undefined" ? (
+        <>
+          <Avatar
+            alt={user.firstName}
+            className={classes.avatar}
+            component={RouterLink}
+            src={user.firstName}
+            to="/profile"
+          />
+          <Typography className={classes.name} variant="h4">
+            {user.firstName} {user.lastName}
+          </Typography>
+          <Typography variant="body2">{user.major}</Typography>
+        </>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
