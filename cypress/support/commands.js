@@ -10,7 +10,14 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
+Cypress.Commands.add("login", () => {
+  cy.get('input[id="username"]').type("davis.samuel@temple.edu");
+  cy.get('input[id="password"]').type("password{enter}");
+
+  cy.get('[data-test="verify-contact-skip-link"]').click();
+
+  cy.url().should("include", "/home");
+});
 //
 //
 // -- This is a child command --
