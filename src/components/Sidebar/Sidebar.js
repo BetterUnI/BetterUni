@@ -78,7 +78,7 @@ export const Sidebar = props => {
   ];
 
   // If the user is an advisor, remove schedule page as an option in the SidebarNav
-  if (typeof user.isAdvisor !== "undefined") {
+  if (typeof user !== "undefined") {
     if (user.isAdvisor) {
       pages.splice(1, 1);
     }

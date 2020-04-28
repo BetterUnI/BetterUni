@@ -103,10 +103,12 @@ export function HomePage(props) {
   }, []);
 
   useEffect(() => {
-    if (typeof user.meetings !== "undefined") {
-      setMeetings(user.meetings.items);
+    if (typeof user !== "undefined") {
+      if (user.meetings) {
+        setMeetings(user.meetings.items);
+      }
     }
-  }, [user.meetings]);
+  }, [user]);
 
   return (
     <>

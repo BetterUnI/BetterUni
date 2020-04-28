@@ -5,12 +5,23 @@ import MeetingsCalendar from "../../components/MeetingsCalendar/MeetingsCalendar
 
 export function ProfilePage() {
   const user = useContext(UserContext);
-  const userMeetings = user.meetings.items;
+  let userMeetings;
+  if (typeof user !== "undefined") {
+    if (user.meetings) {
+      userMeetings = user.meetings.items;
+    }
+  }
 
   return (
     <>
       <h1>Meeting Calendar</h1>
-      <MeetingsCalendar meetings={userMeetings} />
+      {typeof user !== "undefined" ? (
+        <>
+          <MeetingsCalendar meetings={userMeetings} />
+        </>
+      ) : (
+        <></>
+      )}
     </>
   );
 }
