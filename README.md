@@ -25,8 +25,7 @@ BetterUni looks to make all university resources as accessible as possible. In t
 
 3. Install and configure the AWS Amplify CLI
    - In your terminal or shell, run the following commands:
-      <pre><code>
-      npm install -g @aws-amplify/cli</code></pre>
+      <pre><code>npm install -g @aws-amplify/cli</code></pre>
       <pre><code>amplify configure</code></pre>
       
      - Note: If you're having permission issues on your system installing the CLI, please try the following command:
