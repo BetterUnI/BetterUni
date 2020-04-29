@@ -7,7 +7,7 @@
 - **Ariela Pellumbi**
 - **Noah Costello**
 
-## Trello: 
+## Trello
 - **https://trello.com/b/40Un2Nlh/betteruni**
   
 ## Project Description
@@ -28,25 +28,30 @@ BetterUni looks to make all university resources as accessible as possible. In t
       <pre>
       <code>
       npm install -g @aws-amplify/cli
-
+      </code>
+      </pre>
+      <pre>
+      <code>
       amplify configure
       </code>
       </pre>
+      
      - Note: If you're having permission issues on your system installing the CLI, please try the following command:
         <pre>
         <code>
-        npm install -g @aws-amplify/cli
-        
+        sudo npm install -g @aws-amplify/cli --unsafe-perm=true
+        </code>
+        </pre>
+        <pre>
+        <code>
         amplify configure
         </code>
         </pre>
-
     - Follow the steps the `amplify configure` command guides you through to sign in with your new AWS Account using the Amplify CLI.
 
 4. Clone BetterUni and provision your own AWS resources
 
-    1. Wherever you want your project to live locally on your computer, run:
-        <pre><code>mkdir betteruni</code></pre>
+    1. Wherever you want your project to live locally on your computer, run: `mkdir betteruni`
 
     2. Change into your new directory with: `cd betteruni`
 
@@ -63,6 +68,7 @@ BetterUni looks to make all university resources as accessible as possible. In t
       1. Click 'Credentials' on the left then click the '+ Create Credentials' button in the top bar just below the search input
       2. Create an API Key
       3. Create an OAuth client ID
+      4. Note down your API Key as well as your Client ID and Client Secret
 
 6. Get CometChat Pro API Credentials
    1. Sign up for a [CometChat Pro](https://app.cometchat.io/register) 30-day free trial account
@@ -73,7 +79,7 @@ BetterUni looks to make all university resources as accessible as possible. In t
 
 7. At the root level of your betteruni project, create a `.env` file
    - What is a `.env` file?
-     - We'll use this file to store your Google and CometChat Pro Credentials safely. When you run your project locally with `yarn start`, the values you define in this file are accessed with `process.env.YOUR_VARIABLE_NAME`
+     - We'll use this file to store your Google and CometChat Pro Credentials safely. When you run your project locally with `yarn start`, the values you define in this file are accessed with `process.env.YOUR_VARIABLE_NAME`.
    - You'll want your `.env` file to include the following:
       <pre><code> 
         REACT_APP_COMETCHAT_APP_ID=YOUR_COMETCHAT_APP_ID
