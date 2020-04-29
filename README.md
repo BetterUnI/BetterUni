@@ -25,28 +25,13 @@ BetterUni looks to make all university resources as accessible as possible. In t
 
 3. Install and configure the AWS Amplify CLI
    - In your terminal or shell, run the following commands:
-      <pre>
-      <code>
-      npm install -g @aws-amplify/cli
-      </code>
-      </pre>
-      <pre>
-      <code>
-      amplify configure
-      </code>
-      </pre>
+      <pre><code>
+      npm install -g @aws-amplify/cli</code></pre>
+      <pre><code>amplify configure</code></pre>
       
      - Note: If you're having permission issues on your system installing the CLI, please try the following command:
-        <pre>
-        <code>
-        sudo npm install -g @aws-amplify/cli --unsafe-perm=true
-        </code>
-        </pre>
-        <pre>
-        <code>
-        amplify configure
-        </code>
-        </pre>
+        <pre><code>sudo npm install -g @aws-amplify/cli --unsafe-perm=true</code></pre>
+        <pre><code>amplify configure</code></pre>
     - Follow the steps the `amplify configure` command guides you through to sign in with your new AWS Account using the Amplify CLI.
 
 4. Clone BetterUni and provision your own AWS resources
