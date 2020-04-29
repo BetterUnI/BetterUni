@@ -1,10 +1,32 @@
 # BetterUni
+## Project Description
+BetterUni is a progressive web application for college students, from college students. We help students find the campus resources they need when they need them. As students, we know that wait times can be unbearable and in person advisor meetings can often waste a lot of time. It's also important to note that not every student is available on campus to come in for a meeting. A lot of students have disabilities that make the process of physically having to come into get help, even more cumbersome. Universities also incur costs in the process of in-person advising. They have to pay for the space and upkeep of their offices. It's 2020 and we should utilize the technology available to us to improve the university advising experience as a whole.
+
+Advising doesn't *just* include major advising. Many universities offer student success centers, counseling services, and tutoring offices which present problems of their own. As students, we hear too often how counseling services aren't always available. Students with severe social anxiety, may also experience discomfort when seeking help or may not seek help at all because of this.
+
+BetterUni looks to make all university resources as accessible as possible. In turn students can enjoy a better advising experience and university experience all together. Schools with easily accessible resources enable students to be even more successful in their college careers and beyond!
+
+## The Team
+- Dillon Coffman
+- Davis Samuel
+- Richard Kemmerer
+- Ariela Pellumbi
+- Noah Costello
+## Installing
+## Uninstalling
+## Basic Development Process
+## Running Tests
+- Jest/Enzyme - unit tests
+- Cypress - integration, acceptance, and end-to-end tests
 ## View our UI Prototypes
 - Web size: https://www.figma.com/proto/1YLLQ4cvWhcLwUq776a2bk/BetterUni-Web-Size-UI-Prototype?node-id=1%3A3&viewport=457%2C471%2C0.10185033082962036&scaling=contain
 - Tablet size: https://www.figma.com/proto/KbAMz2LllCaaZYiufXjvEs/BetterUni-Tablet-Size-UI-Prototype?node-id=1%3A2&viewport=660%2C561%2C0.2040012776851654&scaling=min-zoom
 - Mobile size: https://www.figma.com/proto/738yMbW2VdEj1jmlrtk5v4/BetterUni-Mobile-Size-UI-Prototype?node-id=1%3A2&viewport=519%2C735%2C0.22340570390224457&scaling=min-zoom
 
 You can click through each prototype. If you're ever unsure where to click to progress, click anywhere on the prototype and a box will highlight blue showing you where you can click next. These UI prototypes will be used to develop our actual web application for all screen sizes.
+
+## Licensing
+BetterUni is licensed under a MIT License. Please see that file within the root of our repository for for information.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
