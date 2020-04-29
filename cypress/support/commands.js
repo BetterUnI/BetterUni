@@ -11,9 +11,9 @@
 //
 // -- This is a parent command --
 Cypress.Commands.add("login", () => {
-  cy.get('input[id="username"]').type("davis.samuel@temple.edu");
+  cy.get('input[id="username"]').type("rjkemmerer@temple.edu");
   cy.get('input[id="password"]').type("password{enter}");
-
+  cy.wait(6000);
   cy.url().should("include", "/home");
 });
 //
