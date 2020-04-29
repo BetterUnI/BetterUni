@@ -27,6 +27,7 @@ context("Actions", () => {
   it("User Does Not Exist", () => {
     cy.get('input[id="username"]').type("invalid.username@temple.edu");
     cy.get('input[id="password"]').type("password{enter}");
+    cy.wait(6000);
 
     cy.get("span").contains("User does not exist");
   });
@@ -35,7 +36,7 @@ context("Actions", () => {
     cy.get('input[id="username"]').type("davis.samuel@temple.edu");
     cy.get('input[id="password"]').type("invalidpassword{enter}");
 
-    cy.wait(500);
+    cy.wait(6000);
 
     cy.get("span").contains("Incorrect username or password");
   });
@@ -43,6 +44,7 @@ context("Actions", () => {
   it("Sucessful Login", () => {
     cy.get('input[id="username"]').type("davis.samuel@temple.edu");
     cy.get('input[id="password"]').type("password{enter}");
+    cy.wait(6000);
 
     cy.url().should("include", "/home");
   });
