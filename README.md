@@ -1,5 +1,7 @@
 # BetterUni
 
+![https://master.d10zhgeiihhv0k.amplifyapp.com/images/bulogo.png](BetterUni Logo)
+
 ## The Team
 - **Dillon Coffman**
 - **Davis Samuel**
