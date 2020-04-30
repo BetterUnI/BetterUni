@@ -75,7 +75,7 @@ async function createMeeting(
         });
 
         request.execute(function(resp) {
-          console.log("response: ", resp);
+          // console.log("response: ", resp);
           // GraphQL mutation to store new meeting event as meeting in DynamoDB Meetings table for student and advisor users
           const createGraphQLMeetingForStudent = async () => {
             try {
@@ -92,13 +92,12 @@ async function createMeeting(
                 })
               );
               console.log(
-                "GraphQL newMeeting for student created in Meeting DynamoDB table: ",
-                newMeeting
+                "GraphQL newMeeting for student created in Meeting DynamoDB table"
               );
               return newMeeting;
             } catch (err) {
               console.log(
-                "Error in the GraphQL mutation for creating a new meeting for a student: ",
+                "Error in the GraphQL mutation for creating a new meeting for a student",
                 err
               );
             }
@@ -119,8 +118,7 @@ async function createMeeting(
                 })
               );
               console.log(
-                "GraphQL newMeeting for advisor created in Meeting DynamoDB table: ",
-                newMeeting
+                "GraphQL newMeeting for advisor created in Meeting DynamoDB table"
               );
               return newMeeting;
             } catch (err) {
