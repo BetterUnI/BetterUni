@@ -81,10 +81,10 @@ BetterUni looks to make all university resources as accessible as possible. In t
 8. Run `yarn start` to run your local development server and go to localhost:3000 in your browser.
 
 ## Uninstalling
-1. From your betteruni directory, run: `amplify delete`
+1. From your betteruni directory in your terminal or shell, run: `amplify delete`
 2. Wait several minutes. The above command will delete all the AWS resources associated with your project.
 3. Run `amplify env remove sampledev` to ensure your Amplify development environment is deleted.
-4. Outside of the betteruni directory, run `rm -rf betteruni` to delete your local project entirely.
+4. Outside of the betteruni directory, run `rm -rf betteruni` in your terminal or shell to delete your local project entirely.
 
 ## Basic Development Process
 1. Pull down the most recent master branch changes: `git pull origin master`
