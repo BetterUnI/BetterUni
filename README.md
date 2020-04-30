@@ -1,6 +1,6 @@
 # BetterUni
 
-![https://master.d10zhgeiihhv0k.amplifyapp.com/images/bulogo.png](BetterUni Logo)
+![BetterUni Logo](https://master.d10zhgeiihhv0k.amplifyapp.com/images/bulogo.png)
 
 ## The Team
 - **Dillon Coffman**
