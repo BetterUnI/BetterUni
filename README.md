@@ -63,7 +63,7 @@ BetterUni looks to make all university resources as accessible as possible. In t
 
 7. At the root level of your betteruni project, create a `.env` file
    - What is a `.env` file?
-     - We'll use this file to store your Google and CometChat Pro Credentials safely. When you run your project locally with `yarn start`, the values you define in this file are accessed with `process.env.YOUR_VARIABLE_NAME`.
+     - We'll use this file to store your Google and CometChat Pro Credentials safely in environment variables. When you run your project locally with `yarn start`, the values you define in this file are accessed with `process.env.YOUR_VARIABLE_NAME`.
    - You'll want your `.env` file to include the following:
       <pre><code> 
         REACT_APP_COMETCHAT_APP_ID=YOUR_COMETCHAT_APP_ID
@@ -73,31 +73,34 @@ BetterUni looks to make all university resources as accessible as possible. In t
         REACT_APP_CALENDAR_CLIENT_SECRET=YOUR_GOOGLE_CLIENT_SECRET
         REACT_APP_CALENDAR_API_KEY=YOUR_GOOGLE_API_KEY
       </code></pre>
-      - Why do all the variables begin with `REACT_APP`?
+      - Why do all the environment variables begin with `REACT_APP`?
         - Please refer to [the create-react-app documentation](https://create-react-app.dev/docs/adding-custom-environment-variables/) about this.
 
-## Uninstalling
+8. Run `yarn start` to run your local development server and go to localhost:3000 in your browser.
 
+## Uninstalling
+// TODO
 
 ## Basic Development Process
-1. `git pull origin master` to pull down the most recent master branch changes
-2. `amplify push` to make sure all resources are provisioned for your Amplify environment
+1. Pull down the most recent master branch changes: `git pull origin master`
+2. Make sure all AWS resources are provisioned for your AWS Amplify environment: `amplify push` 
 3. `git checkout -b yourname-taskdescription`
 4. Move your Trello task card from 'Sprint Backlog' to 'In Progress'
 5. Work on your task
 6. Commit your changes
-    1. `git add .` to stage all your local changes
+    1. `git add .` to stage all your local changes or `git add -p` to walk through and add your changes one by one
     2. `git commit -m "Your commit message here"`
-7. `git push origin yourname-taskdescription`. 
-8. Create a pull request on GitHub
+7. Push your changes: `git push origin yourname-taskdescription`. 
+8. Create a pull request on GitHub with a description of what you've completed
     - ***Be sure to assign yourself to the PR AND add everyone as a reviewer***
-9. Update your Trello task card to 'In Code Review'
+9. Move your Trello task card to the 'In Code Review' list
 10. Once your PR gets two approvals, merge your PR to master
-11. Update your Trello task card to  'Done'
-12. 
+11. Move your Trello task card to the 'Done' list
+
 ## Running Tests
 - Jest/Enzyme - unit tests
 - Cypress - integration, acceptance, and end-to-end tests
+- // TODO
 
 ## View our UI Prototypes
 - Web size: https://www.figma.com/proto/1YLLQ4cvWhcLwUq776a2bk/BetterUni-Web-Size-UI-Prototype?node-id=1%3A3&viewport=457%2C471%2C0.10185033082962036&scaling=contain
