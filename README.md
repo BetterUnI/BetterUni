@@ -79,7 +79,10 @@ BetterUni looks to make all university resources as accessible as possible. In t
 8. Run `yarn start` to run your local development server and go to localhost:3000 in your browser.
 
 ## Uninstalling
-// TODO
+1. From your betteruni directory, run: `amplify delete`
+2. Wait several minutes. The above command will delete all the AWS resources associated with your project.
+3. Run `amplify env remove sampledev` to ensure your Amplify development environment is deleted.
+4. Outside of the betteruni directory, run `rm -rf betteruni` to delete your local project entirely.
 
 ## Basic Development Process
 1. Pull down the most recent master branch changes: `git pull origin master`
@@ -97,10 +100,33 @@ BetterUni looks to make all university resources as accessible as possible. In t
 10. Once your PR gets two approvals, merge your PR to master
 11. Move your Trello task card to the 'Done' list
 
-## Running Tests
-- Jest/Enzyme - unit tests
-- Cypress - integration, acceptance, and end-to-end tests
-- // TODO
+## Testing
+
+### Unit Tests
+BetterUni uses Jest and Enzyme to test its React components.
+  - Run `yarn test` in your terminal or shell to run all of our component unit tests
+  - [Learn more about Jest](https://jestjs.io/en/)
+  - [Learn more about Enzyme](https://enzymejs.github.io/enzyme/)
+- [View our Test Procedures document](https://drive.google.com/a/temple.edu/file/d/1vx-3hNl0IK_FhLMB8PudLm_0-6IP4fZL/view?usp=sharing)
+
+### Integration Tests
+BetterUni uses Cypress to do integration testing.
+- Install Cypress with `npx cypress install` on your machine
+- Run `node_modules/.bin/cypress open` in your shell or terminal to launch the Cypress testing window
+  - Click tests within the Cypress window to run an automated integration test. You can view the automated integration test happen in real time within the window.
+- [Learn more about Cypress](https://www.cypress.io/)
+- [View our Test Procedures document](https://drive.google.com/a/temple.edu/file/d/1vx-3hNl0IK_FhLMB8PudLm_0-6IP4fZL/view?usp=sharing)
+
+
+### Acceptance Tests
+BetterUni uses Cypress to do acceptance testing.
+- Install Cypress with `npx cypress install` on your machine
+- Run `node_modules/.bin/cypress open` in your shell or terminal to launch the Cypress testing window
+  - Click tests within the Cypress window to run an automated integration test. You can view the automated integration test happen in real time within the window.
+- [Learn more about Cypress](https://www.cypress.io/)
+- [View our Test Procedures document](https://drive.google.com/a/temple.edu/file/d/1vx-3hNl0IK_FhLMB8PudLm_0-6IP4fZL/view?usp=sharing)
+
+
 
 ## View our UI Prototypes
 - Web size: https://www.figma.com/proto/1YLLQ4cvWhcLwUq776a2bk/BetterUni-Web-Size-UI-Prototype?node-id=1%3A3&viewport=457%2C471%2C0.10185033082962036&scaling=contain
@@ -110,7 +136,7 @@ BetterUni looks to make all university resources as accessible as possible. In t
 You can click through each prototype. If you're ever unsure where to click to progress, click anywhere on the prototype and a box will highlight blue showing you where you can click next. These UI prototypes will be used to develop our actual web application for all screen sizes.
 
 ## Licensing
-BetterUni is licensed under a MIT License. Please see that file within the root of our repository for for information.
+BetterUni is licensed under a MIT License. Please see that file within the root of our repository for more information.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
