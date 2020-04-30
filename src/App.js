@@ -59,7 +59,7 @@ const requestAuthToken = uid => {
         headers
       })
       .then(response => {
-        console.log("New Auth Token:", response.data);
+        // console.log("New Auth Token:", response.data);
         resolve(response.data.data);
       })
       .catch(error => reject(error));
@@ -108,14 +108,14 @@ async function getCurrentUserFromDynamoDB(user) {
         const ccUserGeneratedAuthToken = await requestAuthToken(
           newCCUserResponse.data.data.uid
         );
-        console.log(
-          "Successfully requested new authToken from CometChat:" +
-            JSON.stringify(ccUserGeneratedAuthToken)
-        );
+        // console.log(
+        //   "Successfully requested new authToken from CometChat:" +
+        //     JSON.stringify(ccUserGeneratedAuthToken)
+        // );
 
         // Generated CometChat authToken is returned to client - save CometChat authToken to user in database
         const userCometChatAuthToken = ccUserGeneratedAuthToken.authToken;
-        console.log("userCometChatAuthToken: ", userCometChatAuthToken);
+        // console.log("userCometChatAuthToken: ", userCometChatAuthToken);
 
         const updatedUserWithCCAuthToken = await API.graphql(
           graphqlOperation(UpdateUser, {
@@ -125,25 +125,25 @@ async function getCurrentUserFromDynamoDB(user) {
             }
           })
         );
-        console.log(
-          "newUpdatedUser with AUTH TOKEN: ",
-          updatedUserWithCCAuthToken.data.updateUser
-        );
+        // console.log(
+        //   "newUpdatedUser with AUTH TOKEN: ",
+        //   updatedUserWithCCAuthToken.data.updateUser
+        // );
         const newUserCometChatAuthToken =
           updatedUserWithCCAuthToken.data.updateUser.cometChatAuthToken;
-        console.log(
-          "NEW USER COMETCHAT AUTH TOKEN: ",
-          newUserCometChatAuthToken
-        );
+        // console.log(
+        //   "NEW USER COMETCHAT AUTH TOKEN: ",
+        //   newUserCometChatAuthToken
+        // );
 
         // Log newly created student user in to CometChat
-        const loggedInCCUser = await CometChat.login(newUserCometChatAuthToken);
-        console.log("Login successfully:", { loggedInCCUser });
+        await CometChat.login(newUserCometChatAuthToken);
+        // console.log("Login successfully:", { loggedInCCUser });
 
         // Return updated student user from DynamoDB database
         return updatedUserWithCCAuthToken.data.updateUser; // RETURN STUDENT
       } catch (err) {
-        console.log("There was an error creating the newUser: ", err);
+        // console.log("There was an error creating the newUser: ", err);
       }
     } else {
       try {
@@ -177,14 +177,14 @@ async function getCurrentUserFromDynamoDB(user) {
         const ccUserGeneratedAuthToken = await requestAuthToken(
           newCCUserResponse.data.data.uid
         );
-        console.log(
-          "Successfully requested new authToken from CometChat:" +
-            JSON.stringify(ccUserGeneratedAuthToken)
-        );
+        // console.log(
+        //   "Successfully requested new authToken from CometChat:" +
+        //     JSON.stringify(ccUserGeneratedAuthToken)
+        // );
 
         // Generated CometChat authToken is returned to client - save CometChat authToken to user in database
         const userCometChatAuthToken = ccUserGeneratedAuthToken.authToken;
-        console.log("userCometChatAuthToken: ", userCometChatAuthToken);
+        // console.log("userCometChatAuthToken: ", userCometChatAuthToken);
 
         const updatedUserWithCCAuthToken = await API.graphql(
           graphqlOperation(UpdateUser, {
@@ -194,16 +194,16 @@ async function getCurrentUserFromDynamoDB(user) {
             }
           })
         );
-        console.log(
-          "newUpdatedUser with AUTH TOKEN: ",
-          updatedUserWithCCAuthToken.data.updateUser
-        );
+        // console.log(
+        //   "newUpdatedUser with AUTH TOKEN: ",
+        //   updatedUserWithCCAuthToken.data.updateUser
+        // );
         const newUserCometChatAuthToken =
           updatedUserWithCCAuthToken.data.updateUser.cometChatAuthToken;
-        console.log(
-          "NEW USER COMETCHAT AUTH TOKEN: ",
-          newUserCometChatAuthToken
-        );
+        // console.log(
+        //   "NEW USER COMETCHAT AUTH TOKEN: ",
+        //   newUserCometChatAuthToken
+        // );
 
         // Log newly created student user in to CometChat
         const loggedInCCUser = await CometChat.login(newUserCometChatAuthToken);
@@ -217,10 +217,10 @@ async function getCurrentUserFromDynamoDB(user) {
     }
   } else {
     // Return the user that's already in the DB to set user state
-    console.log(
-      "getCurrentUserFromDynamoDB: user is in the DB already, returning that user: ",
-      userAlreadyInDB.data.getUser
-    );
+    // console.log(
+    //   "getCurrentUserFromDynamoDB: user is in the DB already, returning that user: ",
+    //   userAlreadyInDB.data.getUser
+    // );
 
     // Check for expired user meeting data
     const userMeetings = userAlreadyInDB.data.getUser.meetings.items;
@@ -252,10 +252,10 @@ async function getCurrentUserFromDynamoDB(user) {
         const ccUserGeneratedAuthToken = await requestAuthToken(
           userAlreadyInDB.data.getUser.id
         );
-        console.log(
-          "Successfully requested new authToken from CometChat for EXISTING user:" +
-            JSON.stringify(ccUserGeneratedAuthToken)
-        );
+        // console.log(
+        //   "Successfully requested new authToken from CometChat for EXISTING user:" +
+        //     JSON.stringify(ccUserGeneratedAuthToken)
+        // );
 
         // Generated CometChat authToken is returned to client - save CometChat authToken to user in database
         const userCometChatAuthToken = ccUserGeneratedAuthToken.authToken;
@@ -268,21 +268,19 @@ async function getCurrentUserFromDynamoDB(user) {
             }
           })
         );
-        console.log(
-          "newUpdatedUser with AUTH TOKEN: ",
-          updatedExistingUserWithCCAuthToken.data.updateUser
-        );
+        // console.log(
+        //   "newUpdatedUser with AUTH TOKEN: ",
+        //   updatedExistingUserWithCCAuthToken.data.updateUser
+        // );
         const newUserCometChatAuthToken =
           updatedExistingUserWithCCAuthToken.data.updateUser.cometChatAuthToken;
-        console.log(
-          "NEW USER COMETCHAT AUTH TOKEN FOR EXISTING USER: ",
-          newUserCometChatAuthToken
-        );
+        // console.log(
+        //   "NEW USER COMETCHAT AUTH TOKEN FOR EXISTING USER: ",
+        //   newUserCometChatAuthToken
+        // );
 
         // 2. Log the user in using their newly generated authToken saved in our database
-        CometChat.login(
-          updatedExistingUserWithCCAuthToken.data.updateUser.cometChatAuthToken
-        ).then(
+        CometChat.login(newUserCometChatAuthToken).then(
           cometChatUser => {
             console.log("Existing CometChat user login successful: ", {
               cometChatUser
@@ -299,9 +297,9 @@ async function getCurrentUserFromDynamoDB(user) {
             // User login failed, check error and take appropriate action.
           }
         );
-      } else {
-        console.log("cometchat user already logged in: ", user);
-      }
+      } // else {
+      // console.log("CometChat user already logged in: ", user);
+      // }
     });
 
     return userAlreadyInDB.data.getUser;
@@ -335,7 +333,7 @@ async function loadGapiClient() {
     callback: function() {
       // Handles gapi.client initialization for the Google Calendar API
       initGapiClient();
-      console.log("Initialized Google API Client");
+      console.log("Google API Client initialized successfully!");
     },
     onerror: function() {
       // Handle loading error.
