@@ -6,16 +6,17 @@ context("Actions", () => {
     cy.wait(600);
   });
 
-  it("Contains All 3 Tables & Welcome Bar", () => {
-    cy.get("div").contains("Upcoming Meetings");
-    cy.get("div").contains("Career Events");
-    cy.get("div").contains("Advising Offices");
-    cy.get("div").contains("Welcome to BetterUni");
+  it("Profile page contains the calendar component with the appropriate toolbar", () => {
+    cy.get(".rbc-calendar").contains("Today");
+    cy.get(".rbc-calendar").contains("Back");
+    cy.get(".rbc-calendar").contains("Next");
+    cy.get(".rbc-calendar").contains("Month");
+    cy.get(".rbc-calendar").contains("Week");
+    cy.get(".rbc-calendar").contains("Day");
+    cy.get(".rbc-calendar").contains("May");
   });
 
-  it("Link should work", () => {
-    cy.get("tr > td")
-      .get("a")
-      .should("have.attr", "href");
+  it("Calendar contains 'test' meeting", () => {
+    cy.get(".rbc-calendar").contains("test");
   });
 });
