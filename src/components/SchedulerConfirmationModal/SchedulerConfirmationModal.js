@@ -56,7 +56,7 @@ export default function SchedulerConfirmationModal(props) {
             <center>
               <p>
                 You can view your upcoming meetings
-                <Link to="/meetings" className={classes.btn}>
+                <Link to="/profile" className={classes.btn}>
                   here
                 </Link>
               </p>
